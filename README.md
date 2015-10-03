@@ -1,2 +1,2 @@
 # wpfcontrols
-A suite of WPF controls.
+Custom WPF controls..
