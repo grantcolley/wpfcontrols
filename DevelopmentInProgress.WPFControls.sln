@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopmentInProgress.WPFControls", "DevelopmentInProgress.WPFControls.csproj", "{5ACDC574-0F6F-48BC-AD2A-2F29BD7009FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopmentInProgress.WPFControls", "DevelopmentInProgress.WPFControls\DevelopmentInProgress.WPFControls.csproj", "{5ACDC574-0F6F-48BC-AD2A-2F29BD7009FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
