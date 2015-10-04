@@ -14,7 +14,8 @@
                                 <Image DockPanel.Dock="Right" Source="../Images/Filter.png" Height="18" Width="18"/>
                                 <TextBox Text="{Binding Path=FilterText, RelativeSource={RelativeSource TemplatedParent}}"/>
                             </DockPanel>
-                            <TreeView ItemsSource="{Binding Path=ItemsSource, RelativeSource={RelativeSource TemplatedParent}}"
+                            <TreeView x:Name="treeView"
+                                      ItemsSource="{Binding Path=ItemsSource, RelativeSource={RelativeSource TemplatedParent}}"
                                       BorderBrush="Transparent"
                                       BorderThickness="0"
                                       Padding="5">
@@ -22,7 +23,8 @@
                                     <ContextMenu x:Key="contextMenu">
                                         <ContextMenu.Items>
                                             <MenuItem Header="Delete" 
-                                                      Command="{Binding DeleteItemCommand}">
+                                                      Command="{Binding Path=ItemDeletedCommand, RelativeSource={RelativeSource TemplatedParent}}"
+                                                      CommandParameter="{Binding SelectedItem, ElementName=treeView}">
                                                 <MenuItem.Icon>
                                                     <Image Source="../Images/DeleteBlack.png" ToolTip="Delete" MaxHeight="14" MaxWidth="14" VerticalAlignment="Center"/>
                                                 </MenuItem.Icon>
