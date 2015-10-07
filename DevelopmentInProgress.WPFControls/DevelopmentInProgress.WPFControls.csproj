@@ -86,11 +86,14 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\DeleteBlack.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Filter.png" />
     <Resource Include="Images\Origin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NavigationPanel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
