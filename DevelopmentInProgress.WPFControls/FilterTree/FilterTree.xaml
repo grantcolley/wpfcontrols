@@ -18,15 +18,16 @@
                                       ItemsSource="{Binding Path=ItemsSource, RelativeSource={RelativeSource TemplatedParent}}"
                                       BorderBrush="Transparent"
                                       BorderThickness="0"
-                                      Padding="5">
+                                      Padding="5"
+                                      Tag="{Binding Path=RemoveItemCommand, RelativeSource={RelativeSource TemplatedParent}}">
                                 <TreeView.Resources>
                                     <ContextMenu x:Key="contextMenu">
                                         <ContextMenu.Items>
-                                            <MenuItem Header="Delete" 
-                                                      Command="{Binding Path=ItemDeletedCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                                      CommandParameter="{Binding SelectedItem, ElementName=treeView}">
+                                            <MenuItem Header="Remove Item" 
+                                                      Command="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}"
+                                                      CommandParameter="{Binding Path=PlacementTarget.DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}">
                                                 <MenuItem.Icon>
-                                                    <Image Source="../Images/DeleteBlack.png" ToolTip="Delete" MaxHeight="14" MaxWidth="14" VerticalAlignment="Center"/>
+                                                    <Image Source="../Images/Remove.png" ToolTip="Remove Item" MaxHeight="14" MaxWidth="14" VerticalAlignment="Center"/>
                                                 </MenuItem.Icon>
                                             </MenuItem>
                                         </ContextMenu.Items>
@@ -35,6 +36,7 @@
                                         <Setter Property="IsExpanded" Value="True"/>
                                         <Setter Property="Visibility" Value="{Binding Path=IsVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource boolToVisibilityConverter}}"/>
                                         <Setter Property="ContextMenu" Value="{StaticResource contextMenu}"/>
+                                        <Setter Property="Tag" Value="{Binding Path=Tag, ElementName=treeView}"/>
                                     </Style>
                                 </TreeView.Resources>
                             </TreeView>
