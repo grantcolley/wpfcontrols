@@ -1,9 +1,8 @@
 ﻿namespace DevelopmentInProgress.WPFControls.FilterTree
 {
-    public interface IFilterTreeItem
+    public interface IXamFilterTreeItem
     {
         string Text { get; set; }
         bool IsVisible { get; set; }
-        void Filter(string filterText);
     }
 }

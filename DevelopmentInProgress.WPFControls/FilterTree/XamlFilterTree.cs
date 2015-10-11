@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -26,15 +25,10 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             IsExpandedProperty = DependencyProperty.Register("IsExpanded", typeof (bool), typeof (XamlFilterTree));
 
             ItemsSourceProperty = DependencyProperty.Register("ItemsSource", typeof(IEnumerable),
-                typeof(XamlFilterTree), new FrameworkPropertyMetadata(new List<object>()));
+                typeof(XamlFilterTree));
 
             RemoveItemCommandProperty = DependencyProperty.Register("RemoveItemCommand", typeof(ICommand),
                 typeof (XamlFilterTree));
-        }
-
-        public XamlFilterTree()
-        {
-            ItemsSource = new List<object>();
         }
 
         public string Header
@@ -55,9 +49,9 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             set { SetValue(IsExpandedProperty, value); }
         }
 
-        public List<object> ItemsSource
+        public IEnumerable ItemsSource
         {
-            get { return (List<object>)GetValue(ItemsSourceProperty); }
+            get { return (IEnumerable)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
 
@@ -65,11 +59,6 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
         {
             get { return (ICommand)GetValue(RemoveItemCommandProperty); }
             set { SetValue(RemoveItemCommandProperty, value); }
-        }
-
-        private void TextBoxBaseOnTextChanged(object sender, TextChangedEventArgs e)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:filterTree="clr-namespace:DevelopmentInProgress.WPFControls.FilterTree">
+                    xmlns:filterTree="clr-namespace:DevelopmentInProgress.WPFControls.FilterTree"
+                    x:Class="DevelopmentInProgress.WPFControls.FilterTree.FilterTree">
  
     <BooleanToVisibilityConverter x:Key="boolToVisibilityConverter"/>
     
@@ -12,19 +13,21 @@
                         <DockPanel LastChildFill="True">
                             <DockPanel DockPanel.Dock="Top" LastChildFill="True" Height="24" Margin="5">
                                 <Image DockPanel.Dock="Right" Source="../Images/Filter.png" Height="18" Width="18"/>
-                                <TextBox Text="{Binding Path=FilterText, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <TextBox Text="{Binding Path=FilterText, RelativeSource={RelativeSource TemplatedParent}}"
+                                         Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
+                                         TextChanged="OnTextChanged"/>
                             </DockPanel>
                             <TreeView x:Name="treeView"
                                       ItemsSource="{Binding Path=ItemsSource, RelativeSource={RelativeSource TemplatedParent}}"
                                       BorderBrush="Transparent"
                                       BorderThickness="0"
                                       Padding="5"
-                                      Tag="{Binding Path=RemoveItemCommand, RelativeSource={RelativeSource TemplatedParent}}">
+                                      Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}">
                                 <TreeView.Resources>
                                     <ContextMenu x:Key="contextMenu">
                                         <ContextMenu.Items>
                                             <MenuItem Header="Remove Item" 
-                                                      Command="{Binding Path=PlacementTarget.Tag, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}"
+                                                      Command="{Binding Path=PlacementTarget.Tag.RemoveItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}"
                                                       CommandParameter="{Binding Path=PlacementTarget.DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}">
                                                 <MenuItem.Icon>
                                                     <Image Source="../Images/Remove.png" ToolTip="Remove Item" MaxHeight="14" MaxWidth="14" VerticalAlignment="Center"/>
@@ -34,9 +37,8 @@
                                     </ContextMenu>
                                     <Style TargetType="{x:Type TreeViewItem}">
                                         <Setter Property="IsExpanded" Value="True"/>
-                                        <Setter Property="Visibility" Value="{Binding Path=IsVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource boolToVisibilityConverter}}"/>
-                                        <Setter Property="ContextMenu" Value="{StaticResource contextMenu}"/>
-                                        <Setter Property="Tag" Value="{Binding Path=Tag, ElementName=treeView}"/>
+                                        <Setter Property="Visibility" Value="{Binding Path=IsVisible, Converter={StaticResource boolToVisibilityConverter}}"/>
+                                        <Setter Property="ContextMenu" Value="{StaticResource contextMenu}"/>                                        
                                     </Style>
                                 </TreeView.Resources>
                             </TreeView>
