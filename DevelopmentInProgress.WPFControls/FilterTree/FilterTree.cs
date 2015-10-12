@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows.Controls;
 
 namespace DevelopmentInProgress.WPFControls.FilterTree
@@ -23,7 +26,40 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
 
             foreach (var item in items)
             {
+                var properties = item.GetType().GetProperties();                
+                foreach (var property in properties)
+                {
+                    var interfaces = property.PropertyType.GetInterfaces();
+                    foreach (var interfaceType in interfaces)
+                    {
+                        if (interfaceType.IsGenericType &&
+                            interfaceType.GetGenericTypeDefinition().Equals(typeof(IEnumerable<>)))
+                        {
+                            var itemTypes = property.PropertyType.GetGenericArguments();
+                            foreach (var itemType in itemTypes)
+                            {
+                                var textPropertyInfo = itemType.GetProperty("Text");
+                                var visiblePropertyInfo = itemType.GetProperty("IsVisible");
+                                if (textPropertyInfo != null
+                                    && visiblePropertyInfo != null)
+                                {
+        
+                                }
+                            }
+                        }
+                    }
+                }
+
                 Contains(item, textBox.Text, true);
+            }
+        }
+
+        private bool Contains<T>(IEnumerable<T> enumerable, string text)
+        {
+            bool result = false;
+            foreach (var t in enumerable)
+            {
+                
             }
         }
 
