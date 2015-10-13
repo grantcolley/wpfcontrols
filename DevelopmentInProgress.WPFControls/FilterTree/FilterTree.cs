@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -23,10 +24,15 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             }
 
             var items = xamlFilterTree.ItemsSource;
+            Contains(items, textBox.Text);
+        }
 
+        private bool Contains(IEnumerable items, string text)
+        {
+            bool result = false;
             foreach (var item in items)
             {
-                var properties = item.GetType().GetProperties();                
+                var properties = item.GetType().GetProperties();
                 foreach (var property in properties)
                 {
                     var interfaces = property.PropertyType.GetInterfaces();
@@ -43,24 +49,17 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
                                 if (textPropertyInfo != null
                                     && visiblePropertyInfo != null)
                                 {
-        
+                                    result = Contains((IEnumerable)property.GetValue(item, null), text);
                                 }
                             }
                         }
                     }
                 }
 
-                Contains(item, textBox.Text, true);
+                result = Contains(item, text, result);
             }
-        }
 
-        private bool Contains<T>(IEnumerable<T> enumerable, string text)
-        {
-            bool result = false;
-            foreach (var t in enumerable)
-            {
-                
-            }
+            return result;
         }
 
         private bool Contains<T>(T t, string text, bool hasVisibleChild)
