@@ -32,6 +32,7 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             bool result = false;
             foreach (var item in items)
             {
+                var innerResult = false;
                 var properties = item.GetType().GetProperties();
                 foreach (var property in properties)
                 {
@@ -49,14 +50,17 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
                                 if (textPropertyInfo != null
                                     && visiblePropertyInfo != null)
                                 {
-                                    result = Contains((IEnumerable)property.GetValue(item, null), text);
+                                    innerResult = Contains((IEnumerable)property.GetValue(item, null), text);
                                 }
                             }
                         }
                     }
                 }
 
-                result = Contains(item, text, result);
+                if (Contains(item, text, innerResult))
+                {
+                    result = true;
+                }
             }
 
             return result;
