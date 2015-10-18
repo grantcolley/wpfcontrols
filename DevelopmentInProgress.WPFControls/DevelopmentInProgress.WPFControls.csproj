@@ -59,7 +59,7 @@
     <Compile Include="Converters\BoolToStringConverter.cs" />
     <Compile Include="Converters\ImageConverter.cs" />
     <Compile Include="FilterTree\FilterTree.cs" />
-    <Compile Include="FilterTree\IXamFilterTreeItem.cs" />
+    <Compile Include="FilterTree\IXamlFilterTreeItem.cs" />
     <Compile Include="FilterTree\XamlFilterTree.cs" />
   </ItemGroup>
   <ItemGroup>
