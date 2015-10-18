@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace DevelopmentInProgress.WPFControls.FilterTree
 {
@@ -91,6 +93,43 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             }
 
             return false;
+        }
+
+        private void OnSelectItemDoubleClickHandler(object sender, MouseButtonEventArgs e)
+        {
+            OnSelectItem(sender);
+            e.Handled = true;
+        }
+
+        private void OnSelectItemKeyUpHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Return)
+            {
+                return;
+            }
+
+            OnSelectItem(sender);
+            e.Handled = true;
+        }
+
+        private void OnSelectItem<T>(T sender)
+        {
+            var item = sender as TreeViewItem;
+            if (item == null)
+            {
+                return;
+            }
+
+            if (item.IsSelected)
+            {
+                var xamlFilterTree = item.Tag as XamlFilterTree;
+                if (xamlFilterTree == null)
+                {
+                    return;
+                }
+
+                xamlFilterTree.SelectItemCommand.Execute(item.Header);
+            }
         }
     }
 }

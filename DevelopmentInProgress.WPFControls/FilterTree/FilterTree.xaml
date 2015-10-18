@@ -51,6 +51,8 @@
                                         <Setter Property="Visibility" Value="{Binding Path=IsVisible, Converter={StaticResource boolToVisibilityConverter}}"/>
                                         <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}"/>
                                         <Setter Property="Tag" Value="{Binding ElementName=treeView, Path=Tag}"/>
+                                        <EventSetter Event="MouseDoubleClick" Handler="OnSelectItemDoubleClickHandler"/>
+                                        <EventSetter Event="KeyUp" Handler="OnSelectItemKeyUpHandler" />
                                     </Style>
                                 </TreeView.Resources>
                             </TreeView>

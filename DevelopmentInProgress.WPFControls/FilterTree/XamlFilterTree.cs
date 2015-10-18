@@ -13,6 +13,7 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
         private readonly static DependencyProperty IsExpandedProperty;
         private static readonly DependencyProperty AddItemCommandProperty;
         private static readonly DependencyProperty RemoveItemCommandProperty;
+        private static readonly DependencyProperty SelectItemCommandProperty;
 
         static XamlFilterTree()
         {
@@ -32,6 +33,9 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
                 typeof (XamlFilterTree));
 
             RemoveItemCommandProperty = DependencyProperty.Register("RemoveItemCommand", typeof(ICommand),
+                typeof (XamlFilterTree));
+
+            SelectItemCommandProperty = DependencyProperty.Register("SelectItemCommand", typeof (ICommand),
                 typeof (XamlFilterTree));
         }
 
@@ -59,16 +63,22 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             set { SetValue(ItemsSourceProperty, value); }
         }
 
+        public ICommand AddItemCommand
+        {
+            get { return (ICommand)GetValue(AddItemCommandProperty); }
+            set { SetValue(AddItemCommandProperty, value); }
+        }
+
         public ICommand RemoveItemCommand
         {
             get { return (ICommand)GetValue(RemoveItemCommandProperty); }
             set { SetValue(RemoveItemCommandProperty, value); }
         }
 
-        public ICommand AddItemCommand
+        public ICommand SelectItemCommand
         {
-            get { return (ICommand)GetValue(AddItemCommandProperty); }
-            set { SetValue(AddItemCommandProperty, value); }
+            get { return (ICommand)GetValue(SelectItemCommandProperty); }
+            set { SetValue(SelectItemCommandProperty, value); }
         }
     }
 }
