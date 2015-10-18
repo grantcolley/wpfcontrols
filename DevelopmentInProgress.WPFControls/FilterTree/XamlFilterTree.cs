@@ -11,6 +11,7 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
         private readonly static DependencyProperty FilterTextProperty;
         private readonly static DependencyProperty ItemsSourceProperty;
         private readonly static DependencyProperty IsExpandedProperty;
+        private static readonly DependencyProperty AddItemCommandProperty;
         private static readonly DependencyProperty RemoveItemCommandProperty;
 
         static XamlFilterTree()
@@ -26,6 +27,9 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
 
             ItemsSourceProperty = DependencyProperty.Register("ItemsSource", typeof(IEnumerable),
                 typeof(XamlFilterTree));
+
+            AddItemCommandProperty = DependencyProperty.Register("AddItemCommand", typeof (ICommand),
+                typeof (XamlFilterTree));
 
             RemoveItemCommandProperty = DependencyProperty.Register("RemoveItemCommand", typeof(ICommand),
                 typeof (XamlFilterTree));
@@ -59,6 +63,12 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
         {
             get { return (ICommand)GetValue(RemoveItemCommandProperty); }
             set { SetValue(RemoveItemCommandProperty, value); }
+        }
+
+        public ICommand AddItemCommand
+        {
+            get { return (ICommand)GetValue(AddItemCommandProperty); }
+            set { SetValue(AddItemCommandProperty, value); }
         }
     }
 }

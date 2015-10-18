@@ -4,6 +4,16 @@
                     x:Class="DevelopmentInProgress.WPFControls.FilterTree.FilterTree">
  
     <BooleanToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+
+    <ContextMenu x:Key="TreeViewContextMenu">
+        <ContextMenu.Items>
+            <MenuItem Header="Add New Item" Command="{Binding Path=PlacementTarget.Tag.AddItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}">
+                <MenuItem.Icon>
+                    <Image Source="../Images/AddNewItem.png" ToolTip="Add New Item" MaxHeight="14" MaxWidth="14" VerticalAlignment="Center"/>
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu.Items>
+    </ContextMenu>
     
     <Style TargetType="{x:Type filterTree:XamlFilterTree}">
         <Setter Property="Template">
@@ -22,15 +32,16 @@
                                       BorderBrush="Transparent"
                                       BorderThickness="0"
                                       Padding="5"
+                                      ContextMenu="{StaticResource TreeViewContextMenu}"
                                       Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}">
                                 <TreeView.Resources>
-                                    <ContextMenu x:Key="contextMenu">
+                                    <ContextMenu x:Key="ItemContextMenu">
                                         <ContextMenu.Items>
                                             <MenuItem Header="Remove Item" 
                                                       Command="{Binding Path=PlacementTarget.Tag.RemoveItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}"
                                                       CommandParameter="{Binding Path=PlacementTarget.DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}">
                                                 <MenuItem.Icon>
-                                                    <Image Source="../Images/Remove.png" ToolTip="Remove Item" MaxHeight="14" MaxWidth="14" VerticalAlignment="Center"/>
+                                                    <Image Source="../Images/RemoveItem.png" ToolTip="Remove Item" MaxHeight="14" MaxWidth="14" VerticalAlignment="Center"/>
                                                 </MenuItem.Icon>
                                             </MenuItem>
                                         </ContextMenu.Items>
@@ -38,7 +49,8 @@
                                     <Style TargetType="{x:Type TreeViewItem}">
                                         <Setter Property="IsExpanded" Value="True"/>
                                         <Setter Property="Visibility" Value="{Binding Path=IsVisible, Converter={StaticResource boolToVisibilityConverter}}"/>
-                                        <Setter Property="ContextMenu" Value="{StaticResource contextMenu}"/>                                        
+                                        <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}"/>
+                                        <Setter Property="Tag" Value="{Binding ElementName=treeView, Path=Tag}"/>
                                     </Style>
                                 </TreeView.Resources>
                             </TreeView>
