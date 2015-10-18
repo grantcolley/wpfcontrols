@@ -94,7 +94,10 @@
     <Folder Include="NavigationPanel\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Remove.png" />
+    <Resource Include="Images\RemoveItem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AddNewItem.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
