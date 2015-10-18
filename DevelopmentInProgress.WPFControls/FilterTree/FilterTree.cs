@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace DevelopmentInProgress.WPFControls.FilterTree
 {
+    /// <summary>
+    /// The <see cref="FilterTree"/> class provides the code behind the resource dictionary. 
+    /// </summary>
     partial class FilterTree
     {
         private void OnTextChanged(object sender, TextChangedEventArgs e)
@@ -131,5 +133,7 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
                 xamlFilterTree.SelectItemCommand.Execute(item.Header);
             }
         }
+
+        //http://blogs.msdn.com/b/jaimer/archive/2007/07/12/drag-drop-in-wpf-explained-end-to-end.aspx
     }
 }
