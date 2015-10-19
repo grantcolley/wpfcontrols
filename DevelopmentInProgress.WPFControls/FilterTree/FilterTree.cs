@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -134,6 +135,51 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             }
         }
 
-        //http://blogs.msdn.com/b/jaimer/archive/2007/07/12/drag-drop-in-wpf-explained-end-to-end.aspx
+        // http://blogs.msdn.com/b/jaimer/archive/2007/07/12/drag-drop-in-wpf-explained-end-to-end.aspx
+        // http://www.codeproject.com/Articles/55168/Drag-and-Drop-Feature-in-WPF-TreeView-Control
+
+        private Point startPoint;
+        private bool isDragging;
+
+        private void PreviewMouseLeftButtonDownHandler(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as TreeViewItem;
+            if (item == null
+                || !item.IsSelected)
+            {
+                return;
+            }
+
+            startPoint = e.GetPosition(item);
+        }
+
+        private void PreviewMouseMoveHandler(object sender, MouseEventArgs e)
+        {
+            var item = sender as TreeViewItem;
+            if (item == null
+                || !item.IsSelected)
+            {
+                return;
+            }
+
+            if (e.LeftButton == MouseButtonState.Pressed && !isDragging)
+            {
+                Point position = e.GetPosition(null);
+
+                if (Math.Abs(position.X - startPoint.X) > SystemParameters.MinimumHorizontalDragDistance 
+                    || Math.Abs(position.Y - startPoint.Y) > SystemParameters.MinimumVerticalDragDistance)
+                {
+                    StartDrag(e);
+                }
+            } 
+        }
+
+        private void StartDrag(MouseEventArgs e)
+        {
+            isDragging = true;
+            DataObject data = new DataObject(System.Windows.DataFormats.Text.ToString(), "abcd");
+            DragDropEffects de = DragDrop.DoDragDrop(null, data, DragDropEffects.Move);
+            isDragging = false;
+        }
     }
 }
