@@ -46,15 +46,20 @@
                                             </MenuItem>
                                         </ContextMenu.Items>
                                     </ContextMenu>
+                                </TreeView.Resources>
+                                <TreeView.ItemContainerStyle>
                                     <Style TargetType="{x:Type TreeViewItem}">
+                                        <Setter Property="AllowDrop" Value="True"/>
                                         <Setter Property="IsExpanded" Value="True"/>
                                         <Setter Property="Visibility" Value="{Binding Path=IsVisible, Converter={StaticResource boolToVisibilityConverter}}"/>
                                         <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}"/>
                                         <Setter Property="Tag" Value="{Binding ElementName=treeView, Path=Tag}"/>
                                         <EventSetter Event="MouseDoubleClick" Handler="OnSelectItemDoubleClickHandler"/>
-                                        <EventSetter Event="KeyUp" Handler="OnSelectItemKeyUpHandler" />
+                                        <EventSetter Event="KeyUp" Handler="OnSelectItemKeyUpHandler"/>
+                                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="PreviewMouseLeftButtonDownHandler"/>
+                                        <EventSetter Event="PreviewMouseMove" Handler="PreviewMouseMoveHandler"/>
                                     </Style>
-                                </TreeView.Resources>
+                                </TreeView.ItemContainerStyle>
                             </TreeView>
                         </DockPanel>
                     </GroupBox>
