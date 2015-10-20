@@ -169,17 +169,65 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
                 if (Math.Abs(position.X - startPoint.X) > SystemParameters.MinimumHorizontalDragDistance 
                     || Math.Abs(position.Y - startPoint.Y) > SystemParameters.MinimumVerticalDragDistance)
                 {
-                    StartDrag(e);
+                    StartDrag(item, e);
                 }
             } 
         }
 
-        private void StartDrag(MouseEventArgs e)
+        private void StartDrag(TreeViewItem item, MouseEventArgs e)
         {
             isDragging = true;
-            DataObject data = new DataObject(System.Windows.DataFormats.Text.ToString(), "abcd");
-            DragDropEffects de = DragDrop.DoDragDrop(null, data, DragDropEffects.Move);
+            DataObject data = new DataObject(DataFormats.Text, item.Header);
+            DragDropEffects dde = DragDrop.DoDragDrop(item, data, DragDropEffects.Move);
             isDragging = false;
+        }
+
+        private void DragOverHandler(object sender, DragEventArgs e)
+        {
+            //try
+            //{
+            //    Point currentPosition = e.GetPosition(tvParameters);
+
+            //    if ((Math.Abs(currentPosition.X - startPoint.X) > 10.0) ||
+            //       (Math.Abs(currentPosition.Y - startPoint.Y) > 10.0))
+            //    {
+            //        // Verify that this is a valid drop and then store the drop target
+            //        TreeViewItem item = GetNearestContainer(e.OriginalSource as UIElement);
+            //        if (CheckDropTarget(draggedItem, item))
+            //        {
+            //            e.Effects = DragDropEffects.Move;
+            //        }
+            //        else
+            //        {
+            //            e.Effects = DragDropEffects.None;
+            //        }
+            //    }
+            //    e.Handled = true;
+            //}
+            //catch (Exception)
+            //{
+            //}
+        }
+
+        private void DropHandler(object sender, DragEventArgs e)
+        {
+            //try
+            //{
+            //    e.Effects = DragDropEffects.None;
+            //    e.Handled = true;
+
+            //    // Verify that this is a valid drop and then store the drop target
+            //    TreeViewItem TargetItem = GetNearestContainer
+            //        (e.OriginalSource as UIElement);
+            //    if (TargetItem != null && draggedItem != null)
+            //    {
+            //        _target = TargetItem;
+            //        e.Effects = DragDropEffects.Move;
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //}
         }
     }
 }

@@ -58,6 +58,8 @@
                                         <EventSetter Event="KeyUp" Handler="OnSelectItemKeyUpHandler"/>
                                         <EventSetter Event="PreviewMouseLeftButtonDown" Handler="PreviewMouseLeftButtonDownHandler"/>
                                         <EventSetter Event="PreviewMouseMove" Handler="PreviewMouseMoveHandler"/>
+                                        <EventSetter Event="DragOver" Handler="DragOverHandler"/>
+                                        <EventSetter Event="Drop" Handler="DropHandler"/>
                                     </Style>
                                 </TreeView.ItemContainerStyle>
                             </TreeView>
