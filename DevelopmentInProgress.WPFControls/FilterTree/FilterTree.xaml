@@ -56,7 +56,7 @@
                                         <Setter Property="Tag" Value="{Binding ElementName=treeView, Path=Tag}"/>
                                         <EventSetter Event="MouseDoubleClick" Handler="OnSelectItemDoubleClickHandler"/>
                                         <EventSetter Event="KeyUp" Handler="OnSelectItemKeyUpHandler"/>
-                                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="PreviewMouseLeftButtonDownHandler"/>
+                                        <EventSetter Event="MouseLeftButtonDown" Handler="MouseLeftButtonDownHandler"/>
                                         <EventSetter Event="PreviewMouseMove" Handler="PreviewMouseMoveHandler"/>
                                         <EventSetter Event="DragOver" Handler="DragOverHandler"/>
                                         <EventSetter Event="Drop" Handler="DropHandler"/>
