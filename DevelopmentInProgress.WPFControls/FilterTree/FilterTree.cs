@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace DevelopmentInProgress.WPFControls.FilterTree
 {
@@ -140,11 +141,22 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
         // http://www.codeproject.com/Articles/55168/Drag-and-Drop-Feature-in-WPF-TreeView-Control
 
         private Point startPoint;
-        private bool isDragging;
         private TreeViewItem dragItem;
         private TreeViewItem targetItem;
 
-        private void MouseLeftButtonDownHandler(object sender, MouseButtonEventArgs e)
+        //private void MouseDownHandler(object sender, MouseButtonEventArgs e)
+        //{
+        //    var item = sender as TreeViewItem;
+        //    if (item == null
+        //        || !item.IsSelected)
+        //    {
+        //        return;
+        //    }
+
+        //    startPoint = e.GetPosition(item);
+        //}
+
+        private void MouseMoveHandler(object sender, MouseEventArgs e)
         {
             var item = sender as TreeViewItem;
             if (item == null
@@ -153,65 +165,43 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
                 return;
             }
 
-            startPoint = e.GetPosition(item);
-        }
-
-        private void PreviewMouseMoveHandler(object sender, MouseEventArgs e)
-        {
-            var item = sender as TreeViewItem;
-            if (item == null
-                || !item.IsSelected)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
-                return;
+                dragItem = item;
+                startPoint = e.GetPosition(null);
+                DataObject dataObject = new DataObject(dragItem);
+                DragDropEffects dragDropEffects = DragDrop.DoDragDrop(item, dataObject, DragDropEffects.Move);
             }
-
-            if (e.LeftButton == MouseButtonState.Pressed && !isDragging)
-            {
-                Point position = e.GetPosition(null);
-
-                if (Math.Abs(position.X - startPoint.X) > SystemParameters.MinimumHorizontalDragDistance 
-                    || Math.Abs(position.Y - startPoint.Y) > SystemParameters.MinimumVerticalDragDistance)
-                {
-                    StartDrag(item, e);
-                }
-            } 
-        }
-
-        private void StartDrag(TreeViewItem item, MouseEventArgs e)
-        {
-            isDragging = true;
-            dragItem = item;
-            DataObject data = new DataObject(DataFormats.Text, dragItem.Header);
-            DragDropEffects dde = DragDrop.DoDragDrop(dragItem, data, DragDropEffects.Move);
-            isDragging = false;
         }
 
         private void DragOverHandler(object sender, DragEventArgs e)
         {
-            try
+            var currentUiElement = e.OriginalSource as UIElement;
+            if (currentUiElement == null)
             {
-                Point currentPosition = e.GetPosition(null);
+                return;
+            }
 
-                if ((Math.Abs(currentPosition.X - startPoint.X) > 10.0) 
-                    || (Math.Abs(currentPosition.Y - startPoint.Y) > 10.0))
+            Point currentPosition = e.GetPosition(currentUiElement);
+
+            if ((Math.Abs(currentPosition.X - startPoint.X) > SystemParameters.MinimumHorizontalDragDistance)
+                || (Math.Abs(currentPosition.Y - startPoint.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+                TreeViewItem treeViewItem = GetNearestContainer(currentUiElement);
+                if (treeViewItem != null)
                 {
-                    TreeViewItem treeViewItem = GetNearestContainer(e.OriginalSource as UIElement);
-                    if (treeViewItem != null)
+                    if (!dragItem.ToolTip.ToString().Equals(treeViewItem.ToolTip.ToString()))
                     {
-                        if (!dragItem.Header.ToString().Equals(treeViewItem.Header.ToString()))
-                        {
-                            e.Effects = DragDropEffects.Move;
-                        }
-                        else
-                        {
-                            e.Effects = DragDropEffects.None;
-                        }
+                        e.Effects = DragDropEffects.Move;
+                    }
+                    else
+                    {
+                        e.Effects = DragDropEffects.None;
                     }
                 }
-
-                e.Handled = true;
             }
-            catch (Exception){}
+
+            e.Handled = true;
         }
 
         private TreeViewItem GetNearestContainer(UIElement uiElement)
@@ -245,6 +235,11 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             catch (Exception)
             {
             }
+        }
+
+        private void EventSetter_OnHandler(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
