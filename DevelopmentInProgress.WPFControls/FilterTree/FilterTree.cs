@@ -142,19 +142,6 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
 
         private Point startPoint;
         private TreeViewItem dragItem;
-        private TreeViewItem targetItem;
-
-        //private void MouseDownHandler(object sender, MouseButtonEventArgs e)
-        //{
-        //    var item = sender as TreeViewItem;
-        //    if (item == null
-        //        || !item.IsSelected)
-        //    {
-        //        return;
-        //    }
-
-        //    startPoint = e.GetPosition(item);
-        //}
 
         private void MouseMoveHandler(object sender, MouseEventArgs e)
         {
@@ -219,27 +206,45 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
 
         private void DropHandler(object sender, DragEventArgs e)
         {
-            try
-            {
-                e.Effects = DragDropEffects.None;
-                e.Handled = true;
+            e.Effects = DragDropEffects.None;
+            e.Handled = true;
 
-                // Verify that this is a valid drop and then store the drop target
-                TreeViewItem treeViewItem = GetNearestContainer(e.OriginalSource as UIElement);
-                if (targetItem != null && dragItem != null)
-                {
-                    targetItem = treeViewItem;
-                    e.Effects = DragDropEffects.Move;
-                }
-            }
-            catch (Exception)
+            TreeViewItem targetItem = GetNearestContainer(e.OriginalSource as UIElement);
+            if (targetItem != null && dragItem != null)
             {
+                DoDrop(dragItem, targetItem);
+                dragItem = null;
             }
         }
 
-        private void EventSetter_OnHandler(object sender, MouseButtonEventArgs e)
+        private void DoDrop(TreeViewItem dropItem, TreeViewItem targetItem)
         {
-            throw new NotImplementedException();
+            var xamlFilterTree = dropItem.Tag as XamlFilterTree;
+            if (xamlFilterTree == null)
+            {
+                return;
+            }
+
+            var itemsSource = xamlFilterTree.ItemsSource;
+            var dropObject = dropItem.Header;
+            var targetObject = targetItem.Header;
+            if (dropObject != null
+                && targetObject != null
+                && itemsSource != null)
+            {
+                RemoveDopObjectFromParent(dropObject, itemsSource);
+                AddDropObjectToTarget(targetObject, dropObject);
+            }
+        }
+
+        private void RemoveDopObjectFromParent(object dropObject, IEnumerable enumerable)
+        {
+
+        }
+
+        private void AddDropObjectToTarget(object targetObject, object dropObject)
+        {
+            
         }
     }
 }
