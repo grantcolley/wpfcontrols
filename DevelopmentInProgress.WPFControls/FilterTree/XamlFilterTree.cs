@@ -18,6 +18,7 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
         private static readonly DependencyProperty AddItemCommandProperty;
         private static readonly DependencyProperty RemoveItemCommandProperty;
         private static readonly DependencyProperty SelectItemCommandProperty;
+        private static readonly DependencyProperty DragDropCommandProperty;
 
         /// <summary>
         /// Static constructor for registering dependency properties.
@@ -41,6 +42,9 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
                 typeof (XamlFilterTree));
 
             SelectItemCommandProperty = DependencyProperty.Register("SelectItemCommand", typeof (ICommand),
+                typeof (XamlFilterTree));
+
+            DragDropCommandProperty = DependencyProperty.Register("DragDropCommand", typeof(ICommand),
                 typeof (XamlFilterTree));
         }
 
@@ -97,6 +101,16 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
         {
             get { return (ICommand)GetValue(SelectItemCommandProperty); }
             set { SetValue(SelectItemCommandProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the drag drop command which is executed when an item is
+        /// dragged and dropped onto a target item in the <see cref="XamlFilterTree"/>.
+        /// </summary>
+        public ICommand DragDropCommand
+        {
+            get { return (ICommand)GetValue(DragDropCommandProperty); }
+            set { SetValue(DragDropCommandProperty, value); }
         }
     }
 }
