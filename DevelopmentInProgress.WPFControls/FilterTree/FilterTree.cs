@@ -212,39 +212,15 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             TreeViewItem targetItem = GetNearestContainer(e.OriginalSource as UIElement);
             if (targetItem != null && dragItem != null)
             {
-                DoDrop(dragItem, targetItem);
+                var xamlFilterTree = dragItem.Tag as XamlFilterTree;
+                if (xamlFilterTree != null)
+                {
+                    var filter = new FilterTreeDragDropArgs(dragItem.Header, targetItem.Header);
+                    xamlFilterTree.DragDropCommand.Execute(filter);
+                }
+
                 dragItem = null;
             }
-        }
-
-        private void DoDrop(TreeViewItem dropItem, TreeViewItem targetItem)
-        {
-            var xamlFilterTree = dropItem.Tag as XamlFilterTree;
-            if (xamlFilterTree == null)
-            {
-                return;
-            }
-
-            var itemsSource = xamlFilterTree.ItemsSource;
-            var dropObject = dropItem.Header;
-            var targetObject = targetItem.Header;
-            if (dropObject != null
-                && targetObject != null
-                && itemsSource != null)
-            {
-                RemoveDopObjectFromParent(dropObject, itemsSource);
-                AddDropObjectToTarget(targetObject, dropObject);
-            }
-        }
-
-        private void RemoveDopObjectFromParent(object dropObject, IEnumerable enumerable)
-        {
-
-        }
-
-        private void AddDropObjectToTarget(object targetObject, object dropObject)
-        {
-            
         }
     }
 }
