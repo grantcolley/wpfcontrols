@@ -1,11 +1,16 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="FilterTree.cs" company="Development In Progress Ltd">
+//     Copyright © Development In Progress Ltd 2015. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 
 namespace DevelopmentInProgress.WPFControls.FilterTree
 {
@@ -14,6 +19,8 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
     /// </summary>
     partial class FilterTree
     {
+        #region Filtering operations
+
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = sender as TextBox;
@@ -100,6 +107,10 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             return false;
         }
 
+        #endregion
+
+        #region Selected item operations
+
         private void OnSelectItemDoubleClickHandler(object sender, MouseButtonEventArgs e)
         {
             OnSelectItem(sender);
@@ -137,8 +148,9 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             }
         }
 
-        // http://blogs.msdn.com/b/jaimer/archive/2007/07/12/drag-drop-in-wpf-explained-end-to-end.aspx
-        // http://www.codeproject.com/Articles/55168/Drag-and-Drop-Feature-in-WPF-TreeView-Control
+        #endregion
+
+        #region Drag and drop operations
 
         private Point startPoint;
         private TreeViewItem dragItem;
@@ -155,9 +167,8 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 dragItem = item;
-                startPoint = e.GetPosition(null);
-                DataObject dataObject = new DataObject(dragItem);
-                DragDropEffects dragDropEffects = DragDrop.DoDragDrop(item, dataObject, DragDropEffects.Move);
+                startPoint = e.GetPosition(item);
+                DragDrop.DoDragDrop(item, new DataObject(dragItem), DragDropEffects.Move);
             }
         }
 
@@ -171,19 +182,19 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
 
             Point currentPosition = e.GetPosition(currentUiElement);
 
-            if ((Math.Abs(currentPosition.X - startPoint.X) > SystemParameters.MinimumHorizontalDragDistance)
-                || (Math.Abs(currentPosition.Y - startPoint.Y) > SystemParameters.MinimumVerticalDragDistance))
+            if ((Math.Abs(currentPosition.X - startPoint.X) > 10)
+                || (Math.Abs(currentPosition.Y - startPoint.Y) > 10))
             {
-                TreeViewItem treeViewItem = GetNearestContainer(currentUiElement);
-                if (treeViewItem != null)
+                TreeViewItem dropItem = GetNearestTreeViewItem(currentUiElement);
+                if (dropItem != null)
                 {
-                    if (!dragItem.ToolTip.ToString().Equals(treeViewItem.ToolTip.ToString()))
+                    if (dragItem.ToolTip.ToString().Equals(dropItem.ToolTip.ToString()))
                     {
-                        e.Effects = DragDropEffects.Move;
+                        e.Effects = DragDropEffects.None;
                     }
                     else
                     {
-                        e.Effects = DragDropEffects.None;
+                        e.Effects = DragDropEffects.Move;
                     }
                 }
             }
@@ -191,7 +202,7 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             e.Handled = true;
         }
 
-        private TreeViewItem GetNearestContainer(UIElement uiElement)
+        private TreeViewItem GetNearestTreeViewItem(UIElement uiElement)
         {
             TreeViewItem treeViewItem = uiElement as TreeViewItem;
             while (treeViewItem == null
@@ -209,18 +220,19 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             e.Effects = DragDropEffects.None;
             e.Handled = true;
 
-            TreeViewItem targetItem = GetNearestContainer(e.OriginalSource as UIElement);
+            TreeViewItem targetItem = GetNearestTreeViewItem(e.OriginalSource as UIElement);
             if (targetItem != null && dragItem != null)
             {
                 var xamlFilterTree = dragItem.Tag as XamlFilterTree;
                 if (xamlFilterTree != null)
                 {
-                    var filter = new FilterTreeDragDropArgs(dragItem.Header, targetItem.Header);
-                    xamlFilterTree.DragDropCommand.Execute(filter);
+                    xamlFilterTree.DragDropCommand.Execute(new FilterTreeDragDropArgs(dragItem.Header, targetItem.Header));
                 }
 
                 dragItem = null;
             }
         }
+
+        #endregion
     }
 }
