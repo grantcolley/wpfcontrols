@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ModuleListItem.cs" company="Development In Progress Ltd">
+// <copyright file="NavigationPanelItem.cs" company="Development In Progress Ltd">
 //     Copyright © 2012. All rights reserved.
 // </copyright>
 // <author>Grant Colley</author>
@@ -13,9 +13,9 @@ using System.Windows.Input;
 namespace DevelopmentInProgress.WPFControls.NavigationPanel
 {
     /// <summary>
-    /// A navigation module list item. 
+    /// A navigation panel item. 
     /// </summary>
-    public class ModuleListItem : Control, ICommandSource
+    public class NavigationPanelItem : Control, ICommandSource
     {
         private readonly static DependencyProperty ModuleNameProperty;
         private readonly static DependencyProperty ImageLocationProperty;
@@ -27,42 +27,42 @@ namespace DevelopmentInProgress.WPFControls.NavigationPanel
         private readonly static RoutedEvent ItemClickedEvent;
 
         /// <summary>
-        /// Static constructor for the module list item class 
-        /// for registering dependency properties and events.
+        /// Static constructor for the <see cref="NavigationPanelItem"/> 
+        /// class registering dependency properties and events.
         /// </summary>
-        static ModuleListItem()
+        static NavigationPanelItem()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ModuleListItem), new FrameworkPropertyMetadata(typeof(ModuleListItem)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(NavigationPanelItem), new FrameworkPropertyMetadata(typeof(NavigationPanelItem)));
 
             ModuleNameProperty = DependencyProperty.Register(
-                "ModuleName", typeof(string), typeof(ModuleListItem));
+                "ModuleName", typeof(string), typeof(NavigationPanelItem));
 
             ImageLocationProperty = DependencyProperty.Register(
-                "ImageLocation", typeof(string), typeof(ModuleListItem));
+                "ImageLocation", typeof(string), typeof(NavigationPanelItem));
 
             GroupsProperty = DependencyProperty.Register(
                 "Groups", typeof(List<GroupList>), typeof(GroupList), new FrameworkPropertyMetadata(new List<GroupList>()));
 
             IsSelectedProperty = DependencyProperty.Register(
-                "IsSelected", typeof(bool), typeof(ModuleListItem));
+                "IsSelected", typeof(bool), typeof(NavigationPanelItem));
 
             CommandProperty = DependencyProperty.Register(
-                "Command", typeof(ICommand), typeof(ModuleListItem));
+                "Command", typeof(ICommand), typeof(NavigationPanelItem));
 
             CommandParameterProperty = DependencyProperty.Register(
-                "CommandParameter", typeof(object), typeof(ModuleListItem));
+                "CommandParameter", typeof(object), typeof(NavigationPanelItem));
 
             CommandTargetProperty = DependencyProperty.Register(
-                "CommandTarget", typeof(UIElement), typeof(ModuleListItem));
+                "CommandTarget", typeof(UIElement), typeof(NavigationPanelItem));
 
             ItemClickedEvent = EventManager.RegisterRoutedEvent(
-                "ItemClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ModuleListItem));
+                "ItemClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(NavigationPanelItem));
         }
 
         /// <summary>
-        /// Initializes a new instance of the ModuleListItem class. 
+        /// Initializes a new instance of the NavigationPanelItem class. 
         /// </summary>
-        public ModuleListItem()
+        public NavigationPanelItem()
         {
             Groups = new List<GroupList>();
         }
