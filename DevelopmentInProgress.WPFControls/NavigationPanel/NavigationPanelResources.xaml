@@ -71,10 +71,10 @@
         </Grid>
     </DataTemplate>
 
-    <Style TargetType="{x:Type navigationPane:ModuleListItem}">
+    <Style TargetType="{x:Type navigationPane:NavigationPanelItem}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type navigationPane:ModuleListItem}">
+                <ControlTemplate TargetType="{x:Type navigationPane:NavigationPanelItem}">
                     <StackPanel Orientation="Horizontal">                                                  
                         <Image Source="{Binding ImageLocation, Converter={StaticResource imageConverter}}" ToolTip="{Binding ModuleName}"
                                 Margin="2" MaxHeight="16" MaxWidth="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
@@ -85,7 +85,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type navigationPane:ModuleList}">
+    <Style TargetType="{x:Type navigationPane:NavigationPanel}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -123,7 +123,7 @@
                                     </LinearGradientBrush>
                                 </Border.Background>
                                 <Image Source="..\Images\ArrowRight.png"
-                                    ToolTip="Expand Modules List"
+                                    ToolTip="Expand NavigationPanelItems List"
                                     HorizontalAlignment="Right" VerticalAlignment="Center"
                                     Margin="2" MaxHeight="16" MaxWidth="16">
                                     <!--<i:Interaction.Triggers>
@@ -228,7 +228,7 @@
             <Trigger Property="IsExpanded" Value="True">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type navigationPane:ModuleList}">
+                        <ControlTemplate TargetType="{x:Type navigationPane:NavigationPanel}">
                             <Border BorderThickness="2">
                                 <Border.BorderBrush>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -238,7 +238,7 @@
                                 </Border.BorderBrush>
                                 <Grid>
                                     <Grid.Resources>
-                                        <CollectionViewSource x:Key="modulesView" Source="{Binding Path=Modules, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        <CollectionViewSource x:Key="modulesView" Source="{Binding Path=NavigationPanelItems, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </Grid.Resources>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -257,7 +257,7 @@
                                             </LinearGradientBrush>
                                         </Border.Background>
                                         <Image Source="..\Images\ArrowLeft.png"
-                                               ToolTip="Collapse Modules List"
+                                               ToolTip="Collapse NavigationPanelItems List"
                                                HorizontalAlignment="Right" VerticalAlignment="Center"
                                                Margin="2" MaxHeight="16" MaxWidth="16">
                                             <!--<i:Interaction.Triggers>
@@ -293,7 +293,7 @@
                                     <ListBox Grid.Row="3" Name="modulesList"
                                              BorderBrush="Transparent" BorderThickness="0"
                                              ItemsSource="{Binding Source={StaticResource modulesView}}"
-                                             SelectedItem="{Binding SelectedModule, RelativeSource={RelativeSource TemplatedParent}}"
+                                             SelectedItem="{Binding SelectedNavigationPanelItem, RelativeSource={RelativeSource TemplatedParent}}"
                                              Foreground="{StaticResource DiP.Foreground}">
                                         <ListBox.Resources>
                                             <LinearGradientBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" StartPoint="0,0" EndPoint="0,1">
