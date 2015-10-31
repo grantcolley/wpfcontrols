@@ -51,7 +51,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="NavigationPanel\NavigationPaneResourceDictionary.xaml">
+    <Page Include="NavigationPanel\NavigationPanelResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -69,8 +69,8 @@
   <ItemGroup>
     <Compile Include="NavigationPanel\GroupList.cs" />
     <Compile Include="NavigationPanel\GroupListItem.cs" />
-    <Compile Include="NavigationPanel\ModuleList.cs" />
-    <Compile Include="NavigationPanel\ModuleListItem.cs" />
+    <Compile Include="NavigationPanel\NavigationPanel.cs" />
+    <Compile Include="NavigationPanel\NavigationPanelItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
