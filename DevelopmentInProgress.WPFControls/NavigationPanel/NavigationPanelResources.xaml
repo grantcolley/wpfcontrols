@@ -2,17 +2,17 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                     xmlns:converters="clr-namespace:DevelopmentInProgress.WPFControls.Converters"
-                    xmlns:navigationPane="clr-namespace:DevelopmentInProgress.WPFControls.NavigationPanel">
+                    xmlns:navigationPanel="clr-namespace:DevelopmentInProgress.WPFControls.NavigationPanel">
 
     <converters:UriStringToImageConverter x:Key="imageConverter"/>
 
     <SolidColorBrush x:Key="DiP.Foreground" Color="Black"/>
     <SolidColorBrush x:Key="DiP.ForegroundLight" Color="#555564"/>
     
-    <Style TargetType="{x:Type navigationPane:NavigationListItem}">
+    <Style TargetType="{x:Type navigationPanel:NavigationListItem}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type navigationPane:NavigationListItem}">
+                <ControlTemplate TargetType="{x:Type navigationPanel:NavigationListItem}">
                     <StackPanel x:Name="stack" Orientation="Horizontal" Margin="5,5,5,5">
                         <StackPanel.Style>
                             <Style TargetType="StackPanel">
@@ -42,10 +42,10 @@
         </Setter>
     </Style>
     
-    <Style TargetType="{x:Type navigationPane:NavigationList}">
+    <Style TargetType="{x:Type navigationPanel:NavigationList}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type navigationPane:NavigationList}">
+                <ControlTemplate TargetType="{x:Type navigationPanel:NavigationList}">
                     <Expander Header="{Binding Path=NavigationListName, RelativeSource={RelativeSource TemplatedParent}}"
                               IsExpanded="True" Foreground="{StaticResource DiP.Foreground}">
                         <ItemsControl ItemsSource="{Binding Path=NavigationListItems, RelativeSource={RelativeSource TemplatedParent}}"
@@ -71,10 +71,10 @@
         </Grid>
     </DataTemplate>
 
-    <Style TargetType="{x:Type navigationPane:NavigationPanelItem}">
+    <Style TargetType="{x:Type navigationPanel:NavigationPanelItem}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type navigationPane:NavigationPanelItem}">
+                <ControlTemplate TargetType="{x:Type navigationPanel:NavigationPanelItem}">
                     <StackPanel Orientation="Horizontal">                                                  
                         <Image Source="{Binding ImageLocation, Converter={StaticResource imageConverter}}" ToolTip="{Binding ModuleName}"
                                 Margin="2" MaxHeight="16" MaxWidth="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
@@ -85,7 +85,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type navigationPane:NavigationPanel}">
+    <Style TargetType="{x:Type navigationPanel:NavigationPanel}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -228,7 +228,7 @@
             <Trigger Property="IsExpanded" Value="True">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type navigationPane:NavigationPanel}">
+                        <ControlTemplate TargetType="{x:Type navigationPanel:NavigationPanel}">
                             <Border BorderThickness="2">
                                 <Border.BorderBrush>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
