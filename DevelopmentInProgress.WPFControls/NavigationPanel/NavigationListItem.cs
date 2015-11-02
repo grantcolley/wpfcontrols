@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="GroupListItem.cs" company="Development In Progress Ltd">
+// <copyright file="NavigationListItem.cs" company="Development In Progress Ltd">
 //     Copyright © 2012. All rights reserved.
 // </copyright>
 // <author>Grant Colley</author>
@@ -12,9 +12,9 @@ using System.Windows.Input;
 namespace DevelopmentInProgress.WPFControls.NavigationPanel
 {
     /// <summary>
-    /// The group list item class.
+    /// The NavigationListItem class.
     /// </summary>
-    public class GroupListItem : Control, ICommandSource
+    public class NavigationListItem : Control, ICommandSource
     {
         private readonly static DependencyProperty ItemNameProperty;
         private readonly static DependencyProperty ImageLocationProperty;
@@ -24,30 +24,30 @@ namespace DevelopmentInProgress.WPFControls.NavigationPanel
         private readonly static RoutedEvent ItemClickedEvent;
 
         /// <summary>
-        /// Static constructor for the group list item class for registering dependency properties and events.
+        /// Static constructor for the <see cref="NavigationListItem"/> class for registering dependency properties and events.
         /// </summary>
-        static GroupListItem()
+        static NavigationListItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(
-                typeof(GroupListItem), new FrameworkPropertyMetadata(typeof(GroupListItem)));
+                typeof(NavigationListItem), new FrameworkPropertyMetadata(typeof(NavigationListItem)));
 
             ItemNameProperty = DependencyProperty.Register(
-                "ItemName", typeof(string), typeof(GroupListItem));
+                "ItemName", typeof(string), typeof(NavigationListItem));
             
             ImageLocationProperty = DependencyProperty.Register(
-                "ImageLocation", typeof(string), typeof(GroupListItem));
+                "ImageLocation", typeof(string), typeof(NavigationListItem));
 
             CommandProperty = DependencyProperty.Register(
-                "Command", typeof(ICommand), typeof(GroupListItem));
+                "Command", typeof(ICommand), typeof(NavigationListItem));
 
             CommandParameterProperty = DependencyProperty.Register(
-                "CommandParameter", typeof(object), typeof(GroupListItem));
+                "CommandParameter", typeof(object), typeof(NavigationListItem));
 
             CommandTargetProperty = DependencyProperty.Register(
-                "CommandTarget", typeof(UIElement), typeof(GroupListItem));
+                "CommandTarget", typeof(UIElement), typeof(NavigationListItem));
 
             ItemClickedEvent = EventManager.RegisterRoutedEvent(
-                "ItemClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(GroupListItem));
+                "ItemClicked", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(NavigationListItem));
         }
 
         /// <summary>

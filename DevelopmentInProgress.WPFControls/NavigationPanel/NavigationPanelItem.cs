@@ -17,9 +17,9 @@ namespace DevelopmentInProgress.WPFControls.NavigationPanel
     /// </summary>
     public class NavigationPanelItem : Control, ICommandSource
     {
-        private readonly static DependencyProperty ModuleNameProperty;
+        private readonly static DependencyProperty NavigationPanelItemNameProperty;
         private readonly static DependencyProperty ImageLocationProperty;
-        private readonly static DependencyProperty GroupsProperty;
+        private readonly static DependencyProperty NavigationListProperty;
         private readonly static DependencyProperty IsSelectedProperty;
         private readonly static DependencyProperty CommandProperty;
         private readonly static DependencyProperty CommandParameterProperty;
@@ -34,14 +34,14 @@ namespace DevelopmentInProgress.WPFControls.NavigationPanel
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(NavigationPanelItem), new FrameworkPropertyMetadata(typeof(NavigationPanelItem)));
 
-            ModuleNameProperty = DependencyProperty.Register(
-                "ModuleName", typeof(string), typeof(NavigationPanelItem));
+            NavigationPanelItemNameProperty = DependencyProperty.Register(
+                "NavigationPanelItemName", typeof(string), typeof(NavigationPanelItem));
 
             ImageLocationProperty = DependencyProperty.Register(
                 "ImageLocation", typeof(string), typeof(NavigationPanelItem));
 
-            GroupsProperty = DependencyProperty.Register(
-                "Groups", typeof(List<GroupList>), typeof(GroupList), new FrameworkPropertyMetadata(new List<GroupList>()));
+            NavigationListProperty = DependencyProperty.Register(
+                "NavigationList", typeof(List<NavigationList>), typeof(NavigationList), new FrameworkPropertyMetadata(new List<NavigationList>()));
 
             IsSelectedProperty = DependencyProperty.Register(
                 "IsSelected", typeof(bool), typeof(NavigationPanelItem));
@@ -64,16 +64,16 @@ namespace DevelopmentInProgress.WPFControls.NavigationPanel
         /// </summary>
         public NavigationPanelItem()
         {
-            Groups = new List<GroupList>();
+            NavigationList = new List<NavigationList>();
         }
 
         /// <summary>
-        /// Gets or sets the module name.
+        /// Gets or sets the <see cref="NavigationPanelItem"/> name.
         /// </summary>
-        public string ModuleName
+        public string NavigationPanelItemName
         {
-            get { return GetValue(ModuleNameProperty).ToString(); }
-            set { SetValue(ModuleNameProperty, value); }
+            get { return GetValue(NavigationPanelItemNameProperty).ToString(); }
+            set { SetValue(NavigationPanelItemNameProperty, value); }
         }
 
         /// <summary>
@@ -86,16 +86,16 @@ namespace DevelopmentInProgress.WPFControls.NavigationPanel
         }
 
         /// <summary>
-        /// Gets or sets the list of groups.
+        /// Gets or sets the list of <see cref="NavigationList"/>.
         /// </summary>
-        public List<GroupList> Groups
+        public List<NavigationList> NavigationList
         {
-            get { return (List<GroupList>)GetValue(GroupsProperty); }
-            set { SetValue(GroupsProperty, value); }
+            get { return (List<NavigationList>)GetValue(NavigationListProperty); }
+            set { SetValue(NavigationListProperty, value); }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the module list item is selected.
+        /// Gets or sets a value indicating whether the <see cref="NavigationPanelItem"/> is selected.
         /// </summary>
         public bool IsSelected
         {

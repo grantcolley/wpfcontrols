@@ -9,10 +9,10 @@
     <SolidColorBrush x:Key="DiP.Foreground" Color="Black"/>
     <SolidColorBrush x:Key="DiP.ForegroundLight" Color="#555564"/>
     
-    <Style TargetType="{x:Type navigationPane:GroupListItem}">
+    <Style TargetType="{x:Type navigationPane:NavigationListItem}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type navigationPane:GroupListItem}">
+                <ControlTemplate TargetType="{x:Type navigationPane:NavigationListItem}">
                     <StackPanel x:Name="stack" Orientation="Horizontal" Margin="5,5,5,5">
                         <StackPanel.Style>
                             <Style TargetType="StackPanel">
@@ -42,13 +42,13 @@
         </Setter>
     </Style>
     
-    <Style TargetType="{x:Type navigationPane:GroupList}">
+    <Style TargetType="{x:Type navigationPane:NavigationList}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type navigationPane:GroupList}">
-                    <Expander Header="{Binding Path=GroupListName, RelativeSource={RelativeSource TemplatedParent}}"
+                <ControlTemplate TargetType="{x:Type navigationPane:NavigationList}">
+                    <Expander Header="{Binding Path=NavigationListName, RelativeSource={RelativeSource TemplatedParent}}"
                               IsExpanded="True" Foreground="{StaticResource DiP.Foreground}">
-                        <ItemsControl ItemsSource="{Binding Path=GroupListItems, RelativeSource={RelativeSource TemplatedParent}}"
+                        <ItemsControl ItemsSource="{Binding Path=NavigationListItems, RelativeSource={RelativeSource TemplatedParent}}"
                                       Margin="5,5,5,25"/>
                         <Expander.Style>
                             <Style TargetType="Expander">
