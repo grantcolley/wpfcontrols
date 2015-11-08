@@ -71,6 +71,7 @@
     <Compile Include="NavigationPanel\NavigationListItem.cs" />
     <Compile Include="NavigationPanel\NavigationPanel.cs" />
     <Compile Include="NavigationPanel\NavigationPanelItem.cs" />
+    <Compile Include="NavigationPanel\NavigationPanelResources.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
