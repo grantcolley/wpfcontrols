@@ -85,6 +85,14 @@
         </Setter>
     </Style>
 
+    <Style x:Key="ImageExpanderImageMouseDown" TargetType="{x:Type Image}">
+        <EventSetter Event="MouseDown" Handler="ExpanderImageMouseDown"/>        
+    </Style>
+    
+    <Style x:Key="ListBoxSelectionChanged" TargetType="{x:Type ListBox}">
+        <EventSetter Event="SelectionChanged" Handler="ModulesListOnSelectionChanged"/>
+    </Style>
+    
     <Style TargetType="{x:Type navigationPanel:NavigationPanel}">
         <Setter Property="Template">
             <Setter.Value>
@@ -126,8 +134,9 @@
                                        ToolTip="Expand NavigationPanelItems List"
                                        HorizontalAlignment="Right" 
                                        VerticalAlignment="Center"
-                                       Margin="2" MaxHeight="16" MaxWidth="16">
-                                       <!--MouseDown="ExpanderImageMouseDown">-->
+                                       Margin="2" MaxHeight="16" MaxWidth="16"
+                                       Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
+                                       MouseDown="ExpanderImageMouseDown">
                                     <!--<i:Interaction.Triggers>
                                         <i:EventTrigger EventName="MouseDown">
                                             <i:InvokeCommandAction Command="{Binding ExpanderChangedCommand, RelativeSource={RelativeSource TemplatedParent}}"
@@ -158,8 +167,8 @@
                                      BorderBrush="Transparent" BorderThickness="0"
                                      ItemsSource="{Binding Source={StaticResource modulesView}}"
                                      SelectedItem="{Binding SelectedModule, RelativeSource={RelativeSource TemplatedParent}}"
-                                     Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}">
-                                     <!--SelectionChanged="ModulesListOnSelectionChanged">-->
+                                     Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
+                                     SelectionChanged="ModulesListOnSelectionChanged">
                                 <ListBox.Resources>
                                     <LinearGradientBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" StartPoint="0,0" EndPoint="0,1">
                                         <LinearGradientBrush.GradientStops>
@@ -263,7 +272,8 @@
                                         <Image Source="..\Images\ArrowLeft.png"
                                                ToolTip="Collapse NavigationPanelItems List"
                                                HorizontalAlignment="Right" VerticalAlignment="Center"
-                                               Margin="2" MaxHeight="16" MaxWidth="16">
+                                               Margin="2" MaxHeight="16" MaxWidth="16"
+                                               Style="{StaticResource ImageExpanderImageMouseDown}">
                                                <!--MouseDown="ExpanderImageMouseDown">-->
                                             <!--<i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="MouseDown">
@@ -300,7 +310,8 @@
                                              ItemsSource="{Binding Source={StaticResource modulesView}}"
                                              SelectedItem="{Binding SelectedNavigationPanelItem, RelativeSource={RelativeSource TemplatedParent}}"
                                              Foreground="{StaticResource DiP.Foreground}"
-                                             Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}">
+                                             Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
+                                             Style="{StaticResource ListBoxSelectionChanged}">
                                              <!--SelectionChanged="ModulesListOnSelectionChanged">-->
                                         <ListBox.Resources>
                                             <LinearGradientBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" StartPoint="0,0" EndPoint="0,1">
