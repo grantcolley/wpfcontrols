@@ -75,10 +75,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type navigationPanel:NavigationPanelItem}">
-                    <StackPanel Orientation="Horizontal">                                                  
-                        <Image Source="{Binding ImageLocation, Converter={StaticResource imageConverter}}" ToolTip="{Binding ModuleName}"
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding ImageLocation, Converter={StaticResource imageConverter}}" ToolTip="{Binding NavigationPanelItemName}"
                                 Margin="2" MaxHeight="16" MaxWidth="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                        <TextBlock Name="txt" Text="{Binding ModuleName}" FontSize="14" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <TextBlock Name="txt" Text="{Binding NavigationPanelItemName}" FontSize="14" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
@@ -136,16 +136,9 @@
                                        VerticalAlignment="Center"
                                        Margin="2" MaxHeight="16" MaxWidth="16"
                                        Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
-                                       MouseDown="ExpanderImageMouseDown">
-                                    <!--<i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="MouseDown">
-                                            <i:InvokeCommandAction Command="{Binding ExpanderChangedCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                                                   CommandParameter="{Binding SelectedItem, ElementName=modulesList}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>-->
-                                </Image>
+                                       MouseDown="ExpanderImageMouseDown"/>
                             </Border>
-                            <TextBlock Grid.Row="1" Text="{Binding ElementName=modulesList, Path=SelectedItem.ModuleName}"
+                            <TextBlock Grid.Row="1" Text="{Binding ElementName=modulesList, Path=SelectedItem.NavigationPanelItemName}"
                                        HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,15,0,0"
                                        Foreground="{StaticResource DiP.Foreground}" Background="Transparent">
                                 <TextBlock.LayoutTransform>
@@ -213,7 +206,7 @@
                                 </ListBox.ItemContainerStyle>
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <Image Source="{Binding ImageLocation, Converter={StaticResource imageConverter}}" ToolTip="{Binding ModuleName}"
+                                        <Image Source="{Binding ImageLocation, Converter={StaticResource imageConverter}}" ToolTip="{Binding NavigationPanelItemName}"
                                                Margin="2" MaxHeight="16" MaxWidth="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
@@ -225,12 +218,6 @@
                                         </LinearGradientBrush.GradientStops>
                                     </LinearGradientBrush>
                                 </ListBox.Background>
-                                <!--<i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="SelectionChanged">
-                                        <i:InvokeCommandAction Command="{Binding SelectionChangedCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                                               CommandParameter="{Binding SelectedItem, ElementName=modulesList}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>-->
                             </ListBox>
                         </Grid>
                     </Border>
@@ -273,15 +260,8 @@
                                                ToolTip="Collapse NavigationPanelItems List"
                                                HorizontalAlignment="Right" VerticalAlignment="Center"
                                                Margin="2" MaxHeight="16" MaxWidth="16"
-                                               Style="{StaticResource ImageExpanderImageMouseDown}">
-                                               <!--MouseDown="ExpanderImageMouseDown">-->
-                                            <!--<i:Interaction.Triggers>
-                                                <i:EventTrigger EventName="MouseDown">
-                                                    <i:InvokeCommandAction Command="{Binding ExpanderChangedCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                                                           CommandParameter="{Binding SelectedItem, ElementName=modulesList}"/>
-                                                </i:EventTrigger>
-                                            </i:Interaction.Triggers>-->
-                                        </Image>
+                                               Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
+                                               Style="{StaticResource ImageExpanderImageMouseDown}"/>
                                     </Border>
                                     <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" 
                                                   HorizontalScrollBarVisibility="Hidden">
@@ -312,7 +292,6 @@
                                              Foreground="{StaticResource DiP.Foreground}"
                                              Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
                                              Style="{StaticResource ListBoxSelectionChanged}">
-                                             <!--SelectionChanged="ModulesListOnSelectionChanged">-->
                                         <ListBox.Resources>
                                             <LinearGradientBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" StartPoint="0,0" EndPoint="0,1">
                                                 <LinearGradientBrush.GradientStops>
@@ -363,12 +342,6 @@
                                                 </LinearGradientBrush.GradientStops>
                                             </LinearGradientBrush>
                                         </ListBox.Background>
-                                        <!--<i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="SelectionChanged">
-                                                <i:InvokeCommandAction Command="{Binding SelectionChangedCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                                               CommandParameter="{Binding SelectedItem, ElementName=modulesList}"/>
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>-->
                                     </ListBox>
                                 </Grid>
                             </Border>

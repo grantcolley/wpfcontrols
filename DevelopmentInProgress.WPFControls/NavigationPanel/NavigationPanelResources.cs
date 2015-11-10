@@ -7,27 +7,38 @@ namespace DevelopmentInProgress.WPFControls.NavigationPanel
     {
         private void ExpanderImageMouseDown(object sender, MouseButtonEventArgs e)
         {
-            throw new System.NotImplementedException();
+            var image = sender as Image;
+            if (image == null
+                || image.Tag == null)
+            {
+                return;
+            }
 
-                                    //            <!--<i:Interaction.Triggers>
-                                    //    <i:EventTrigger EventName="MouseDown">
-                                    //        <i:InvokeCommandAction Command="{Binding ExpanderChangedCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                    //                               CommandParameter="{Binding SelectedItem, ElementName=modulesList}"/>
-                                    //    </i:EventTrigger>
-                                    //</i:Interaction.Triggers>-->
+            var navigationPanel = image.Tag as NavigationPanel;
+            if (navigationPanel == null)
+            {
+                return;
+            }
 
-
+            navigationPanel.ExpanderChangedCommand.Execute(navigationPanel.SelectedNavigationPanelItem);
         }
 
         private void ModulesListOnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-                                //            <!--<i:Interaction.Triggers>
-                                //    <i:EventTrigger EventName="SelectionChanged">
-                                //        <i:InvokeCommandAction Command="{Binding SelectionChangedCommand, RelativeSource={RelativeSource TemplatedParent}}"
-                                //                               CommandParameter="{Binding SelectedItem, ElementName=modulesList}"/>
-                                //    </i:EventTrigger>
-                                //</i:Interaction.Triggers>-->
+            var listBox = sender as ListBox;
+            if (listBox == null
+                || listBox.Tag == null)
+            {
+                return;
+            }
+
+            var navigationPanel = listBox.Tag as NavigationPanel;
+            if (navigationPanel == null)
+            {
+                return;
+            }
+
+            navigationPanel.SelectionChangedCommand.Execute(navigationPanel.SelectedNavigationPanelItem);
         }
     }
 }
