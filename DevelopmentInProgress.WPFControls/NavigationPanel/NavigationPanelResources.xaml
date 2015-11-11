@@ -64,10 +64,10 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <DataTemplate x:Key="groupsTemplate">
-        <Grid>   
-            <ItemsControl ItemsSource="{Binding DataContext.Groups}"/>
+
+    <DataTemplate x:Key="NavigationListView">
+        <Grid>
+            <ItemsControl ItemsSource="{Binding DataContext.NavigationList}"/>
         </Grid>
     </DataTemplate>
 
@@ -275,7 +275,7 @@
                                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
                                                 Content="{Binding Source={StaticResource NavigationPanelItemsView}}"
-                                                ContentTemplate="{StaticResource groupsTemplate}"/>
+                                                ContentTemplate="{StaticResource NavigationListView}"/>
                                     </ScrollViewer>
                                     <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch" Height="5" Padding="2,2,2,2">
                                         <GridSplitter.Background>
