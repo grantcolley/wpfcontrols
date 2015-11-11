@@ -90,7 +90,7 @@
     </Style>
     
     <Style x:Key="ListBoxSelectionChanged" TargetType="{x:Type ListBox}">
-        <EventSetter Event="SelectionChanged" Handler="ModulesListOnSelectionChanged"/>
+        <EventSetter Event="SelectionChanged" Handler="NavigationPanelItemSelectionChanged"/>
     </Style>
     
     <Style TargetType="{x:Type navigationPanel:NavigationPanel}">
@@ -106,7 +106,7 @@
                         </Border.BorderBrush>
                         <Grid>
                             <Grid.Resources>
-                                <CollectionViewSource x:Key="modulesView" Source="{Binding Path=Modules, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <CollectionViewSource x:Key="NavigationPanelItemsView" Source="{Binding Path=NavigationPanelItems, RelativeSource={RelativeSource TemplatedParent}}"/>
                             </Grid.Resources>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -131,14 +131,14 @@
                                     </LinearGradientBrush>
                                 </Border.Background>
                                 <Image Source="..\Images\ArrowRight.png"
-                                       ToolTip="Expand NavigationPanelItems List"
-                                       HorizontalAlignment="Right" 
+                                       ToolTip="Expand the navigation panel"
+                                       HorizontalAlignment="Right"
                                        VerticalAlignment="Center"
                                        Margin="2" MaxHeight="16" MaxWidth="16"
                                        Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
                                        MouseDown="ExpanderImageMouseDown"/>
                             </Border>
-                            <TextBlock Grid.Row="1" Text="{Binding ElementName=modulesList, Path=SelectedItem.NavigationPanelItemName}"
+                            <TextBlock Grid.Row="1" Text="{Binding ElementName=navigationItemsList, Path=SelectedItem.NavigationPanelItemName}"
                                        HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,15,0,0"
                                        Foreground="{StaticResource DiP.Foreground}" Background="Transparent">
                                 <TextBlock.LayoutTransform>
@@ -156,12 +156,12 @@
                                     </LinearGradientBrush>
                                 </GridSplitter.Background>
                             </GridSplitter>
-                            <ListBox Grid.Row="3" Name="modulesList" VerticalAlignment="Bottom"
+                            <ListBox Grid.Row="3" Name="navigationItemsList" VerticalAlignment="Bottom"
                                      BorderBrush="Transparent" BorderThickness="0"
-                                     ItemsSource="{Binding Source={StaticResource modulesView}}"
-                                     SelectedItem="{Binding SelectedModule, RelativeSource={RelativeSource TemplatedParent}}"
+                                     ItemsSource="{Binding Source={StaticResource NavigationPanelItemsView}}"
+                                     SelectedItem="{Binding SelectedNavigationPanelItem, RelativeSource={RelativeSource TemplatedParent}}"
                                      Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
-                                     SelectionChanged="ModulesListOnSelectionChanged">
+                                     SelectionChanged="NavigationPanelItemSelectionChanged">
                                 <ListBox.Resources>
                                     <LinearGradientBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" StartPoint="0,0" EndPoint="0,1">
                                         <LinearGradientBrush.GradientStops>
@@ -238,7 +238,7 @@
                                 </Border.BorderBrush>
                                 <Grid>
                                     <Grid.Resources>
-                                        <CollectionViewSource x:Key="modulesView" Source="{Binding Path=NavigationPanelItems, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        <CollectionViewSource x:Key="NavigationPanelItemsView" Source="{Binding Path=NavigationPanelItems, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </Grid.Resources>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -274,7 +274,7 @@
                                         <ContentControl HorizontalAlignment="Left"                                            
                                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                                Content="{Binding Source={StaticResource modulesView}}"
+                                                Content="{Binding Source={StaticResource NavigationPanelItemsView}}"
                                                 ContentTemplate="{StaticResource groupsTemplate}"/>
                                     </ScrollViewer>
                                     <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch" Height="5" Padding="2,2,2,2">
@@ -285,9 +285,9 @@
                                             </LinearGradientBrush>
                                         </GridSplitter.Background>
                                     </GridSplitter>
-                                    <ListBox Grid.Row="3" Name="modulesList"
+                                    <ListBox Grid.Row="3" Name="navigationItemsList"
                                              BorderBrush="Transparent" BorderThickness="0"
-                                             ItemsSource="{Binding Source={StaticResource modulesView}}"
+                                             ItemsSource="{Binding Source={StaticResource NavigationPanelItemsView}}"
                                              SelectedItem="{Binding SelectedNavigationPanelItem, RelativeSource={RelativeSource TemplatedParent}}"
                                              Foreground="{StaticResource DiP.Foreground}"
                                              Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"

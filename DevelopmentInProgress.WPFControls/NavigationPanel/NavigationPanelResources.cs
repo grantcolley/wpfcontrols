@@ -23,7 +23,7 @@ namespace DevelopmentInProgress.WPFControls.NavigationPanel
             navigationPanel.ExpanderChangedCommand.Execute(navigationPanel.SelectedNavigationPanelItem);
         }
 
-        private void ModulesListOnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void NavigationPanelItemSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var listBox = sender as ListBox;
             if (listBox == null
