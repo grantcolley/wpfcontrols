@@ -100,8 +100,8 @@
                     <Border BorderThickness="2">
                         <Border.BorderBrush>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                <GradientStop Color="#B7CAE0" Offset="0" />
-                                <GradientStop Color="#E8F0FF" Offset="1" />
+                                <GradientStop Color="#FFF7FAFD" Offset="0" />
+                                <GradientStop Color="#FFABBFD4" Offset="1" />
                             </LinearGradientBrush>
                         </Border.BorderBrush>
                         <Grid>
@@ -119,15 +119,15 @@
                             </Grid.RowDefinitions>
                             <Grid.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                    <GradientStop Color="#B7CAE0" Offset="0" />
-                                    <GradientStop Color="#E8F0FF" Offset="1" />
+                                    <GradientStop Color="#FFF7FAFD" Offset="0" />
+                                    <GradientStop Color="#FFABBFD4" Offset="1" />
                                 </LinearGradientBrush>
                             </Grid.Background>
                             <Border Grid.Row="0">
                                 <Border.Background>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                        <GradientStop Color="#B7CAE0" Offset="0" />
-                                        <GradientStop Color="#E8F0FF" Offset="1" />
+                                        <GradientStop Color="#ECF5FC" Offset="0" />
+                                        <GradientStop Color="#98B4D2" Offset="1" />
                                     </LinearGradientBrush>
                                 </Border.Background>
                                 <Image Source="..\Images\ArrowRight.png"
@@ -151,8 +151,8 @@
                             <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch" Height="5" Padding="2,2,2,2">
                                 <GridSplitter.Background>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                        <GradientStop Color="#B7CAE0" Offset="0" />
-                                        <GradientStop Color="#E8F0FF" Offset="1" />
+                                        <GradientStop Color="#FFF7FAFD" Offset="0" />
+                                        <GradientStop Color="#FFABBFD4" Offset="1" />
                                     </LinearGradientBrush>
                                 </GridSplitter.Background>
                             </GridSplitter>
@@ -232,8 +232,8 @@
                             <Border BorderThickness="2">
                                 <Border.BorderBrush>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                        <GradientStop Color="#B7CAE0" Offset="0" />
-                                        <GradientStop Color="#E8F0FF" Offset="1" />
+                                        <GradientStop Color="#FFF7FAFD" Offset="0" />
+                                        <GradientStop Color="#FFABBFD4" Offset="1" />
                                     </LinearGradientBrush>
                                 </Border.BorderBrush>
                                 <Grid>
@@ -252,8 +252,8 @@
                                     <Border Grid.Row="0">
                                         <Border.Background>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                <GradientStop Color="#B7CAE0" Offset="0" />
-                                                <GradientStop Color="#E8F0FF" Offset="1" />
+                                                <GradientStop Color="#ECF5FC" Offset="0" />
+                                                <GradientStop Color="#98B4D2" Offset="1" />
                                             </LinearGradientBrush>
                                         </Border.Background>
                                         <Image Source="..\Images\ArrowLeft.png"
@@ -267,8 +267,8 @@
                                                   HorizontalScrollBarVisibility="Hidden">
                                         <ScrollViewer.Background>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                <GradientStop Color="#B7CAE0" Offset="0" />
-                                                <GradientStop Color="#E8F0FF" Offset="1" />
+                                                <GradientStop Color="#FFF7FAFD" Offset="0" />
+                                                <GradientStop Color="#FFABBFD4" Offset="1" />
                                             </LinearGradientBrush>
                                         </ScrollViewer.Background>
                                         <ContentControl HorizontalAlignment="Left"                                            
@@ -280,8 +280,8 @@
                                     <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch" Height="5" Padding="2,2,2,2">
                                         <GridSplitter.Background>
                                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                                <GradientStop Color="#B7CAE0" Offset="0" />
-                                                <GradientStop Color="#E8F0FF" Offset="1" />
+                                                <GradientStop Color="#FFF7FAFD" Offset="0" />
+                                                <GradientStop Color="#FFABBFD4" Offset="1" />
                                             </LinearGradientBrush>
                                         </GridSplitter.Background>
                                     </GridSplitter>
