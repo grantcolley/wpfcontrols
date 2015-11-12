@@ -27,15 +27,19 @@ namespace DevelopmentInProgress.WPFControls.Converters
         public object Convert(object value, Type targetType,
                               object parameter, CultureInfo culture)
         {
+            if (value == null
+                || String.IsNullOrEmpty(value.ToString()))
+            {
+                return null;
+            }
+
             try
             {
                 return new BitmapImage(new Uri((string)value, UriKind.RelativeOrAbsolute));
             }
             catch
             {
-                return new BitmapImage(
-                    new Uri(@"/DevelopmentInProgress.WPFControls;component/Images/Origin.png",
-                    UriKind.RelativeOrAbsolute));
+                return null;
             }
         }
 
