@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DevelopmentInProgress.WPFControls")]
-[assembly: AssemblyDescription("Custom WPF controls")]
+[assembly: AssemblyTitle("DipWpfControls")]
+[assembly: AssemblyDescription("Custom WPF controls (beta)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Development In Progress Ltd")]
-[assembly: AssemblyProduct("DevelopmentInProgress.WPFControls")]
+[assembly: AssemblyProduct("DipWpfControls")]
 [assembly: AssemblyCopyright("Copyright © Development In Progress Ltd 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

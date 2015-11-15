@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/DevelopmentInProgress.WPFControls;component/FilterTree/FilterTree.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/DevelopmentInProgress.WPFControls;component/NavigationPanel/NavigationPanelResources.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/DipWpfControls;component/FilterTree/FilterTree.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/DipWpfControls;component/NavigationPanel/NavigationPanelResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
