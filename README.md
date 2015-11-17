@@ -6,4 +6,7 @@ A suite of custom WPF controls... *still in beta*.
 [NuGet package](https://www.nuget.org/packages/DipWpfControls/).
 
 ## NavigationPanel
-A navigation panel that can be docked to the side of a window, grouping related activities.
+The navigation panel can be docked to the side of a window, and allows you to switch between views or areas within an application.
+
+## XamlFilterTree
+The navigation panel can be docked to the side of a window, and allows you to switch between views or areas within an application.
