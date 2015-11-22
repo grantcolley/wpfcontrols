@@ -130,47 +130,5 @@ navigationPanel.NavigationPanelItems.Add(manageRelationships);
 navigationPanel.NavigationPanelItems.Add(userAdministration);
 ```
 
-```C#
-private void CustomerListClicked(object sender, RoutedEventArgs e)
-{
-    // Show the customer list...
-}
-
-private void AddNewCustomerClicked(object sender, RoutedEventArgs e)
-{
-    // Add new customer...
-}
-
-private void ContactListClicked(object sender, RoutedEventArgs e)
-{
-    // Show contact list...
-}
-
-private void AddNewContactClicked(object sender, RoutedEventArgs e)
-{
-    // Add new contact...
-}
-
-private void UserListClicked(object sender, RoutedEventArgs e)
-{
-    // Show user list...
-}
-
-private void AddNewUserClicked(object sender, RoutedEventArgs e)
-{
-    // Add new user...
-}
-
-private void RoleListClicked(object sender, RoutedEventArgs e)
-{
-    // Show role list...
-}
-
-private void AddNewRoleClicked(object sender, RoutedEventArgs e)
-{
-    // Add new role...
-}
-```
-
 ## XamlFilterTree
 A filterable tree view with support for adding and removing items and drag drop operations. 
