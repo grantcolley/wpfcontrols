@@ -52,7 +52,84 @@ The navigation panel can be docked to the side of a window, and allows you to sw
 </navigationPanel:NavigationPanel>
 ```
 
-#####C# 
+#####C#
+```C#
+var customerList = new NavigationListItem();
+customerList.ItemName = "Customer List";
+customerList.ImageLocation = @"pack://application:,,,/RelationshipManager;component/CustomerList.png";
+customerList.ItemClicked += CustomerListClicked;
+
+var addNewCustomer = new NavigationListItem();
+addNewCustomer.ItemName = "Add New Customer";
+addNewCustomer.ImageLocation = @"pack://application:,,,/RelationshipManager;component/AddNewCustomer.png";
+addNewCustomer.ItemClicked += AddNewCustomerClicked;
+
+var customers = new NavigationList();
+customers.NavigationListName = "Customers";
+customers.NavigationListItems.Add(customerList);
+customers.NavigationListItems.Add(addNewCustomer);
+
+var contactList = new NavigationListItem();
+contactList.ItemName = "Contact List";
+contactList.ImageLocation = @"pack://application:,,,/RelationshipManager;component/ContactList.png";
+contactList.ItemClicked += ContactListClicked;
+
+var addNewContact = new NavigationListItem();
+addNewContact.ItemName = "Add New Contact";
+addNewContact.ImageLocation = @"pack://application:,,,/RelationshipManager;component/AddNewContact.png";
+addNewContact.ItemClicked += AddNewContactClicked;
+
+var contacts = new NavigationList();
+contacts.NavigationListName = "Contacts";
+contacts.NavigationListItems.Add(contactList);
+contacts.NavigationListItems.Add(addNewContact);
+
+var manageRelationships = new NavigationPanelItem();
+manageRelationships.NavigationPanelItemName = "Manage Relationships";
+manageRelationships.ImageLocation = @"pack://application:,,,/RelationshipManager;component/ManageRelationships.png";
+manageRelationships.NavigationList.Add(customers);
+manageRelationships.NavigationList.Add(contacts);
+
+var userList = new NavigationListItem();
+userList.ItemName = "User List";
+userList.ImageLocation = @"pack://application:,,,/RelationshipManager;component/UserList.png";
+userList.ItemClicked += UserListClicked;
+
+var addNewUser = new NavigationListItem();
+addNewUser.ItemName = "Add New User";
+addNewUser.ImageLocation = @"pack://application:,,,/RelationshipManager;component/AddNewUser.png";
+addNewUser.ItemClicked += AddNewUserClicked;
+
+var users = new NavigationList();
+users.NavigationListName = "Users";
+users.NavigationListItems.Add(userList);
+users.NavigationListItems.Add(addNewUser);
+
+var roleList = new NavigationListItem();
+roleList.ItemName = "Role List";
+roleList.ImageLocation = @"pack://application:,,,/RelationshipManager;component/RoleList.png";
+roleList.ItemClicked += RoleListClicked;
+
+var addNewRole = new NavigationListItem();
+addNewRole.ItemName = "Add New Role";
+addNewRole.ImageLocation = @"pack://application:,,,/RelationshipManager;component/AddNewRole.png";
+addNewRole.ItemClicked += AddNewRoleClicked;
+
+var roles = new NavigationList();
+roles.NavigationListName = "Roles";
+roles.NavigationListItems.Add(roleList);
+roles.NavigationListItems.Add(addNewRole);
+
+var userAdministration = new NavigationPanelItem();
+userAdministration.NavigationPanelItemName = "User Administration";
+userAdministration.ImageLocation = @"pack://application:,,,/RelationshipManager;component/UserAdministration.png";
+userAdministration.NavigationList.Add(users);
+userAdministration.NavigationList.Add(roles);
+
+navigationPanel.NavigationPanelItems.Add(manageRelationships);
+navigationPanel.NavigationPanelItems.Add(userAdministration);
+```
+
 ```C#
 private void CustomerListClicked(object sender, RoutedEventArgs e)
 {
