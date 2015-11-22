@@ -13,7 +13,7 @@ The navigation panel can be docked to the side of a window, and allows you to sw
 * **NavigationListItem** - A navigable item which raises the *ItemClickedEvent* event and executes the *Command* when clicked.
 
 #####Xaml
-```C#
+```C# 
 <navigationPanel:NavigationPanel x:Name="navigationPanel">
     <navigationPanel:NavigationPanel.NavigationPanelItems>
         <navigationPanel:NavigationPanelItem NavigationPanelItemName="Manage Relationships" ImageLocation="pack://application:,,,/RelationshipManager;component/ManageRelationships.png">
