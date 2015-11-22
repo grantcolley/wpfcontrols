@@ -14,7 +14,7 @@ The navigation panel can be docked to the side of a window, and allows you to sw
 
 #####Xaml
 ```C#
-<navigationPanel:NavigationPanel>
+<navigationPanel:NavigationPanel x:Name="navigationPanel">
     <navigationPanel:NavigationPanel.NavigationPanelItems>
         <navigationPanel:NavigationPanelItem NavigationPanelItemName="Manage Relationships" ImageLocation="pack://application:,,,/RelationshipManager;component/ManageRelationships.png">
             <navigationPanel:NavigationPanelItem.NavigationList>
@@ -32,7 +32,7 @@ The navigation panel can be docked to the side of a window, and allows you to sw
                 </navigationPanel:NavigationList>
             </navigationPanel:NavigationPanelItem.NavigationList>
         </navigationPanel:NavigationPanelItem>
-        <navigationPanel:NavigationPanelItem NavigationPanelItemName="User Admininstration" ImageLocation="pack://application:,,,/RelationshipManager;component/UserManagement.png">
+        <navigationPanel:NavigationPanelItem NavigationPanelItemName="User Admininstration" ImageLocation="pack://application:,,,/RelationshipManager;component/UserAdministration.png">
             <navigationPanel:NavigationPanelItem.NavigationList>
                 <navigationPanel:NavigationList NavigationListName="Users">
                     <navigationPanel:NavigationList.NavigationListItems>
