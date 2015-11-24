@@ -5,7 +5,7 @@ A suite of custom WPF controls... *still in beta*.
 
 [NuGet package](https://www.nuget.org/packages/DipWpfControls/).
 
-Example WPF window with a NavigationPanel docked to the left and XamlFilterTree filling the centre.
+Example WPF window with a **NavigationPanel** docked to the left and **XamlFilterTree** filling the centre.
 ![Alt text](/README-images/main.PNG?raw=true "Example WPF window with a NavigationPanel and XamlFilterTree")
 
 ## NavigationPanel
