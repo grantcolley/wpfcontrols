@@ -2,11 +2,9 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/6o6weumr92epubkr/branch/master?svg=true)](https://ci.appveyor.com/project/grantcolley/wpfcontrols/branch/master)
 [NuGet package](https://www.nuget.org/packages/DipWpfControls/).
 
-A suite of custom WPF controls
-
-[NavigationPanel](#navigationpanel)
-
-[XamlFilterTree](#xamlfiltertree)
+A suite of custom WPF controls including:
+* [NavigationPanel](#navigationpanel)
+* [XamlFilterTree](#xamlfiltertree)
 
 Example WPF window with a **NavigationPanel** docked to the left and **XamlFilterTree** filling the centre.
 ![Alt text](/README-images/main.PNG?raw=true "Example WPF window with a NavigationPanel and XamlFilterTree")
