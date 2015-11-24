@@ -137,6 +137,12 @@ navigationPanel.NavigationPanelItems.Add(userAdministration);
 ## XamlFilterTree
 A filterable tree view with support for adding and removing items and drag drop operations. 
 
+In order for an object to qualify for filtering it must have two public settable properties:
+- Text (string)
+- IsVisible (bool)
+
+The example below shows a list of users, their assigned roles and the activities associated with each role. The *User*, *Role* and *Activity* objects expose public *Text* and *IsVisible* properties and can be filtered in or out of view when the user types in the filter textbox above the list.
+
 ![Alt text](/README-images/filterTree.PNG?raw=true "Filter Tree")
 
 #####Xaml
