@@ -9,18 +9,20 @@ Example WPF window with a NavigationPanel docked to the left and XamlFilterTree 
 ![Alt text](/README-images/main.PNG?raw=true "Example WPF window with a NavigationPanel and XamlFilterTree")
 
 ## NavigationPanel
-The navigation panel can be docked to the side of a window, and allows you to switch between views or areas within an application.
+The *NavigationPanel* can be docked to the side of a window, and allows you to switch between views or areas within an application.
 
 * **NavigationPanel**
-    The main navigation container for a list of *NavigationPanelItem's*.
+    The *NavigationPanel* contains a list of *NavigationPanelItem's*, each of which is a logical area within the application.
 
 * **NavigationPanelItem**
-    Displayed as tabs in the navigation panel logically grouping areas within an application. A *NavigationPanelItem* contains     a list of *NavigationList's*. 
+    Each *NavigationPanelItem* is displayed as tabs in the navigation panel and contains a list of *NavigationList's*, which groups views within an area of an application. 
 
-* **NavigationList** - Groups lists of views or *NavigationListItem's*, that can be navigated to.
+* **NavigationList**
+    A *NavigationList* groups lists of views or *NavigationListItem's*, that can be navigated to.
 
-* **NavigationListItem** - A navigable item which raises the *ItemClickedEvent* event and executes the *Command* when clicked.
+* **NavigationListItem** - A navigable item or view, which when clicked, raises the *ItemClickedEvent* event and executes the *Command*.
 
+The following shows a navigation panel with two main areas within an application, **Manage Relationships** and **User Administration**. **Manage Relationships** groups the **Customers** and **Contacts** views. **User Administration** groups the views for managing **Users** and their **Roles**.
 ![Alt text](/README-images/navigationPanel.PNG?raw=true "Navigation Panel")
 
 #####Xaml
