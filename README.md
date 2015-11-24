@@ -5,7 +5,7 @@ A suite of custom WPF controls... *still in beta*.
 
 [NuGet package](https://www.nuget.org/packages/DipWpfControls/).
 
-![Alt text](/README-images/main.png?raw=true "Example")
+![Alt text](/README-images/main.PNG?raw=true "Example")
 
 ## NavigationPanel
 The navigation panel can be docked to the side of a window, and allows you to switch between views or areas within an application.
