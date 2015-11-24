@@ -3,8 +3,8 @@
 [NuGet package](https://www.nuget.org/packages/DipWpfControls/).
 
 A suite of custom WPF controls:
-* [NavigationPanel](#NavigationPanel)
-* [XamlFilterTree](##XamlFilterTree)
+* [NavigationPanel](##-NavigationPanel)
+* [XamlFilterTree](##-XamlFilterTree)
 
 Example WPF window with a **NavigationPanel** docked to the left and **XamlFilterTree** filling the centre.
 ![Alt text](/README-images/main.PNG?raw=true "Example WPF window with a NavigationPanel and XamlFilterTree")
