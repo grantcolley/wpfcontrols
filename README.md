@@ -5,12 +5,16 @@ A suite of custom WPF controls... *still in beta*.
 
 [NuGet package](https://www.nuget.org/packages/DipWpfControls/).
 
+![Alt text](/README-images/main.png?raw=true "Example")
+
 ## NavigationPanel
 The navigation panel can be docked to the side of a window, and allows you to switch between views or areas within an application.
 * **NavigationPanel** - The main navigation container for a list of *NavigationPanelItem's*.
 * **NavigationPanelItem** - Displayed as tabs in the navigation panel to enable grouping of navigation lists.
 * **NavigationList** - Contains a list of *NavigationListItem's*.
 * **NavigationListItem** - A navigable item which raises the *ItemClickedEvent* event and executes the *Command* when clicked.
+
+![Alt text](/README-images/navigationPanel.png?raw=true "Navigation Panel")
 
 #####Xaml
 ```C#
@@ -132,3 +136,5 @@ navigationPanel.NavigationPanelItems.Add(userAdministration);
 
 ## XamlFilterTree
 A filterable tree view with support for adding and removing items and drag drop operations. 
+
+![Alt text](/README-images/navigationPanel.png?raw=true "Filter Tree")
