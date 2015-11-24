@@ -27,42 +27,42 @@ The following example shows a navigation panel with two main areas within an app
 
 #####Xaml
 ```C#
-<navigationPanel:NavigationPanel x:Name="navigationPanel">
-    <navigationPanel:NavigationPanel.NavigationPanelItems>
-        <navigationPanel:NavigationPanelItem NavigationPanelItemName="Manage Relationships" ImageLocation="pack://application:,,,/RelationshipManager;component/ManageRelationships.png">
-            <navigationPanel:NavigationPanelItem.NavigationList>
-                <navigationPanel:NavigationList NavigationListName="Customers">
-                    <navigationPanel:NavigationList.NavigationListItems>
-                        <navigationPanel:NavigationListItem ItemName="Customer List" ItemClicked="CustomerListClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/CustomerList.png"/>
-                        <navigationPanel:NavigationListItem ItemName="Add New Customer" ItemClicked="AddNewCustomerClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/AddNewCustomer.png"/>
-                    </navigationPanel:NavigationList.NavigationListItems>
-                </navigationPanel:NavigationList>
-                <navigationPanel:NavigationList NavigationListName="Contacts">
-                    <navigationPanel:NavigationList.NavigationListItems>
-                        <navigationPanel:NavigationListItem ItemName="Contact List" ItemClicked="ContactListClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/ContactList.png"/>
-                        <navigationPanel:NavigationListItem ItemName="Add New Contact" ItemClicked="AddNewContactClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/AddNewContact.png"/>
-                    </navigationPanel:NavigationList.NavigationListItems>
-                </navigationPanel:NavigationList>
-            </navigationPanel:NavigationPanelItem.NavigationList>
-        </navigationPanel:NavigationPanelItem>
-        <navigationPanel:NavigationPanelItem NavigationPanelItemName="User Admininstration" ImageLocation="pack://application:,,,/RelationshipManager;component/UserAdministration.png">
-            <navigationPanel:NavigationPanelItem.NavigationList>
-                <navigationPanel:NavigationList NavigationListName="Users">
-                    <navigationPanel:NavigationList.NavigationListItems>
-                        <navigationPanel:NavigationListItem ItemName="User List" ItemClicked="UserListClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/UserList.png"/>
-                        <navigationPanel:NavigationListItem ItemName="Add New User" ItemClicked="AddNewUserClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/AddNewUser.png"/>
-                    </navigationPanel:NavigationList.NavigationListItems>
-                </navigationPanel:NavigationList>
-                <navigationPanel:NavigationList NavigationListName="Roles">
-                    <navigationPanel:NavigationList.NavigationListItems>
-                        <navigationPanel:NavigationListItem ItemName="Role List" ItemClicked="RoleListClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/RoleList.png"/>
-                        <navigationPanel:NavigationListItem ItemName="Add New Role" ItemClicked="AddNewRoleClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/AddNewRole.png"/>
-                    </navigationPanel:NavigationList.NavigationListItems>
-                </navigationPanel:NavigationList>
-            </navigationPanel:NavigationPanelItem.NavigationList>
-        </navigationPanel:NavigationPanelItem>
-    </navigationPanel:NavigationPanel.NavigationPanelItems>
-</navigationPanel:NavigationPanel>
+<np:NavigationPanel x:Name="navigationPanel">
+    <np:NavigationPanel.NavigationPanelItems>
+        <np:NavigationPanelItem NavigationPanelItemName="Manage Relationships" ImageLocation="pack://application:,,,/RelationshipManager;component/ManageRelationships.png">
+            <np:NavigationPanelItem.NavigationList>
+                <np:NavigationList NavigationListName="Customers">
+                    <np:NavigationList.NavigationListItems>
+                        <np:NavigationListItem ItemName="Customer List" ItemClicked="CustomerListClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/CustomerList.png"/>
+                        <np:NavigationListItem ItemName="Add New Customer" ItemClicked="AddNewCustomerClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/AddNewCustomer.png"/>
+                    </np:NavigationList.NavigationListItems>
+                </np:NavigationList>
+                <np:NavigationList NavigationListName="Contacts">
+                    <np:NavigationList.NavigationListItems>
+                        <np:NavigationListItem ItemName="Contact List" ItemClicked="ContactListClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/ContactList.png"/>
+                        <np:NavigationListItem ItemName="Add New Contact" ItemClicked="AddNewContactClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/AddNewContact.png"/>
+                    </np:NavigationList.NavigationListItems>
+                </np:NavigationList>
+            </np:NavigationPanelItem.NavigationList>
+        </np:NavigationPanelItem>
+        <np:NavigationPanelItem NavigationPanelItemName="User Admininstration" ImageLocation="pack://application:,,,/RelationshipManager;component/UserAdministration.png">
+            <np:NavigationPanelItem.NavigationList>
+                <np:NavigationList NavigationListName="Users">
+                    <np:NavigationList.NavigationListItems>
+                        <np:NavigationListItem ItemName="User List" ItemClicked="UserListClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/CustomerList.png"/>
+                        <np:NavigationListItem ItemName="Add New User" ItemClicked="AddNewUserClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/AddNewCustomer.png"/>
+                    </np:NavigationList.NavigationListItems>
+                </np:NavigationList>
+                <np:NavigationList NavigationListName="Roles">
+                    <np:NavigationList.NavigationListItems>
+                        <np:NavigationListItem ItemName="Role List" ItemClicked="RoleListClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/RoleList.png"/>
+                        <np:NavigationListItem ItemName="Add New Role" ItemClicked="AddNewRoleClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/AddNewRole.png"/>
+                    </np:NavigationList.NavigationListItems>
+                </np:NavigationList>
+            </np:NavigationPanelItem.NavigationList>
+        </np:NavigationPanelItem>
+    </np:NavigationPanel.NavigationPanelItems>
+</np:NavigationPanel>
 ```
 
 #####C# 
