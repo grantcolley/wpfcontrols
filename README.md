@@ -156,42 +156,37 @@ The example below shows a list of users, their assigned roles and the activities
 
 #####Xaml
 ```C#
-<filterTree:XamlFilterTree Header="User List" 
-                    ItemsSource="{Binding Users}" 
-                    RemoveItemCommand="{Binding ItemDeletedCommand}"
-                    AddItemCommand="{Binding ItemAddCommand}"
-                    SelectItemCommand="{Binding ItemSelectCommand}"
-                    DragDropCommand="{Binding DragDropCommand}">
-    <filterTree:XamlFilterTree.Resources>
+<ft:XamlFilterTree 
+    Header="User List" 
+    ItemsSource="{Binding Users}" 
+    RemoveItemCommand="{Binding ItemDeletedCommand}"
+    AddItemCommand="{Binding ItemAddCommand}"
+    SelectItemCommand="{Binding ItemSelectCommand}"
+    DragDropCommand="{Binding DragDropCommand}">
+    <ft:XamlFilterTree.Resources>
         <HierarchicalDataTemplate DataType="{x:Type relationshipManager:User}"
-                                        ItemsSource="{Binding Roles}">
+                                  ItemsSource="{Binding Roles}">
             <StackPanel Orientation="Horizontal">
                 <Image Source="{Binding Path=Image, Converter={StaticResource UriStringToImageConverter}}" 
-                                ToolTip="{Binding Text}"
-                                Margin="2" MaxHeight="20" MaxWidth="20" VerticalAlignment="Center"/>
-                <TextBlock Text="{Binding Text}" 
-                                    Margin="2" VerticalAlignment="Center"/>
+                       ToolTip="{Binding Text}" Margin="2" MaxHeight="20" MaxWidth="20" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Text}" Margin="2" VerticalAlignment="Center"/>
             </StackPanel>
         </HierarchicalDataTemplate>
         <HierarchicalDataTemplate DataType="{x:Type relationshipManager:Role}"
-                                        ItemsSource="{Binding Activities}">
+                                  ItemsSource="{Binding Activities}">
             <StackPanel Orientation="Horizontal">
                 <Image Source="{Binding Path=Image, Converter={StaticResource UriStringToImageConverter}}" 
-                                ToolTip="{Binding Text}"
-                                Margin="2" MaxHeight="20" MaxWidth="20" VerticalAlignment="Center"/>
-                <TextBlock Text="{Binding Text}" 
-                                    Margin="2" VerticalAlignment="Center"/>
+                       ToolTip="{Binding Text}" Margin="2" MaxHeight="20" MaxWidth="20" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Text}" Margin="2" VerticalAlignment="Center"/>
             </StackPanel>
         </HierarchicalDataTemplate>
         <DataTemplate DataType="{x:Type relationshipManager:Activity}">
             <StackPanel Orientation="Horizontal">
                 <Image Source="{Binding Path=Image, Converter={StaticResource UriStringToImageConverter}}" 
-                                ToolTip="{Binding Text}"
-                                Margin="2" MaxHeight="20" MaxWidth="20" VerticalAlignment="Center"/>
-                <TextBlock Text="{Binding Text}" 
-                                    Margin="2" VerticalAlignment="Center"/>
+                       ToolTip="{Binding Text}" Margin="2" MaxHeight="20" MaxWidth="20" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Text}" Margin="2" VerticalAlignment="Center"/>
             </StackPanel>
         </DataTemplate>
-    </filterTree:XamlFilterTree.Resources>
-</filterTree:XamlFilterTree>
+    </ft:XamlFilterTree.Resources>
+</ft:XamlFilterTree>
 ```
