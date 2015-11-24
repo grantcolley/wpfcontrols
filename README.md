@@ -14,7 +14,7 @@ The navigation panel can be docked to the side of a window, and allows you to sw
 * **NavigationList** - Contains a list of *NavigationListItem's*.
 * **NavigationListItem** - A navigable item which raises the *ItemClickedEvent* event and executes the *Command* when clicked.
 
-![Alt text](/README-images/navigationPanel.png?raw=true "Navigation Panel")
+![Alt text](/README-images/navigationPanel.PNG?raw=true "Navigation Panel")
 
 #####Xaml
 ```C#
@@ -137,4 +137,4 @@ navigationPanel.NavigationPanelItems.Add(userAdministration);
 ## XamlFilterTree
 A filterable tree view with support for adding and removing items and drag drop operations. 
 
-![Alt text](/README-images/filterTree.png?raw=true "Filter Tree")
+![Alt text](/README-images/filterTree.PNG?raw=true "Filter Tree")
