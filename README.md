@@ -137,4 +137,4 @@ navigationPanel.NavigationPanelItems.Add(userAdministration);
 ## XamlFilterTree
 A filterable tree view with support for adding and removing items and drag drop operations. 
 
-![Alt text](/README-images/navigationPanel.png?raw=true "Filter Tree")
+![Alt text](/README-images/filterTree.png?raw=true "Filter Tree")
