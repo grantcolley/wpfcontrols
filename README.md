@@ -11,14 +11,11 @@ Example WPF window with a **NavigationPanel** docked to the left and **XamlFilte
 ## NavigationPanel
 The *NavigationPanel* can be docked to the side of a window, and allows you to switch between views or areas within an application.
 
-* **NavigationPanel**
-    The *NavigationPanel* contains a list of *NavigationPanelItem's*, each of which is a logical area within the application.
+* **NavigationPanel** - The *NavigationPanel* contains a list of *NavigationPanelItem's*, each of which is a logical area within the application.
 
-* **NavigationPanelItem**
-    Each *NavigationPanelItem* is displayed as a tab in the navigation panel and contains a list of *NavigationList's*, which groups views within an area of an application. 
+* **NavigationPanelItem** - Each *NavigationPanelItem* is displayed as a tab in the navigation panel and contains a list of *NavigationList's*, which groups views within an area of an application. 
 
-* **NavigationList**
-    A *NavigationList* groups lists of views or *NavigationListItem's*, that can be navigated to.
+* **NavigationList** - A *NavigationList* groups lists of views or *NavigationListItem's*, that can be navigated to.
 
 * **NavigationListItem** - A navigable item or view, which when clicked, raises the *ItemClickedEvent* event and executes the *Command*.
 
