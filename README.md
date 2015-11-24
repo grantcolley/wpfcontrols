@@ -15,14 +15,17 @@ The *NavigationPanel* can be docked to the side of a window, and allows you to s
     The *NavigationPanel* contains a list of *NavigationPanelItem's*, each of which is a logical area within the application.
 
 * **NavigationPanelItem**
-    Each *NavigationPanelItem* is displayed as tabs in the navigation panel and contains a list of *NavigationList's*, which groups views within an area of an application. 
+    Each *NavigationPanelItem* is displayed as a tab in the navigation panel and contains a list of *NavigationList's*, which groups views within an area of an application. 
 
 * **NavigationList**
     A *NavigationList* groups lists of views or *NavigationListItem's*, that can be navigated to.
 
 * **NavigationListItem** - A navigable item or view, which when clicked, raises the *ItemClickedEvent* event and executes the *Command*.
 
-The following shows a navigation panel with two main areas within an application, **Manage Relationships** and **User Administration**. **Manage Relationships** groups the **Customers** and **Contacts** views. **User Administration** groups the views for managing **Users** and their **Roles**.
+The following example shows a navigation panel with two main areas within an application, *Manage Relationships* and *User Administration*. 
+* The *Manage Relationships* tab groups the views for maintaining *Customers* and *Contacts*
+* The *User Administration* tab groups the views for managing *Users* and their *Roles*.
+
 ![Alt text](/README-images/navigationPanel.PNG?raw=true "Navigation Panel")
 
 #####Xaml
