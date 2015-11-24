@@ -6,7 +6,7 @@ A suite of custom WPF controls including:
 * [NavigationPanel](#navigationpanel)
 * [XamlFilterTree](#xamlfiltertree)
 
-Example WPF window with a **NavigationPanel** docked to the left and **XamlFilterTree** filling the centre.
+An example WPF window with a **NavigationPanel** docked to the left and **XamlFilterTree** filling the centre.
 ![Alt text](/README-images/main.PNG?raw=true "Example WPF window with a NavigationPanel and XamlFilterTree")
 
 ## NavigationPanel
