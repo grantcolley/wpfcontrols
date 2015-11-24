@@ -138,3 +138,45 @@ navigationPanel.NavigationPanelItems.Add(userAdministration);
 A filterable tree view with support for adding and removing items and drag drop operations. 
 
 ![Alt text](/README-images/filterTree.PNG?raw=true "Filter Tree")
+
+#####Xaml
+```C#
+<filterTree:XamlFilterTree Header="User List" 
+                    ItemsSource="{Binding Users}" 
+                    RemoveItemCommand="{Binding ItemDeletedCommand}"
+                    AddItemCommand="{Binding ItemAddCommand}"
+                    SelectItemCommand="{Binding ItemSelectCommand}"
+                    DragDropCommand="{Binding DragDropCommand}">
+    <filterTree:XamlFilterTree.Resources>
+        <HierarchicalDataTemplate DataType="{x:Type relationshipManager:User}"
+                                        ItemsSource="{Binding Roles}">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Path=Image, Converter={StaticResource UriStringToImageConverter}}" 
+                                ToolTip="{Binding Text}"
+                                Margin="2" MaxHeight="20" MaxWidth="20" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Text}" 
+                                    Margin="2" VerticalAlignment="Center"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType="{x:Type relationshipManager:Role}"
+                                        ItemsSource="{Binding Activities}">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Path=Image, Converter={StaticResource UriStringToImageConverter}}" 
+                                ToolTip="{Binding Text}"
+                                Margin="2" MaxHeight="20" MaxWidth="20" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Text}" 
+                                    Margin="2" VerticalAlignment="Center"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <DataTemplate DataType="{x:Type relationshipManager:Activity}">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding Path=Image, Converter={StaticResource UriStringToImageConverter}}" 
+                                ToolTip="{Binding Text}"
+                                Margin="2" MaxHeight="20" MaxWidth="20" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Text}" 
+                                    Margin="2" VerticalAlignment="Center"/>
+            </StackPanel>
+        </DataTemplate>
+    </filterTree:XamlFilterTree.Resources>
+</filterTree:XamlFilterTree>
+```
