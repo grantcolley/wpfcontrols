@@ -152,16 +152,16 @@ In order for an object to qualify for filtering it must have two public settable
 * Text (string)
 * IsVisible (bool)
 
-As the user enters text into the filter textbox the treeview’s *ItemsSource* is traversed. If the items *Text* property contains the filter text, it’s *IsVisible* property is set to true, else it is set to false. If an item’s “IsVisible” property is set to true, then so will its parent’s regardless of the value of the parent’s *Text* property, all the way up the hierarchy to the root. If no text is entered into the filter textbox, all items with a *IsVisible* property will be set to true. If an item does not have the *Text (string)* and *IsVisible (boolean)* properties then it is ignored i.e. it will remain visible as long its parent is visible.
+As the user enters text into the filter textbox the treeview’s *ItemsSource* is traversed. If the items *Text* property contains the filter text, it’s *IsVisible* property is set to true, else it is set to false. If an item’s “IsVisible” property is set to true, then so will its parent’s regardless of the value of the parent’s *Text* property, all the way up the hierarchy to the root. If no text is entered into the filter textbox, all items with a *IsVisible* property will be set to true. If an item does not have the *Text* and *IsVisible* properties then it is ignored i.e. it will remain visible as long its parent is visible.
 
-Note: the filter does not add or remove items from a list but rather sets the *IsVisible* field on each item as appropriate.
+> **NOTE:** _The filter does not add or remove items from a list but rather sets the *IsVisible* field on each item as appropriate._
 
 ####Commands
 The **XamlFilterTree** also allows a view model to respond to the following commands:
-RemoveItemCommand
-AddItemCommand
-SelectItemCommand
-DragDropCommand
+* RemoveItemCommand
+* AddItemCommand
+* SelectItemCommand
+* DragDropCommand
 
 The example below shows a list of users, their assigned roles and the activities associated with each role. The *User*, *Role* and *Activity* objects expose public *Text* and *IsVisible* properties and can be filtered in or out of view when the user types in the filter textbox above the list.
 
