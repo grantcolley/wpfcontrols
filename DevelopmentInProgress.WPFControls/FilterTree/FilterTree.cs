@@ -52,7 +52,7 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
                     foreach (var interfaceType in interfaces)
                     {
                         if (interfaceType.IsGenericType &&
-                            interfaceType.GetGenericTypeDefinition().Equals(typeof(IEnumerable<>)))
+                            interfaceType.GetGenericTypeDefinition().Name.Equals(typeof(IEnumerable<>).Name))
                         {
                             var itemTypes = property.PropertyType.GetGenericArguments();
                             foreach (var itemType in itemTypes)
