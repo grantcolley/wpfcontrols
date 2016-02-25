@@ -64,7 +64,7 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
                             if (textPropertyInfo != null
                                 && visiblePropertyInfo != null)
                             {
-                                if (Contains((IEnumerable) property.GetValue(item, null), text, level))
+                                if (Contains((IEnumerable) property.GetValue(item, null), text))
                                 {
                                     innerResult = true;
                                 }
