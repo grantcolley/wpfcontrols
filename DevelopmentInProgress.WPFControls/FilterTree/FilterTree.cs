@@ -7,6 +7,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -48,21 +49,24 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
                 var properties = item.GetType().GetProperties();
                 foreach (var property in properties)
                 {
-                    var interfaces = property.PropertyType.GetInterfaces();
-                    foreach (var interfaceType in interfaces)
+                    if (
+                        property.PropertyType.GetInterfaces()
+                            .Any(
+                                i =>
+                                    i.IsGenericType &&
+                                    i.GetGenericTypeDefinition().Name.Equals(typeof (IEnumerable<>).Name)))
                     {
-                        if (interfaceType.IsGenericType &&
-                            interfaceType.GetGenericTypeDefinition().Name.Equals(typeof(IEnumerable<>).Name))
+                        foreach (var itemType in property.PropertyType.GetGenericArguments())
                         {
-                            var itemTypes = property.PropertyType.GetGenericArguments();
-                            foreach (var itemType in itemTypes)
+                            var textPropertyInfo = itemType.GetProperty("Text");
+                            var visiblePropertyInfo = itemType.GetProperty("IsVisible");
+
+                            if (textPropertyInfo != null
+                                && visiblePropertyInfo != null)
                             {
-                                var textPropertyInfo = itemType.GetProperty("Text");
-                                var visiblePropertyInfo = itemType.GetProperty("IsVisible");
-                                if (textPropertyInfo != null
-                                    && visiblePropertyInfo != null)
+                                if (Contains((IEnumerable) property.GetValue(item, null), text, level))
                                 {
-                                    innerResult = Contains((IEnumerable)property.GetValue(item, null), text);
+                                    innerResult = true;
                                 }
                             }
                         }
@@ -86,7 +90,7 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             if (textPropertyInfo != null
                 && visiblePropertyInfo != null)
             {
-                if (String.IsNullOrEmpty(text)
+                if (string.IsNullOrEmpty(text)
                     || hasVisibleChild)
                 {
                     visiblePropertyInfo.SetValue(t, true, null);
