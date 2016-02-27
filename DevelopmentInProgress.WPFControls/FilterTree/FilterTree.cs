@@ -228,7 +228,8 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             if (targetItem != null && dragItem != null)
             {
                 var xamlFilterTree = dragItem.Tag as XamlFilterTree;
-                if (xamlFilterTree != null)
+                if (xamlFilterTree != null
+                    && xamlFilterTree.DragDropCommand != null)
                 {
                     xamlFilterTree.DragDropCommand.Execute(new FilterTreeDragDropArgs(dragItem.Header, targetItem.Header));
                 }
