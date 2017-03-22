@@ -19,6 +19,7 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
         private static readonly DependencyProperty RemoveItemCommandProperty;
         private static readonly DependencyProperty SelectItemCommandProperty;
         private static readonly DependencyProperty DragDropCommandProperty;
+        private static readonly DependencyProperty IsEditableProperty;
 
         /// <summary>
         /// Static constructor for registering dependency properties.
@@ -46,6 +47,9 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
 
             DragDropCommandProperty = DependencyProperty.Register("DragDropCommand", typeof(ICommand),
                 typeof (XamlFilterTree));
+
+            IsEditableProperty = DependencyProperty.Register("IsEditable", typeof(bool),
+                typeof (XamlFilterTree), new PropertyMetadata(true));
         }
 
         /// <summary>
@@ -111,6 +115,16 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
         {
             get { return (ICommand)GetValue(DragDropCommandProperty); }
             set { SetValue(DragDropCommandProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating wwhether the XamlFilterTree is editable or not.
+        /// The XamlFilterTree is editable by default.
+        /// </summary>
+        public bool IsEditable
+        {
+            get { return (bool) GetValue(IsEditableProperty); }
+            set { SetValue(IsEditableProperty, value); }
         }
     }
 }

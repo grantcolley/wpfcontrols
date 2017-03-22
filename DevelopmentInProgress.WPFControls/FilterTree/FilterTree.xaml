@@ -7,7 +7,8 @@
 
     <ContextMenu x:Key="TreeViewContextMenu">
         <ContextMenu.Items>
-            <MenuItem Header="Add New Item" Command="{Binding Path=PlacementTarget.Tag.AddItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}">
+            <MenuItem Header="Add New Item" Command="{Binding Path=PlacementTarget.Tag.AddItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}"
+                      Visibility="{Binding Path=PlacementTarget.Tag.IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}, Converter={StaticResource boolToVisibilityConverter}}">
                 <MenuItem.Icon>
                     <Image Source="../Images/AddNewItem.png" ToolTip="Add New Item" MaxHeight="14" MaxWidth="14" VerticalAlignment="Center"/>
                 </MenuItem.Icon>
@@ -38,6 +39,7 @@
                                     <ContextMenu x:Key="ItemContextMenu">
                                         <ContextMenu.Items>
                                             <MenuItem Header="Remove Item" 
+                                                      Visibility="{Binding Path=PlacementTarget.Tag.IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}, Converter={StaticResource boolToVisibilityConverter}}"
                                                       Command="{Binding Path=PlacementTarget.Tag.RemoveItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}"
                                                       CommandParameter="{Binding Path=PlacementTarget.DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}">
                                                 <MenuItem.Icon>

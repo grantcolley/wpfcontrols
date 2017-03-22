@@ -168,6 +168,13 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
                 return;
             }
 
+            var xamlFilterTree = item.Tag as XamlFilterTree;
+            if (xamlFilterTree == null
+                || !xamlFilterTree.IsEditable)
+            {
+                return;
+            }
+
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 dragItem = item;
