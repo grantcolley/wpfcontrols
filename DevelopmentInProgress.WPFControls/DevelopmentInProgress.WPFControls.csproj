@@ -95,6 +95,8 @@
     <Compile Include="Messaging\MessageBoxViewModel.cs" />
     <Compile Include="Messaging\MessagePanel.cs" />
     <Compile Include="Messaging\MessageType.cs" />
+    <Compile Include="Messaging\XamlErrorBox.cs" />
+    <Compile Include="Messaging\XamlMessageBox.cs" />
     <Compile Include="Messaging\XamlMessagePanel.cs" />
     <Compile Include="NavigationPanel\NavigationList.cs" />
     <Compile Include="NavigationPanel\NavigationListItem.cs" />
