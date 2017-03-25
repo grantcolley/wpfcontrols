@@ -1,36 +1,41 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="MessageWindowView.cs" company="Development In Progress Ltd">
+//     Copyright © Development In Progress Ltd 2013. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
 using DevelopmentInProgress.WPFControls.Converters;
 
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
     /// <summary>
-    /// The view model for the <see cref="MessageBoxView"/>.
+    /// The view model for the <see cref="MessageWindowView"/>.
     /// </summary>
-    public class MessageBoxViewModel
+    internal class MessageWindowViewModel
     {
         private const string OK = "Ok";
         private const string CANCEL = "Cancel";
         private const string YES = "Yes";
         private const string NO = "No";
 
-        private readonly Message message;
+        private readonly MessageWindowSettings messageWindowSettings;
 
         private bool isClosing;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MessageBoxViewModel"/>.
+        /// Initializes a new instance of the <see cref="MessageWindowViewModel"/>.
         /// </summary>
-        /// <param name="message">The message to display.</param>
-        /// <param name="messageBoxButtons">The buttons to display.</param>
-        /// <param name="copyToClipboardEnabled">Indicates whether to enable copy to clipboard.</param>
-        public MessageBoxViewModel(Message message, MessageBoxButtons messageBoxButtons, bool copyToClipboardEnabled)
+        /// <param name="messageWindowSettings">The settings of the messsage to display.</param>
+        internal MessageWindowViewModel(MessageWindowSettings messageWindowSettings)
         {
-            this.message = message;
-            CopyToClipboardEnabled = copyToClipboardEnabled;
+            this.messageWindowSettings = messageWindowSettings;
 
-            switch (messageBoxButtons)
+            CopyToClipboardEnabled = messageWindowSettings.CopyToClipboardEnabled;
+
+            switch (messageWindowSettings.MessageWindowButtons)
             {
-                case MessageBoxButtons.Ok:
+                case MessageWindowButtons.Ok:
                     ButtonLeftVisible = false;
                     ButtonLeftText = String.Empty;
                     ButtonCentreVisible = true;
@@ -38,7 +43,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                     ButtonRightVisible = false;
                     ButtonRightText = String.Empty;
                     break;
-                case MessageBoxButtons.OkCancel:
+                case MessageWindowButtons.OkCancel:
                     ButtonLeftVisible = true;
                     ButtonLeftText = OK;
                     ButtonCentreVisible = false;
@@ -46,7 +51,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                     ButtonRightVisible = true;
                     ButtonRightText = CANCEL;
                     break;
-                case MessageBoxButtons.YesNo:
+                case MessageWindowButtons.YesNo:
                     ButtonLeftVisible = true;
                     ButtonLeftText = YES;
                     ButtonCentreVisible = false;
@@ -54,7 +59,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                     ButtonRightVisible = true;
                     ButtonRightText = NO;
                     break;
-                case MessageBoxButtons.YesNoCancel:
+                case MessageWindowButtons.YesNoCancel:
                     ButtonLeftVisible = true;
                     ButtonLeftText = YES;
                     ButtonCentreVisible = true;
@@ -68,85 +73,85 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// <summary>
         /// Gets the type of message that is converted to an image by the <see cref="MessageTextToImageConverter"/>.
         /// </summary>
-        public string Type { get { return message.Type; } }
+        internal string Type { get { return messageWindowSettings.Message.Type; } }
 
         /// <summary>
         /// Gets the message to display.
         /// </summary>
-        public string Message { get { return message.Text ?? String.Empty; } }
+        internal string Message { get { return messageWindowSettings.Message.Text ?? String.Empty; } }
 
         /// <summary>
         /// Gets the message title.
         /// </summary>
-        public string Title { get { return message.Title ?? String.Empty; } }
+        internal string Title { get { return messageWindowSettings.Message.Title ?? String.Empty; } }
 
         /// <summary>
         /// Gets or sets a value indicating whether you can copy the message to a clipboard.
         /// </summary>
-        public bool CopyToClipboardEnabled { get; private set; }
+        internal bool CopyToClipboardEnabled { get; private set; }
 
         /// <summary>
         /// Gets the type of image to display for the clipboard
         /// once converted to image by <see cref="MessageTextToImageConverter"/>.
         /// </summary>
-        public string Clipboard { get { return "Clipboard"; } }
+        internal string Clipboard { get { return "Clipboard"; } }
 
         /// <summary>
         /// Gets the message result.
         /// </summary>
-        public MessageBoxResult MessageResult { get; set; }
+        internal MessageWindowResult MessageWindowResult { get; set; }
 
         /// <summary>
         /// Gets text for the left button.
         /// </summary>
-        public string ButtonLeftText { get; set; }
+        internal string ButtonLeftText { get; set; }
 
         /// <summary>
         /// Gets the value to indicate whether the left button is visible.
         /// </summary>
-        public bool ButtonLeftVisible { get; set; }
+        internal bool ButtonLeftVisible { get; set; }
 
         /// <summary>
         /// Gets text for the centre button.
         /// </summary>
-        public string ButtonCentreText { get; set; }
+        internal string ButtonCentreText { get; set; }
 
         /// <summary>
         /// Gets the value to indicate whether the centre button is visible.
         /// </summary>
-        public bool ButtonCentreVisible { get; set; }
+        internal bool ButtonCentreVisible { get; set; }
 
         /// <summary>
         /// Gets text for the right button.
         /// </summary>
-        public string ButtonRightText { get; set; }
+        internal string ButtonRightText { get; set; }
 
         /// <summary>
         /// Gets the value to indicate whether the right button is visible.
         /// </summary>
-        public bool ButtonRightVisible { get; set; }
+        internal bool ButtonRightVisible { get; set; }
 
         /// <summary>
         /// Handles the button click.
         /// </summary>
         /// <param name="button">The type of button clicked.</param>
-        public void OnButtonClick(string button)
+        internal void OnButtonClick(string button)
         {
             if (!isClosing)
             {
                 switch (button)
                 {
                     case OK:
-                        MessageResult = MessageBoxResult.Ok;
+                        MessageWindowResult = MessageWindowResult.Ok;
                         break;
                     case CANCEL:
-                        MessageResult = MessageBoxResult.Cancel;
+                        MessageWindowResult = MessageWindowResult.Cancel;
                         break;
                     case YES:
-                        MessageResult = MessageBoxResult.Yes;
+                        MessageWindowResult = MessageWindowResult.Yes;
                         break;
                     case NO:
-                        MessageResult = MessageBoxResult.No;
+                        MessageWindowResult = MessageWindowResult.No;
                         break;
                 }
             }
@@ -157,9 +162,9 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// <summary>
         /// Copies the message and stack trace to the clipboard.
         /// </summary>
-        public void OnCopyClick()
+        internal void OnCopyClick()
         {
-            string text = String.Format("{0}\r\n{1}", message.Title, message.Text);
+            string text = String.Format("{0}\r\n{1}", messageWindowSettings.Message.Title, messageWindowSettings.Message.Text);
             System.Windows.Clipboard.Clear();
             System.Windows.Clipboard.SetText(text);
         }

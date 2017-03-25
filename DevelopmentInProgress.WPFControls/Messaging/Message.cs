@@ -1,4 +1,10 @@
-﻿using DevelopmentInProgress.WPFControls.Converters;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Message.cs" company="Development In Progress Ltd">
+//     Copyright © Development In Progress Ltd 2013. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using DevelopmentInProgress.WPFControls.Converters;
 
 namespace DevelopmentInProgress.WPFControls.Messaging
 {

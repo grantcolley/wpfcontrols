@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MessageType.cs" company="Development In Progress Ltd">
+// <copyright file="MessageWindowButtons.cs" company="Development In Progress Ltd">
 //     Copyright © Development In Progress Ltd 2013. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
@@ -7,13 +7,13 @@
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
     /// <summary>
-    /// The type of message to be displayed.
+    /// The buttons to be displayed on the mesage window.
     /// </summary>
-    public enum MessageType
+    public enum MessageWindowButtons
     {
-        Info = 0,
-        Warn = 1,
-        Error = 2,
-        Question = 3
+        Ok,
+        OkCancel,
+        YesNo,
+        YesNoCancel
     }
 }

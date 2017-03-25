@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿//-----------------------------------------------------------------------
+// <copyright file="XamlFilterTree.cs" company="Development In Progress Ltd">
+//     Copyright © Development In Progress Ltd 2013. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;

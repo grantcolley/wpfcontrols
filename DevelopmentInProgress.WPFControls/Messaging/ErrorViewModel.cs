@@ -1,4 +1,10 @@
-﻿namespace DevelopmentInProgress.WPFControls.Messaging
+﻿//-----------------------------------------------------------------------
+// <copyright file="ErrorViewModel.cs" company="Development In Progress Ltd">
+//     Copyright © Development In Progress Ltd 2013. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace DevelopmentInProgress.WPFControls.Messaging
 {
     /// <summary>
     /// The view model for the <see cref="ErrorView"/> class.
