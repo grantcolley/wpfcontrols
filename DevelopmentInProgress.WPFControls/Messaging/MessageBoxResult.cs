@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MessageWindowButtons.cs" company="Development In Progress Ltd">
+// <copyright file="MessageBoxResult.cs" company="Development In Progress Ltd">
 //     Copyright © Development In Progress Ltd 2013. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
@@ -7,13 +7,13 @@
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
     /// <summary>
-    /// The buttons to be displayed on the mesage window.
+    /// Message box result.
     /// </summary>
-    public enum MessageWindowButtons
+    public enum MessageBoxResult
     {
         Ok,
-        OkCancel,
-        YesNo,
-        YesNoCancel
+        Cancel,
+        Yes,
+        No
     }
 }

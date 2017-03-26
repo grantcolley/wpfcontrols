@@ -4,42 +4,69 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using DevelopmentInProgress.WPFControls.Converters;
-
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
     /// <summary>
-    /// Details of the message to be displayed.
+    /// Shows a message and returns the users response.
     /// </summary>
-    public class Message
+    public static class Message
     {
         /// <summary>
-        /// Gets or sets the type of message to display.
+        /// Shows a message and returns the users response.
         /// </summary>
-        public MessageType MessageType { get; set; }
-
-        /// <summary>
-        /// Gets or sets the message text to display.
-        /// </summary>
-        public string Text { get; set; }
-
-        /// <summary>
-        /// Gets or sets the title of the message to display.
-        /// </summary>
-        public string Title { get; set; }
-
-        /// <summary>
-        /// Gets a text representation of the message to be 
-        /// converted to image by <see cref="MessageTextToImageConverter"/>.
-        /// </summary>
-        public string Type
+        /// <param name="text">The message text.</param>
+        /// <param name="title">The message title.</param>
+        /// <param name="messageType">The message type.</param>
+        /// <param name="buttons">The buttons to display.</param>
+        /// <param name="copyToClipboardEnabled">Enable copying message to the clipboard. Defaults is false.</param>
+        /// <returns>The users response to the message.</returns>
+        public static MessageBoxResult ShowBox(string text, string title, MessageType messageType,
+            MessageBoxButtons buttons, bool copyToClipboardEnabled = false)
         {
-            get
+            var message = new MessageBoxSettings()
             {
-                return MessageType == MessageType.Error ? "Error"
-                    : MessageType == MessageType.Warn ? "Warn"
-                    : MessageType == MessageType.Question ? "Question" : "Info";
-            }
+                Text = text,
+                Title = title,
+                MessageType = messageType,
+                MessageBoxButtons = buttons,
+                CopyToClipboardEnabled = copyToClipboardEnabled
+            };
+
+            return ShowBox(message);
+        }
+
+        /// <summary>
+        /// Shows a message and returns the users response.
+        /// </summary>
+        /// <param name="message">The message to show including text, title and message type.</param>
+        /// <param name="buttons">The buttons to display.</param>
+        /// <param name="copyToClipboardEnabled">Enable copying message to the clipboard. Defaults is false.</param>
+        /// <returns>The users response to the message.</returns>
+        public static MessageBoxResult ShowBox(MessageSettings messageSettings, MessageBoxButtons buttons, bool copyToClipboardEnabled = false)
+        {
+            var messageBoxSettings = new MessageBoxSettings(messageSettings)
+            {
+                MessageBoxButtons = buttons,
+                CopyToClipboardEnabled = copyToClipboardEnabled
+            };
+
+            return ShowBox(messageBoxSettings);
+        }
+
+        /// <summary>
+        /// Shows a message and returns the users response.
+        /// </summary>
+        /// <param name="messageBoxSettings">The message to show including text, title and 
+        /// message type, buttons and whether to enable copying the message to a clipboard</param>
+        /// <returns>The users response to the message.</returns>
+        public static MessageBoxResult ShowBox(MessageBoxSettings messageBoxSettings)
+        {
+            var model = new MessageBoxViewModel(messageBoxSettings);
+            var view = new MessageBoxView();
+            view.DataContext = model;
+            view.ShowDialog();
+            var result = model.MessageBoxResult;
+            return result;
         }
     }
 }

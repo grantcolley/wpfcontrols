@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MessageWindowView.cs" company="Development In Progress Ltd">
+// <copyright file="MessageBoxView.cs" company="Development In Progress Ltd">
 //     Copyright © Development In Progress Ltd 2013. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
@@ -10,29 +10,29 @@ using System.Windows.Controls;
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
     /// <summary>
-    /// Interaction logic for MessageWindowView.xaml for displaying a message.
+    /// Interaction logic for MessageBoxView.xaml for displaying a message.
     /// </summary>
-    partial class MessageWindowView : Window
+    partial class MessageBoxView : Window
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MessageWindowView"/> class.
+        /// Initializes a new instance of the <see cref="MessageBoxView"/> class.
         /// </summary>
-        public MessageWindowView()
+        public MessageBoxView()
         {
             InitializeComponent();
         }
 
         /// <summary>
         /// Handles a button click on the view and raises the 
-        /// OnButtonClicked event handler on the <see cref="MessageWindowViewModel"/>.
+        /// OnButtonClicked event handler on the <see cref="MessageBoxViewModel"/>.
         /// </summary>
         /// <param name="sender">The button clicked.</param>
         /// <param name="e">Event arguments.</param>
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
             var button = (Button)sender;
-            var messageWindowViewModel = (MessageWindowViewModel)this.DataContext;
-            messageWindowViewModel.OnButtonClick(button.Content.ToString());
+            var messageBoxViewModel = (MessageBoxViewModel)this.DataContext;
+            messageBoxViewModel.OnButtonClick(button.Content.ToString());
             this.Close();
         }
 
@@ -43,21 +43,21 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// <param name="e">Event arguments.</param>
         public void CopyClick(object sender, RoutedEventArgs e)
         {
-            var messageWindowViewModel = (MessageWindowViewModel)this.DataContext;
-            messageWindowViewModel.OnCopyClick();
+            var messageBoxViewModel = (MessageBoxViewModel)this.DataContext;
+            messageBoxViewModel.OnCopyClick();
         }
 
         /// <summary>
         /// Handles windows closing event on the view and raises the 
         /// OnButtonClicked event handler for a cancel action 
-        /// on the <see cref="MessageWindowViewModel"/>.
+        /// on the <see cref="MessageBoxViewModel"/>.
         /// </summary>
         /// <param name="sender">The button clicked.</param>
         /// <param name="e">Event arguments.</param>
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var messageWindowViewModel = (MessageWindowViewModel)this.DataContext;
-            messageWindowViewModel.OnButtonClick("Cancel");
+            var messageBoxViewModel = (MessageBoxViewModel)this.DataContext;
+            messageBoxViewModel.OnButtonClick("Cancel");
         }
     }
 }

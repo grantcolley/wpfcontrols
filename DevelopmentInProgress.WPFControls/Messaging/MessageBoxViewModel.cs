@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MessageWindowView.cs" company="Development In Progress Ltd">
+// <copyright file="MessageBoxViewModel.cs" company="Development In Progress Ltd">
 //     Copyright © Development In Progress Ltd 2013. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
@@ -10,32 +10,32 @@ using DevelopmentInProgress.WPFControls.Converters;
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
     /// <summary>
-    /// The view model for the <see cref="MessageWindowView"/>.
+    /// The view model for the <see cref="MessageBoxView"/>.
     /// </summary>
-    internal class MessageWindowViewModel
+    internal class MessageBoxViewModel
     {
         private const string OK = "Ok";
         private const string CANCEL = "Cancel";
         private const string YES = "Yes";
         private const string NO = "No";
 
-        private readonly MessageWindowSettings messageWindowSettings;
+        private readonly MessageBoxSettings messageBoxSettings;
 
         private bool isClosing;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MessageWindowViewModel"/>.
+        /// Initializes a new instance of the <see cref="MessageBoxViewModel"/>.
         /// </summary>
-        /// <param name="messageWindowSettings">The settings of the messsage to display.</param>
-        internal MessageWindowViewModel(MessageWindowSettings messageWindowSettings)
+        /// <param name="messageBoxSettings">The settings of the messsage to display.</param>
+        internal MessageBoxViewModel(MessageBoxSettings messageBoxSettings)
         {
-            this.messageWindowSettings = messageWindowSettings;
+            this.messageBoxSettings = messageBoxSettings;
 
-            CopyToClipboardEnabled = messageWindowSettings.CopyToClipboardEnabled;
+            CopyToClipboardEnabled = messageBoxSettings.CopyToClipboardEnabled;
 
-            switch (messageWindowSettings.MessageWindowButtons)
+            switch (messageBoxSettings.MessageBoxButtons)
             {
-                case MessageWindowButtons.Ok:
+                case MessageBoxButtons.Ok:
                     ButtonLeftVisible = false;
                     ButtonLeftText = String.Empty;
                     ButtonCentreVisible = true;
@@ -43,7 +43,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                     ButtonRightVisible = false;
                     ButtonRightText = String.Empty;
                     break;
-                case MessageWindowButtons.OkCancel:
+                case MessageBoxButtons.OkCancel:
                     ButtonLeftVisible = true;
                     ButtonLeftText = OK;
                     ButtonCentreVisible = false;
@@ -51,7 +51,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                     ButtonRightVisible = true;
                     ButtonRightText = CANCEL;
                     break;
-                case MessageWindowButtons.YesNo:
+                case MessageBoxButtons.YesNo:
                     ButtonLeftVisible = true;
                     ButtonLeftText = YES;
                     ButtonCentreVisible = false;
@@ -59,7 +59,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                     ButtonRightVisible = true;
                     ButtonRightText = NO;
                     break;
-                case MessageWindowButtons.YesNoCancel:
+                case MessageBoxButtons.YesNoCancel:
                     ButtonLeftVisible = true;
                     ButtonLeftText = YES;
                     ButtonCentreVisible = true;
@@ -73,17 +73,17 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// <summary>
         /// Gets the type of message that is converted to an image by the <see cref="MessageTextToImageConverter"/>.
         /// </summary>
-        internal string Type { get { return messageWindowSettings.Message.Type; } }
+        internal string Type { get { return messageBoxSettings.Type; } }
 
         /// <summary>
         /// Gets the message to display.
         /// </summary>
-        internal string Message { get { return messageWindowSettings.Message.Text ?? String.Empty; } }
+        internal string Message { get { return messageBoxSettings.Text ?? String.Empty; } }
 
         /// <summary>
         /// Gets the message title.
         /// </summary>
-        internal string Title { get { return messageWindowSettings.Message.Title ?? String.Empty; } }
+        internal string Title { get { return messageBoxSettings.Title ?? String.Empty; } }
 
         /// <summary>
         /// Gets or sets a value indicating whether you can copy the message to a clipboard.
@@ -99,7 +99,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// <summary>
         /// Gets the message result.
         /// </summary>
-        internal MessageWindowResult MessageWindowResult { get; set; }
+        internal MessageBoxResult MessageBoxResult { get; set; }
 
         /// <summary>
         /// Gets text for the left button.
@@ -142,16 +142,16 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                 switch (button)
                 {
                     case OK:
-                        MessageWindowResult = MessageWindowResult.Ok;
+                        MessageBoxResult = MessageBoxResult.Ok;
                         break;
                     case CANCEL:
-                        MessageWindowResult = MessageWindowResult.Cancel;
+                        MessageBoxResult = MessageBoxResult.Cancel;
                         break;
                     case YES:
-                        MessageWindowResult = MessageWindowResult.Yes;
+                        MessageBoxResult = MessageBoxResult.Yes;
                         break;
                     case NO:
-                        MessageWindowResult = MessageWindowResult.No;
+                        MessageBoxResult = MessageBoxResult.No;
                         break;
                 }
             }
@@ -164,7 +164,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// </summary>
         internal void OnCopyClick()
         {
-            string text = String.Format("{0}\r\n{1}", messageWindowSettings.Message.Title, messageWindowSettings.Message.Text);
+            string text = String.Format("{0}\r\n{1}", messageBoxSettings.Title, messageBoxSettings.Text);
             System.Windows.Clipboard.Clear();
             System.Windows.Clipboard.SetText(text);
         }
