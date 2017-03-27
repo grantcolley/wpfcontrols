@@ -40,7 +40,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// <summary>
         /// Shows a message and returns the users response.
         /// </summary>
-        /// <param name="message">The message to show including text, title and message type.</param>
+        /// <param name="messageSettings">The message to show including text, title and message type.</param>
         /// <param name="buttons">The buttons to display.</param>
         /// <param name="copyToClipboardEnabled">Enable copying message to the clipboard. Defaults is false.</param>
         /// <returns>The users response to the message.</returns>
