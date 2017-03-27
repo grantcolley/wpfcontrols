@@ -12,7 +12,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
     /// <summary>
     /// The view model for the <see cref="MessageBoxView"/>.
     /// </summary>
-    internal class MessageBoxViewModel
+    public class MessageBoxViewModel
     {
         private const string OK = "Ok";
         private const string CANCEL = "Cancel";
@@ -27,7 +27,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// Initializes a new instance of the <see cref="MessageBoxViewModel"/>.
         /// </summary>
         /// <param name="messageBoxSettings">The settings of the messsage to display.</param>
-        internal MessageBoxViewModel(MessageBoxSettings messageBoxSettings)
+        public MessageBoxViewModel(MessageBoxSettings messageBoxSettings)
         {
             this.messageBoxSettings = messageBoxSettings;
 
@@ -73,69 +73,69 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// <summary>
         /// Gets the type of message that is converted to an image by the <see cref="MessageTextToImageConverter"/>.
         /// </summary>
-        internal string Type { get { return messageBoxSettings.Type; } }
+        public string Type { get { return messageBoxSettings.Type; } }
 
         /// <summary>
         /// Gets the message to display.
         /// </summary>
-        internal string Message { get { return messageBoxSettings.Text ?? String.Empty; } }
+        public string Message { get { return messageBoxSettings.Text ?? String.Empty; } }
 
         /// <summary>
         /// Gets the message title.
         /// </summary>
-        internal string Title { get { return messageBoxSettings.Title ?? String.Empty; } }
+        public string Title { get { return messageBoxSettings.Title ?? String.Empty; } }
 
         /// <summary>
         /// Gets or sets a value indicating whether you can copy the message to a clipboard.
         /// </summary>
-        internal bool CopyToClipboardEnabled { get; private set; }
+        public bool CopyToClipboardEnabled { get; private set; }
 
         /// <summary>
         /// Gets the type of image to display for the clipboard
         /// once converted to image by <see cref="MessageTextToImageConverter"/>.
         /// </summary>
-        internal string Clipboard { get { return "Clipboard"; } }
+        public string Clipboard { get { return "Clipboard"; } }
 
         /// <summary>
         /// Gets the message result.
         /// </summary>
-        internal MessageBoxResult MessageBoxResult { get; set; }
+        public MessageBoxResult MessageBoxResult { get; set; }
 
         /// <summary>
         /// Gets text for the left button.
         /// </summary>
-        internal string ButtonLeftText { get; set; }
+        public string ButtonLeftText { get; set; }
 
         /// <summary>
         /// Gets the value to indicate whether the left button is visible.
         /// </summary>
-        internal bool ButtonLeftVisible { get; set; }
+        public bool ButtonLeftVisible { get; set; }
 
         /// <summary>
         /// Gets text for the centre button.
         /// </summary>
-        internal string ButtonCentreText { get; set; }
+        public string ButtonCentreText { get; set; }
 
         /// <summary>
         /// Gets the value to indicate whether the centre button is visible.
         /// </summary>
-        internal bool ButtonCentreVisible { get; set; }
+        public bool ButtonCentreVisible { get; set; }
 
         /// <summary>
         /// Gets text for the right button.
         /// </summary>
-        internal string ButtonRightText { get; set; }
+        public string ButtonRightText { get; set; }
 
         /// <summary>
         /// Gets the value to indicate whether the right button is visible.
         /// </summary>
-        internal bool ButtonRightVisible { get; set; }
+        public bool ButtonRightVisible { get; set; }
 
         /// <summary>
         /// Handles the button click.
         /// </summary>
         /// <param name="button">The type of button clicked.</param>
-        internal void OnButtonClick(string button)
+        public void OnButtonClick(string button)
         {
             if (!isClosing)
             {
@@ -162,7 +162,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// <summary>
         /// Copies the message and stack trace to the clipboard.
         /// </summary>
-        internal void OnCopyClick()
+        public void OnCopyClick()
         {
             string text = String.Format("{0}\r\n{1}", messageBoxSettings.Title, messageBoxSettings.Text);
             System.Windows.Clipboard.Clear();
