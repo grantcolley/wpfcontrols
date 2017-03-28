@@ -51,7 +51,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Messaging\ErrorView.xaml">
+    <Page Include="Messaging\ExceptionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -59,7 +59,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Messaging\MessagePanel.xaml">
+    <Page Include="Messaging\MessagePanelView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -81,10 +81,10 @@
     <Compile Include="FilterTree\XamlFilterTree.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messaging\ErrorView.xaml.cs">
-      <DependentUpon>ErrorView.xaml</DependentUpon>
+    <Compile Include="Messaging\ExceptionView.xaml.cs">
+      <DependentUpon>ExceptionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Messaging\ErrorViewModel.cs" />
+    <Compile Include="Messaging\ExceptionViewModel.cs" />
     <Compile Include="Messaging\MessageSettings.cs" />
     <Compile Include="Messaging\MessageBoxButtons.cs" />
     <Compile Include="Messaging\MessageBoxResult.cs" />
@@ -93,11 +93,10 @@
       <DependentUpon>MessageBoxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Messaging\MessageBoxViewModel.cs" />
-    <Compile Include="Messaging\MessagePanel.cs" />
+    <Compile Include="Messaging\MessagePanelView.cs" />
     <Compile Include="Messaging\MessageType.cs" />
-    <Compile Include="Messaging\XamlErrorBox.cs" />
     <Compile Include="Messaging\Message.cs" />
-    <Compile Include="Messaging\XamlMessagePanel.cs" />
+    <Compile Include="Messaging\MessagePanel.cs" />
     <Compile Include="NavigationPanel\NavigationList.cs" />
     <Compile Include="NavigationPanel\NavigationListItem.cs" />
     <Compile Include="NavigationPanel\NavigationPanel.cs" />

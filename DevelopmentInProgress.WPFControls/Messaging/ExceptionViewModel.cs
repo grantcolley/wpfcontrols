@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ErrorViewModel.cs" company="Development In Progress Ltd">
+// <copyright file="ExceptionViewModel.cs" company="Development In Progress Ltd">
 //     Copyright © Development In Progress Ltd 2013. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
@@ -7,16 +7,16 @@
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
     /// <summary>
-    /// The view model for the <see cref="ErrorView"/> class.
+    /// The view model for the <see cref="ExceptionView"/> class.
     /// </summary>
-    public class ErrorViewModel
+    public class ExceptionViewModel
     {
         /// <summary>
-        /// Initializes a new insatance of the <see cref="ErrorViewModel"/> class.
+        /// Initializes a new insatance of the <see cref="ExceptionViewModel"/> class.
         /// </summary>
         /// <param name="message">The message to display.</param>
         /// <param name="stackTrace">The stacktrace to display.</param>
-        public ErrorViewModel(string message, string stackTrace)
+        public ExceptionViewModel(string message, string stackTrace)
         {
             Message = message;
             StackTrace = stackTrace;

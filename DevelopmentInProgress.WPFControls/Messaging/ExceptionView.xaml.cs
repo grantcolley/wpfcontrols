@@ -6,12 +6,12 @@ namespace DevelopmentInProgress.WPFControls.Messaging
     /// <summary>
     /// Interaction logic for ErrorView.xaml which displays an error message with stacktrace.
     /// </summary>
-    public partial class ErrorView : Window
+    public partial class ExceptionView : Window
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ErrorView"/> class.
+        /// Initializes a new instance of the <see cref="ExceptionView"/> class.
         /// </summary>
-        public ErrorView()
+        public ExceptionView()
         {
             InitializeComponent();
         }
