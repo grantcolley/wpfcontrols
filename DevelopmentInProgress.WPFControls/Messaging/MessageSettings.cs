@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Message.cs" company="Development In Progress Ltd">
+// <copyright file="MessageSettings.cs" company="Development In Progress Ltd">
 //     Copyright © Development In Progress Ltd 2013. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------

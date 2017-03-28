@@ -40,24 +40,6 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// <summary>
         /// Shows a message and returns the users response.
         /// </summary>
-        /// <param name="messageSettings">The message to show including text, title and message type.</param>
-        /// <param name="buttons">The buttons to display.</param>
-        /// <param name="copyToClipboardEnabled">Enable copying message to the clipboard. Defaults is false.</param>
-        /// <returns>The users response to the message.</returns>
-        public static MessageBoxResult ShowMessage(MessageSettings messageSettings, MessageBoxButtons buttons, bool copyToClipboardEnabled = false)
-        {
-            var messageBoxSettings = new MessageBoxSettings(messageSettings)
-            {
-                MessageBoxButtons = buttons,
-                CopyToClipboardEnabled = copyToClipboardEnabled
-            };
-
-            return ShowMessage(messageBoxSettings);
-        }
-
-        /// <summary>
-        /// Shows a message and returns the users response.
-        /// </summary>
         /// <param name="messageBoxSettings">The message to show including text, title and 
         /// message type, buttons and whether to enable copying the message to a clipboard</param>
         /// <returns>The users response to the message.</returns>
@@ -87,8 +69,8 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// <param name="stackTrace">The stacktrace.</param>
         public static void ShowException(string exceptionMessage, string stackTrace)
         {
-            var errorView = new ErrorView();
-            var errorViewModel = new ErrorViewModel(exceptionMessage, stackTrace);
+            var errorView = new ExceptionView();
+            var errorViewModel = new ExceptionViewModel(exceptionMessage, stackTrace);
             errorView.DataContext = errorViewModel;
             errorView.ShowDialog();
         }
