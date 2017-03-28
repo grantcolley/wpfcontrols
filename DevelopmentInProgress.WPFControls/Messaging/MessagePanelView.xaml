@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:messaging="clr-namespace:DevelopmentInProgress.WPFControls.Messaging"
-                    x:Class="DevelopmentInProgress.WPFControls.Messaging.MessagePanel">
+                    x:Class="DevelopmentInProgress.WPFControls.Messaging.MessagePanelView">
  
     <BooleanToVisibilityConverter x:Key="boolToVisibilityConverter"/>
 
