@@ -9,26 +9,8 @@ namespace DevelopmentInProgress.WPFControls.Messaging
     /// <summary>
     /// Details settings for the message to be displayed.
     /// </summary>
-    public class MessageBoxSettings : MessageSettings
+    public class MessageBoxSettings : Message
     {
-        /// <summary>
-        /// Initializes a ew instance of the MessageBoxSettings class.
-        /// </summary>
-        public MessageBoxSettings()
-        {            
-        }
-
-        /// <summary>
-        /// Initializes a ew instance of the MessageBoxSettings class.
-        /// </summary>
-        /// <param name="messageSettings">Details of the message to be displayed.</param>
-        public MessageBoxSettings(MessageSettings messageSettings)
-        {
-            MessageType = messageSettings.MessageType;
-            Title = messageSettings.Title;
-            Text = messageSettings.Text;
-        }
-
         /// <summary>
         /// Gets or sets the message box button to be displayed.
         /// </summary>

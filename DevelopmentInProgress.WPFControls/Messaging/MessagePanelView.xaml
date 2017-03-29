@@ -5,71 +5,48 @@
  
     <BooleanToVisibilityConverter x:Key="boolToVisibilityConverter"/>
 
-    <ContextMenu x:Key="TreeViewContextMenu">
-        <ContextMenu.Items>
-            <MenuItem Header="Add New Item" Command="{Binding Path=PlacementTarget.Tag.AddItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}"
-                      Visibility="{Binding Path=PlacementTarget.Tag.IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}, Converter={StaticResource boolToVisibilityConverter}}">
-                <MenuItem.Icon>
-                    <Image Source="../Images/AddNewItem.png" ToolTip="Add New Item" MaxHeight="14" MaxWidth="14" VerticalAlignment="Center"/>
-                </MenuItem.Icon>
-            </MenuItem>
-        </ContextMenu.Items>
-    </ContextMenu>
-
-    <!--<Style TargetType="{x:Type messaging:XamlMessagePanel}">
+    <Style TargetType="{x:Type messaging:MessagePanel}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <GroupBox Header="{Binding Path=Header, RelativeSource={RelativeSource TemplatedParent}}">
-                        <DockPanel LastChildFill="True">
-                            <DockPanel DockPanel.Dock="Top" LastChildFill="True" Height="24" Margin="5">
-                                <Image DockPanel.Dock="Right" Source="../Images/Filter.png" Height="18" Width="18"/>
-                                <TextBox Text="{Binding Path=FilterText, RelativeSource={RelativeSource TemplatedParent}}"
-                                         Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
-                                         TextChanged="OnTextChanged"/>
-                            </DockPanel>
-                            <TreeView x:Name="treeView"
-                                      ItemsSource="{Binding Path=ItemsSource, RelativeSource={RelativeSource TemplatedParent}}"
-                                      BorderBrush="Transparent"
-                                      BorderThickness="0"
-                                      Padding="5"
-                                      ContextMenu="{StaticResource TreeViewContextMenu}"
-                                      Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}">
-                                <TreeView.Resources>
-                                    <ContextMenu x:Key="ItemContextMenu">
-                                        <ContextMenu.Items>
-                                            <MenuItem Header="Remove Item" 
-                                                      Visibility="{Binding Path=PlacementTarget.Tag.IsEditable, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}, Converter={StaticResource boolToVisibilityConverter}}"
-                                                      Command="{Binding Path=PlacementTarget.Tag.RemoveItemCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}"
-                                                      CommandParameter="{Binding Path=PlacementTarget.DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=ContextMenu}}">
-                                                <MenuItem.Icon>
-                                                    <Image Source="../Images/RemoveItem.png" ToolTip="Remove Item" MaxHeight="14" MaxWidth="14" VerticalAlignment="Center"/>
-                                                </MenuItem.Icon>
-                                            </MenuItem>
-                                        </ContextMenu.Items>
-                                    </ContextMenu>
-                                </TreeView.Resources>
-                                <TreeView.ItemContainerStyle>
-                                    <Style TargetType="{x:Type TreeViewItem}">
-                                        <Setter Property="ToolTip" Value="{Binding Path=Text}"/>
-                                        <Setter Property="AllowDrop" Value="True"/>
-                                        <Setter Property="IsExpanded" Value="True"/>
-                                        <Setter Property="Visibility" Value="{Binding Path=IsVisible, Converter={StaticResource boolToVisibilityConverter}}"/>
-                                        <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}"/>
-                                        <Setter Property="Tag" Value="{Binding ElementName=treeView, Path=Tag}"/>
-                                        <EventSetter Event="MouseDoubleClick" Handler="OnSelectItemDoubleClickHandler"/>
-                                        <EventSetter Event="KeyUp" Handler="OnSelectItemKeyUpHandler"/>
-                                        <EventSetter Event="MouseMove" Handler="MouseMoveHandler"/>
-                                        <EventSetter Event="DragOver" Handler="DragOverHandler"/>
-                                        <EventSetter Event="Drop" Handler="DropHandler"/>
-                                    </Style>
-                                </TreeView.ItemContainerStyle>
-                            </TreeView>
-                        </DockPanel>
-                    </GroupBox>
+                    <Expander Visibility="{Binding IsMessagesVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource boolToVisibilityConverter}}"
+                              IsExpanded="{Binding IsMessagesExpanded, RelativeSource={RelativeSource TemplatedParent}}" MaxHeight="200" Background="#B7CAE0">
+                        <Expander.HeaderTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <TextBlock TextAlignment="Left" Text="Messages" DockPanel.Dock="Left"/>
+                                    <Button Command="{Binding Path=DataContext.ClearMessageBox, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" 
+                                Background="Transparent" BorderBrush="Transparent" BorderThickness="0" 
+                                ToolTip="Clear Messages" DockPanel.Dock="Right" Margin="10,2,2,2">
+                                        <Image Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       Source="..\Images\Close.png"/>
+                                    </Button>
+                                </DockPanel>
+                            </DataTemplate>
+                        </Expander.HeaderTemplate>
+                        <ListBox ItemsSource="{Binding Messages, RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="Transparent" BorderThickness="0">
+                            <ListBox.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#B7CAE0" Offset="0" />
+                                    <GradientStop Color="#E8F0FF" Offset="1" />
+                                </LinearGradientBrush>
+                            </ListBox.Background>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="messaging:Message">
+                                    <ContentControl MouseDoubleClick="MessageMouseDoubleClick">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Margin="2" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                   Source="{Binding Type, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource imageConverter}}"/>
+                                            <TextBlock Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" Foreground="{Binding Type, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource foregroundConverter}}"/>
+                                        </StackPanel>
+                                    </ContentControl>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Expander>
                 </ControlTemplate>
             </Setter.Value>            
         </Setter>
-    </Style>-->
+    </Style>
 
 </ResourceDictionary>

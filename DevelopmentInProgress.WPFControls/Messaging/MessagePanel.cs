@@ -11,8 +11,8 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         private ICommand selectionChangedCommand;
         private ICommand expanderChangedCommand;
 
-        private readonly static DependencyProperty SelectedMessageSettingsProperty;
-        private readonly static DependencyProperty MessageSettingssProperty;
+        private readonly static DependencyProperty SelectedMessageProperty;
+        private readonly static DependencyProperty MessagesProperty;
         private readonly static DependencyProperty IsExpandedProperty;
         private readonly static RoutedEvent ItemSelectedEvent;
 
@@ -24,12 +24,12 @@ namespace DevelopmentInProgress.WPFControls.Messaging
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MessagePanel),
                 new FrameworkPropertyMetadata(typeof(MessagePanel)));
 
-            SelectedMessageSettingsProperty = DependencyProperty.Register("SelectedMessageSettings",
-                typeof (MessagePanel), typeof (MessagePanel));
+            SelectedMessageProperty = DependencyProperty.Register("SelectedMessage",
+                typeof (Message), typeof (MessagePanel));
 
-            MessageSettingssProperty = DependencyProperty.Register("MessageSettingss",
-                typeof (List<MessagePanel>),
-                typeof (MessagePanel), new FrameworkPropertyMetadata(new List<MessageSettings>()));
+            MessagesProperty = DependencyProperty.Register("Messages",
+                typeof (List<Message>),
+                typeof (MessagePanel), new FrameworkPropertyMetadata(new List<Message>()));
 
             IsExpandedProperty = DependencyProperty.Register("IsExpanded", typeof (bool), typeof (MessagePanel));
 
@@ -42,7 +42,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// </summary>
         public MessagePanel()
         {
-            MessageSettingss = new List<MessageSettings>();
+            Messages = new List<Message>();
             selectionChangedCommand = new WpfCommand(OnSelectionChanged);
             expanderChangedCommand = new WpfCommand(OnExpanderChanged);
             IsExpanded = true;
@@ -69,21 +69,21 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         }
 
         /// <summary>
-        /// Gets or sets the selected <see cref="MessageSettings"/>.
+        /// Gets or sets the selected <see cref="Message"/>.
         /// </summary>
-        public MessageSettings SelectedMessageSettings
+        public Message SelectedMessage
         {
-            get { return (MessageSettings)GetValue(SelectedMessageSettingsProperty); }
-            set { SetValue(SelectedMessageSettingsProperty, value); }
+            get { return (Message)GetValue(SelectedMessageProperty); }
+            set { SetValue(SelectedMessageProperty, value); }
         }
 
         /// <summary>
-        /// Gets or sets a list of <see cref="MessageSettings"/>'s.
+        /// Gets or sets a list of <see cref="Message"/>'s.
         /// </summary>
-        public List<MessageSettings> MessageSettingss
+        public List<Message> Messages
         {
-            get { return (List<MessageSettings>)GetValue(MessageSettingssProperty); }
-            set { SetValue(MessageSettingssProperty, value); }
+            get { return (List<Message>)GetValue(MessagesProperty); }
+            set { SetValue(MessagesProperty, value); }
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the <see cref="MessageSettings"/> is selected.
+        /// Gets or sets a value indicating whether the <see cref="Message"/> is selected.
         /// </summary>
         public event RoutedEventHandler ItemSelected
         {
@@ -105,7 +105,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         }
 
         /// <summary>
-        /// Raises the ItemSelectedEvent passing in the selected MessageSettings.
+        /// Raises the ItemSelectedEvent passing in the selected Message.
         /// OnSelectionChanged handles the ListBox.SelectionChanged event which  
         /// triggers the SelectionChangedCommand using System.Windows.Interactivity.
         /// </summary>
@@ -117,8 +117,8 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                 return;
             }
 
-            var MessageSettings = arg as MessageSettings;
-            var args = new RoutedEventArgs(ItemSelectedEvent, MessageSettings);
+            var message = arg as Message;
+            var args = new RoutedEventArgs(ItemSelectedEvent, message);
             RaiseEvent(args);
         }
 
@@ -134,7 +134,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                 return;
             }
 
-            SelectedMessageSettings = arg as MessageSettings;
+            SelectedMessage = arg as Message;
             IsExpanded = !IsExpanded;
         }
     }
