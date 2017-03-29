@@ -75,6 +75,7 @@
     <Compile Include="Converters\BoolToStringConverter.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\MessageTextToImageConverter.cs" />
+    <Compile Include="Converters\TextToForegroundConverter.cs" />
     <Compile Include="Converters\UriStringToImageConverter.cs" />
     <Compile Include="FilterTree\FilterTree.cs" />
     <Compile Include="FilterTree\FilterTreeDragDropArgs.cs" />
@@ -85,7 +86,7 @@
       <DependentUpon>ExceptionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Messaging\ExceptionViewModel.cs" />
-    <Compile Include="Messaging\MessageSettings.cs" />
+    <Compile Include="Messaging\Message.cs" />
     <Compile Include="Messaging\MessageBoxButtons.cs" />
     <Compile Include="Messaging\MessageBoxResult.cs" />
     <Compile Include="Messaging\MessageBoxSettings.cs" />
@@ -95,7 +96,7 @@
     <Compile Include="Messaging\MessageBoxViewModel.cs" />
     <Compile Include="Messaging\MessagePanelView.cs" />
     <Compile Include="Messaging\MessageType.cs" />
-    <Compile Include="Messaging\Message.cs" />
+    <Compile Include="Messaging\Messaging.cs" />
     <Compile Include="Messaging\MessagePanel.cs" />
     <Compile Include="NavigationPanel\NavigationList.cs" />
     <Compile Include="NavigationPanel\NavigationListItem.cs" />
