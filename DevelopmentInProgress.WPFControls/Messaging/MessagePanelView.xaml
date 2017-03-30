@@ -1,9 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:messaging="clr-namespace:DevelopmentInProgress.WPFControls.Messaging"
+                    xmlns:converters="clr-namespace:DevelopmentInProgress.WPFControls.Converters"
                     x:Class="DevelopmentInProgress.WPFControls.Messaging.MessagePanelView">
- 
-    <BooleanToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+
+    <converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+    <converters:MessageTextToImageConverter x:Key="imageConverter"/>
+    <converters:TextToForegroundConverter x:Key="foregroundConverter"/>
 
     <Style TargetType="{x:Type messaging:MessagePanel}">
         <Setter Property="Template">

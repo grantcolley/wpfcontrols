@@ -1,4 +1,10 @@
-﻿using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="MessagePanel.cs" company="Development In Progress Ltd">
+//     Copyright © Development In Progress Ltd 2017. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
