@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MessagePanelView.cs" company="Development In Progress Ltd">
+// <copyright file="MessagePanelResources.cs" company="Development In Progress Ltd">
 //     Copyright © Development In Progress Ltd 2017. All rights reserved.
 // </copyright>
 //-----------------------------------------------------------------------
@@ -10,9 +10,9 @@ using System.Windows.Input;
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
     /// <summary>
-    /// Partial class providing code-behind supporting for events raised in MessagePanelView.xaml.
+    /// Partial class providing code-behind supporting for events raised in MessagePanelResources.xaml.
     /// </summary>
-    public partial class MessagePanelView
+    public partial class MessagePanelResources
     {
         private void MessageMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {

@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:messaging="clr-namespace:DevelopmentInProgress.WPFControls.Messaging"
                     xmlns:converters="clr-namespace:DevelopmentInProgress.WPFControls.Converters"
-                    x:Class="DevelopmentInProgress.WPFControls.Messaging.MessagePanelView">
+                    x:Class="DevelopmentInProgress.WPFControls.Messaging.MessagePanelResources">
 
     <converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
     <converters:MessageTextToImageConverter x:Key="imageConverter"/>
@@ -12,8 +12,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Expander Visibility="{Binding IsMessagesVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource boolToVisibilityConverter}}"
-                              IsExpanded="{Binding IsMessagesExpanded, RelativeSource={RelativeSource TemplatedParent}}" MaxHeight="200" Background="#B7CAE0">
+                    <Expander Visibility="{Binding Path=IsMessagePanelVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource boolToVisibilityConverter}}"
+                              IsExpanded="{Binding Path=IsMessagePanelExpanded, RelativeSource={RelativeSource TemplatedParent}}" MaxHeight="200">
                         <Expander.HeaderTemplate>
                             <DataTemplate>
                                 <DockPanel>
@@ -27,20 +27,14 @@
                                 </DockPanel>
                             </DataTemplate>
                         </Expander.HeaderTemplate>
-                        <ListBox ItemsSource="{Binding Messages, RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="Transparent" BorderThickness="0">
-                            <ListBox.Background>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                    <GradientStop Color="#B7CAE0" Offset="0" />
-                                    <GradientStop Color="#E8F0FF" Offset="1" />
-                                </LinearGradientBrush>
-                            </ListBox.Background>
+                        <ListBox ItemsSource="{Binding Path=Messages, RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="Transparent" BorderThickness="0">
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="messaging:Message">
                                     <ContentControl MouseDoubleClick="MessageMouseDoubleClick">
                                         <StackPanel Orientation="Horizontal">
                                             <Image Margin="2" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                                   Source="{Binding Type, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource imageConverter}}"/>
-                                            <TextBlock Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" Foreground="{Binding Type, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource foregroundConverter}}"/>
+                                                   Source="{Binding Path=Type, Converter={StaticResource imageConverter}}"/>
+                                            <TextBlock Text="{Binding Path=Text}" Foreground="{Binding Type, Converter={StaticResource foregroundConverter}}"/>
                                         </StackPanel>
                                     </ContentControl>
                                 </DataTemplate>

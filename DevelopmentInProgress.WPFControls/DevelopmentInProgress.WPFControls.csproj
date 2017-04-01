@@ -59,7 +59,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Messaging\MessagePanelView.xaml">
+    <Page Include="Messaging\MessagePanelResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -94,7 +94,7 @@
       <DependentUpon>MessageBoxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Messaging\MessageBoxViewModel.cs" />
-    <Compile Include="Messaging\MessagePanelView.cs" />
+    <Compile Include="Messaging\MessagePanelResources.cs" />
     <Compile Include="Messaging\MessageType.cs" />
     <Compile Include="Messaging\Messaging.cs" />
     <Compile Include="Messaging\MessagePanel.cs" />

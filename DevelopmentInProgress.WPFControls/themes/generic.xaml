@@ -3,5 +3,6 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/DipWpfControls;component/FilterTree/FilterTree.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/DipWpfControls;component/NavigationPanel/NavigationPanelResources.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/DipWpfControls;component/Messaging/MessagePanelResources.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,13 +14,11 @@ namespace DevelopmentInProgress.WPFControls.Messaging
 {
     public class MessagePanel : Control
     {
-        private ICommand selectionChangedCommand;
         private ICommand expanderChangedCommand;
 
-        private readonly static DependencyProperty SelectedMessageProperty;
         private readonly static DependencyProperty MessagesProperty;
-        private readonly static DependencyProperty IsExpandedProperty;
-        private readonly static RoutedEvent ItemSelectedEvent;
+        private readonly static DependencyProperty IsMessagePanelExpandedProperty;
+        private readonly static DependencyProperty IsMessagePanelVisibleProperty;
 
         /// <summary>
         /// Static constructor for <see cref="MessagePanel"/> registers dependency properties and events.
@@ -30,17 +28,13 @@ namespace DevelopmentInProgress.WPFControls.Messaging
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MessagePanel),
                 new FrameworkPropertyMetadata(typeof(MessagePanel)));
 
-            SelectedMessageProperty = DependencyProperty.Register("SelectedMessage",
-                typeof (Message), typeof (MessagePanel));
-
             MessagesProperty = DependencyProperty.Register("Messages",
-                typeof (List<Message>),
-                typeof (MessagePanel), new FrameworkPropertyMetadata(new List<Message>()));
+                typeof(ObservableCollection<Message>),
+                typeof(MessagePanel), new FrameworkPropertyMetadata(new ObservableCollection<Message>()));
 
-            IsExpandedProperty = DependencyProperty.Register("IsExpanded", typeof (bool), typeof (MessagePanel));
+            IsMessagePanelExpandedProperty = DependencyProperty.Register("IsMessagePanelExpanded", typeof(bool), typeof(MessagePanel));
 
-            ItemSelectedEvent = EventManager.RegisterRoutedEvent(
-                "ItemSelected", RoutingStrategy.Bubble, typeof (RoutedEventHandler), typeof (MessagePanel));
+            IsMessagePanelVisibleProperty = DependencyProperty.Register("IsMessagePanelVisible", typeof(bool), typeof(MessagePanel));
         }
 
         /// <summary>
@@ -48,20 +42,10 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// </summary>
         public MessagePanel()
         {
-            Messages = new List<Message>();
-            selectionChangedCommand = new WpfCommand(OnSelectionChanged);
+            Messages = new ObservableCollection<Message>();
             expanderChangedCommand = new WpfCommand(OnExpanderChanged);
-            IsExpanded = true;
-        }
-        
-        /// <summary>
-        /// Uses System.Windows.Interactivity in the Xaml where the 
-        /// ListBox.SelectionChanged event triggers the SelectionChangedCommand. 
-        /// </summary>
-        public ICommand SelectionChangedCommand
-        {
-            get { return selectionChangedCommand; }
-            set { selectionChangedCommand = value; }
+            IsMessagePanelExpanded = true;
+            IsMessagePanelVisible = true;
         }
 
         /// <summary>
@@ -75,61 +59,34 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         }
 
         /// <summary>
-        /// Gets or sets the selected <see cref="Message"/>.
-        /// </summary>
-        public Message SelectedMessage
-        {
-            get { return (Message)GetValue(SelectedMessageProperty); }
-            set { SetValue(SelectedMessageProperty, value); }
-        }
-
-        /// <summary>
         /// Gets or sets a list of <see cref="Message"/>'s.
         /// </summary>
-        public List<Message> Messages
+        public ObservableCollection<Message> Messages
         {
-            get { return (List<Message>)GetValue(MessagesProperty); }
+            get { return (ObservableCollection<Message>)GetValue(MessagesProperty); }
             set { SetValue(MessagesProperty, value); }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the navigation panel list is expanded or collapsed.
+        /// Gets or sets a value indicating whether the message panel is expanded or collapsed.
         /// </summary>
-        public bool IsExpanded
+        public bool IsMessagePanelExpanded
         {
-            get { return (bool)GetValue(IsExpandedProperty); }
-            set { SetValue(IsExpandedProperty, value); }
+            get { return (bool)GetValue(IsMessagePanelExpandedProperty); }
+            set { SetValue(IsMessagePanelExpandedProperty, value); }
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the <see cref="Message"/> is selected.
+        /// Gets or sets a value indicating whether the message panel is visible or collapsed.
         /// </summary>
-        public event RoutedEventHandler ItemSelected
+        public bool IsMessagePanelVisible
         {
-            add { AddHandler(ItemSelectedEvent, value); }
-            remove { RemoveHandler(ItemSelectedEvent, value); }
+            get { return (bool)GetValue(IsMessagePanelVisibleProperty); }
+            set { SetValue(IsMessagePanelVisibleProperty, value); }
         }
 
         /// <summary>
-        /// Raises the ItemSelectedEvent passing in the selected Message.
-        /// OnSelectionChanged handles the ListBox.SelectionChanged event which  
-        /// triggers the SelectionChangedCommand using System.Windows.Interactivity.
-        /// </summary>
-        /// <param name="arg">The selected MessageSettings.</param>
-        private void OnSelectionChanged(object arg)
-        {
-            if (arg == null)
-            {
-                return;
-            }
-
-            var message = arg as Message;
-            var args = new RoutedEventArgs(ItemSelectedEvent, message);
-            RaiseEvent(args);
-        }
-
-        /// <summary>
-        /// Toggles the navigation panel list expanded / un-expanded.
+        /// Toggles the message panel is expanded or callapsed.
         /// </summary>
         /// <param name="arg">Null</param>
         private void OnExpanderChanged(object arg)
@@ -140,8 +97,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                 return;
             }
 
-            SelectedMessage = arg as Message;
-            IsExpanded = !IsExpanded;
+            IsMessagePanelExpanded = !IsMessagePanelExpanded;
         }
     }
 }
