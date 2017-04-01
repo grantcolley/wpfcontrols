@@ -1,4 +1,4 @@
-﻿# wpfcontrols
+# wpfcontrols
 [![Build status](https://ci.appveyor.com/api/projects/status/6o6weumr92epubkr/branch/master?svg=true)](https://ci.appveyor.com/project/grantcolley/wpfcontrols/branch/master)
 
 [NuGet package](https://www.nuget.org/packages/DipWpfControls/).
@@ -28,7 +28,7 @@ The following example shows a navigation panel with two main areas within an app
 
 ![Alt text](/README-images/navigationPanel.PNG?raw=true "Navigation Panel")
 
-#####Xaml
+##### Xaml
 ```C#
 <np:NavigationPanel x:Name="navigationPanel">
     <np:NavigationPanel.NavigationPanelItems>
@@ -68,7 +68,7 @@ The following example shows a navigation panel with two main areas within an app
 </np:NavigationPanel>
 ```
 
-#####C# 
+##### C# 
 ```C#
 var customerList = new NavigationListItem();
 customerList.ItemName = "Customer List";
@@ -149,7 +149,7 @@ navigationPanel.NavigationPanelItems.Add(userAdministration);
 ## XamlFilterTree
 The **XamFilterTree** is a filterable treeview with support for adding and removing items and drag drop operations.
 
-####Filtering
+#### Filtering
 In order for an object to qualify for filtering it must have two public settable properties:
 * Text (string)
 * IsVisible (bool)
@@ -158,7 +158,7 @@ As the user enters text into the filter textbox the treeview’s *ItemsSource* i
 
 > **NOTE:** _The filter does not add or remove items from a list but rather sets the *IsVisible* field on each item as appropriate._
 
-####Commands
+#### Commands
 The **XamlFilterTree** also allows a view model to respond to the following commands:
 * RemoveItemCommand
 * AddItemCommand
@@ -169,7 +169,7 @@ The example below shows a list of users, their assigned roles and the activities
 
 ![Alt text](/README-images/filterTree.PNG?raw=true "Filter Tree")
 
-#####Xaml
+##### Xaml
 ```C#
 <ft:XamlFilterTree 
     Header="User List" 
