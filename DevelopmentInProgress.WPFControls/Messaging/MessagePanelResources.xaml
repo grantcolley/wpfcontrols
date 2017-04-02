@@ -13,11 +13,12 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Expander Visibility="{Binding Path=IsMessagePanelVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource boolToVisibilityConverter}}"
-                              IsExpanded="{Binding Path=IsMessagePanelExpanded, RelativeSource={RelativeSource TemplatedParent}}" MaxHeight="200">
+                              IsExpanded="{Binding Path=IsMessagePanelExpanded, RelativeSource={RelativeSource TemplatedParent}}" MaxHeight="200"
+                              DataContext="{Binding ., RelativeSource={RelativeSource TemplatedParent}}">
                         <Expander.HeaderTemplate>
                             <DataTemplate>
                                 <DockPanel>
-                                    <TextBlock TextAlignment="Left" Text="Messages" DockPanel.Dock="Left"/>
+                                    <TextBlock TextAlignment="Left" Text="{Binding DataContext.HeaderText, RelativeSource={RelativeSource FindAncestor, AncestorType=Expander}}" DockPanel.Dock="Left"/>
                                     <Button Command="{Binding Path=DataContext.ClearMessageBox, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" 
                                 Background="Transparent" BorderBrush="Transparent" BorderThickness="0" 
                                 ToolTip="Clear Messages" DockPanel.Dock="Right" Margin="10,2,2,2">

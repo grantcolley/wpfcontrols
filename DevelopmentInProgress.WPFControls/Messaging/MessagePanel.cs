@@ -16,6 +16,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
     {
         private ICommand expanderChangedCommand;
 
+        private readonly static DependencyProperty HeaderTextProperty;
         private readonly static DependencyProperty MessagesProperty;
         private readonly static DependencyProperty IsMessagePanelExpandedProperty;
         private readonly static DependencyProperty IsMessagePanelVisibleProperty;
@@ -27,6 +28,8 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MessagePanel),
                 new FrameworkPropertyMetadata(typeof(MessagePanel)));
+
+            HeaderTextProperty = DependencyProperty.Register("HeaderText", typeof (string), typeof (MessagePanel));
 
             MessagesProperty = DependencyProperty.Register("Messages",
                 typeof(ObservableCollection<Message>),
@@ -65,6 +68,15 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         {
             get { return (ObservableCollection<Message>)GetValue(MessagesProperty); }
             set { SetValue(MessagesProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the panel header text.
+        /// </summary>
+        public string HeaderText
+        {
+            get { return (string)GetValue(HeaderTextProperty); }
+            set { SetValue(HeaderTextProperty, value); }
         }
 
         /// <summary>
