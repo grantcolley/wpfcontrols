@@ -27,7 +27,8 @@
                                 </DockPanel>
                             </DataTemplate>
                         </Expander.HeaderTemplate>
-                        <ListBox ItemsSource="{Binding Path=Messages, RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="Transparent" BorderThickness="0">
+                        <ListBox ItemsSource="{Binding Path=Messages, RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="Transparent" BorderThickness="0"
+                                 HorizontalContentAlignment="Stretch">
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="messaging:Message">
                                     <ContentControl MouseDoubleClick="MessageMouseDoubleClick">
