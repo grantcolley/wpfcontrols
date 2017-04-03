@@ -12,16 +12,15 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Expander Visibility="{Binding Path=IsMessagePanelVisible, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource boolToVisibilityConverter}}"
-                              IsExpanded="{Binding Path=IsMessagePanelExpanded, RelativeSource={RelativeSource TemplatedParent}}" MaxHeight="200"
+                    <Expander IsExpanded="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" MaxHeight="200"
                               DataContext="{Binding ., RelativeSource={RelativeSource TemplatedParent}}">
                         <Expander.HeaderTemplate>
                             <DataTemplate>
                                 <DockPanel>
                                     <TextBlock TextAlignment="Left" Text="{Binding DataContext.HeaderText, RelativeSource={RelativeSource FindAncestor, AncestorType=Expander}}" DockPanel.Dock="Left"/>
-                                    <Button Command="{Binding Path=DataContext.ClearMessageBox, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" 
-                                Background="Transparent" BorderBrush="Transparent" BorderThickness="0" 
-                                ToolTip="Clear Messages" DockPanel.Dock="Right" Margin="10,2,2,2">
+                                    <Button Command="{Binding DataContext.ClearMessages, RelativeSource={RelativeSource FindAncestor, AncestorType=Expander}}" 
+                                            Background="Transparent" BorderBrush="Transparent" BorderThickness="0" 
+                                            ToolTip="Clear Messages" DockPanel.Dock="Right" Margin="10,2,2,2">
                                         <Image Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center"
                                        Source="..\Images\Close.png"/>
                                     </Button>
@@ -32,11 +31,11 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="messaging:Message">
                                     <ContentControl MouseDoubleClick="MessageMouseDoubleClick">
-                                        <StackPanel Orientation="Horizontal">
-                                            <Image Margin="2" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        <DockPanel>
+                                            <Image Margin="2" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Left"
                                                    Source="{Binding Path=Type, Converter={StaticResource imageConverter}}"/>
                                             <TextBlock Text="{Binding Path=Text}" Foreground="{Binding Type, Converter={StaticResource foregroundConverter}}"/>
-                                        </StackPanel>
+                                        </DockPanel>
                                     </ContentControl>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>

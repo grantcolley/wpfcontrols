@@ -8,18 +8,15 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using DevelopmentInProgress.WPFControls.Command;
 
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
     public class MessagePanel : Control
     {
-        private ICommand expanderChangedCommand;
-
         private readonly static DependencyProperty HeaderTextProperty;
         private readonly static DependencyProperty MessagesProperty;
-        private readonly static DependencyProperty IsMessagePanelExpandedProperty;
-        private readonly static DependencyProperty IsMessagePanelVisibleProperty;
+        private static readonly DependencyProperty IsExpandedProperty;
+        private readonly static DependencyProperty ClearMessagesCommandProperty;
 
         /// <summary>
         /// Static constructor for <see cref="MessagePanel"/> registers dependency properties and events.
@@ -29,15 +26,16 @@ namespace DevelopmentInProgress.WPFControls.Messaging
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MessagePanel),
                 new FrameworkPropertyMetadata(typeof(MessagePanel)));
 
-            HeaderTextProperty = DependencyProperty.Register("HeaderText", typeof (string), typeof (MessagePanel));
+            HeaderTextProperty = DependencyProperty.Register("HeaderText", typeof (string), typeof (MessagePanel), new FrameworkPropertyMetadata("Messages"));
 
             MessagesProperty = DependencyProperty.Register("Messages",
                 typeof(ObservableCollection<Message>),
                 typeof(MessagePanel), new FrameworkPropertyMetadata(new ObservableCollection<Message>()));
 
-            IsMessagePanelExpandedProperty = DependencyProperty.Register("IsMessagePanelExpanded", typeof(bool), typeof(MessagePanel));
+            IsExpandedProperty = DependencyProperty.Register("IsExpanded", typeof(bool), typeof(MessagePanel), new FrameworkPropertyMetadata(true));
 
-            IsMessagePanelVisibleProperty = DependencyProperty.Register("IsMessagePanelVisible", typeof(bool), typeof(MessagePanel));
+            ClearMessagesCommandProperty = DependencyProperty.Register("ClearMessages", typeof (ICommand),
+                typeof (MessagePanel));
         }
 
         /// <summary>
@@ -46,19 +44,15 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         public MessagePanel()
         {
             Messages = new ObservableCollection<Message>();
-            expanderChangedCommand = new WpfCommand(OnExpanderChanged);
-            IsMessagePanelExpanded = true;
-            IsMessagePanelVisible = true;
         }
 
         /// <summary>
-        /// Uses System.Windows.Interactivity in the Xaml where the
-        /// Image.MouseDown event triggers the ExpanderChangedCommand.
+        /// Gets or sets the command to clear the list.
         /// </summary>
-        public ICommand ExpanderChangedCommand
+        public ICommand ClearMessages
         {
-            get { return expanderChangedCommand; }
-            set { expanderChangedCommand = value; }
+            get { return (ICommand)GetValue(ClearMessagesCommandProperty); }
+            set { SetValue(ClearMessagesCommandProperty, value); }
         }
 
         /// <summary>
@@ -82,34 +76,10 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// <summary>
         /// Gets or sets a value indicating whether the message panel is expanded or collapsed.
         /// </summary>
-        public bool IsMessagePanelExpanded
+        public bool IsExpanded
         {
-            get { return (bool)GetValue(IsMessagePanelExpandedProperty); }
-            set { SetValue(IsMessagePanelExpandedProperty, value); }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the message panel is visible or collapsed.
-        /// </summary>
-        public bool IsMessagePanelVisible
-        {
-            get { return (bool)GetValue(IsMessagePanelVisibleProperty); }
-            set { SetValue(IsMessagePanelVisibleProperty, value); }
-        }
-
-        /// <summary>
-        /// Toggles the message panel is expanded or callapsed.
-        /// </summary>
-        /// <param name="arg">Null</param>
-        private void OnExpanderChanged(object arg)
-        {
-
-            if (arg == null)
-            {
-                return;
-            }
-
-            IsMessagePanelExpanded = !IsMessagePanelExpanded;
+            get { return (bool)GetValue(IsExpandedProperty); }
+            set { SetValue(IsExpandedProperty, value); }
         }
     }
 }
