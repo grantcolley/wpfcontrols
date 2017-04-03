@@ -12,8 +12,10 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Expander IsExpanded="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" MaxHeight="200"
-                              DataContext="{Binding ., RelativeSource={RelativeSource TemplatedParent}}">
+                    <Expander IsExpanded="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
+                              DataContext="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
+                              Background="{Binding Path=HeaderBackground, RelativeSource={RelativeSource TemplatedParent}}"
+                              MaxHeight="200">
                         <Expander.HeaderTemplate>
                             <DataTemplate>
                                 <DockPanel>
@@ -27,7 +29,9 @@
                                 </DockPanel>
                             </DataTemplate>
                         </Expander.HeaderTemplate>
-                        <ListBox ItemsSource="{Binding Path=Messages, RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="Transparent" BorderThickness="0"
+                        <ListBox ItemsSource="{Binding Path=Messages, RelativeSource={RelativeSource TemplatedParent}}"
+                                 Background="{Binding Path=PanelBackground, RelativeSource={RelativeSource TemplatedParent}}"
+                                 BorderBrush="Transparent" BorderThickness="0"
                                  HorizontalContentAlignment="Stretch">
                             <ListBox.ItemTemplate>
                                 <DataTemplate DataType="messaging:Message">

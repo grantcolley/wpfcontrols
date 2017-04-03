@@ -8,15 +8,18 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
     public class MessagePanel : Control
     {
-        private readonly static DependencyProperty HeaderTextProperty;
-        private readonly static DependencyProperty MessagesProperty;
+        private static readonly DependencyProperty HeaderTextProperty;
+        private static readonly DependencyProperty MessagesProperty;
         private static readonly DependencyProperty IsExpandedProperty;
-        private readonly static DependencyProperty ClearMessagesCommandProperty;
+        private static readonly DependencyProperty HeaderBackgroundProperty;
+        private static readonly DependencyProperty PanelBackgroundProperty;
+        private static readonly DependencyProperty ClearMessagesCommandProperty;
 
         /// <summary>
         /// Static constructor for <see cref="MessagePanel"/> registers dependency properties and events.
@@ -33,6 +36,10 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                 typeof(MessagePanel), new FrameworkPropertyMetadata(new ObservableCollection<Message>()));
 
             IsExpandedProperty = DependencyProperty.Register("IsExpanded", typeof(bool), typeof(MessagePanel), new FrameworkPropertyMetadata(true));
+
+            PanelBackgroundProperty = DependencyProperty.Register("PanelBackground", typeof(Brush), typeof(MessagePanel));
+
+            HeaderBackgroundProperty = DependencyProperty.Register("HeaderBackground", typeof(Brush), typeof(MessagePanel));
 
             ClearMessagesCommandProperty = DependencyProperty.Register("ClearMessages", typeof (ICommand),
                 typeof (MessagePanel));
@@ -80,6 +87,24 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         {
             get { return (bool)GetValue(IsExpandedProperty); }
             set { SetValue(IsExpandedProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the header background colour.
+        /// </summary>
+        public Brush HeaderBackground
+        {
+            get { return (Brush) GetValue(HeaderBackgroundProperty); }
+            set { SetValue(HeaderBackgroundProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the panel background colour.
+        /// </summary>
+        public Brush PanelBackground
+        {
+            get { return (Brush)GetValue(PanelBackgroundProperty); }
+            set { SetValue(PanelBackgroundProperty, value); }
         }
     }
 }
