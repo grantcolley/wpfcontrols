@@ -6,6 +6,7 @@
 A suite of custom WPF controls including:
 * [NavigationPanel](#navigationpanel)
 * [XamlFilterTree](#xamlfiltertree)
+* [Messaging](#messaging)
 
 An example WPF window with a **NavigationPanel** docked to the left and **XamlFilterTree** filling the centre.
 
@@ -205,3 +206,6 @@ The example below shows a list of users, their assigned roles and the activities
     </ft:XamlFilterTree.Resources>
 </ft:XamlFilterTree>
 ```
+
+## Messaging
+Development in progress...
