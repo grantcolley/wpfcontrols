@@ -21,11 +21,11 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
         private readonly static DependencyProperty HeaderProperty;
         private readonly static DependencyProperty FilterTextProperty;
         private readonly static DependencyProperty ItemsSourceProperty;
-        private static readonly DependencyProperty AddItemCommandProperty;
-        private static readonly DependencyProperty RemoveItemCommandProperty;
-        private static readonly DependencyProperty SelectItemCommandProperty;
-        private static readonly DependencyProperty DragDropCommandProperty;
-        private static readonly DependencyProperty IsEditableProperty;
+        private readonly static DependencyProperty AddItemCommandProperty;
+        private readonly static DependencyProperty RemoveItemCommandProperty;
+        private readonly static DependencyProperty SelectItemCommandProperty;
+        private readonly static DependencyProperty DragDropCommandProperty;
+        private readonly static DependencyProperty IsEditableProperty;
 
         /// <summary>
         /// Static constructor for registering dependency properties.
