@@ -49,8 +49,8 @@ namespace DevelopmentInProgress.WPFControls.Messaging
             var view = new MessageBoxView();
             view.DataContext = model;
             view.ShowDialog();
-            var result = model.MessageBoxResult;
-            return result;
+            messageBoxSettings.MessageBoxResult = model.MessageBoxResult;
+            return messageBoxSettings.MessageBoxResult;
         }
 
         /// <summary>
