@@ -7,9 +7,9 @@ A suite of custom WPF controls including:
 * [NavigationPanel](#navigationpanel)
 * [XamlFilterTree](#xamlfiltertree)
 * [Messaging](#messaging)
-  * [MessagePanel](#messagepanel)
-  * [ShowMessage](#showmessage)
-  * [ShowException](#showmessage)
+   * [MessagePanel](#messagepanel)
+   * [ShowMessage](#showmessage)
+   * [ShowException](#showmessage)
   
 An example WPF window with a **NavigationPanel** docked to the left and **XamlFilterTree** filling the centre.
 
