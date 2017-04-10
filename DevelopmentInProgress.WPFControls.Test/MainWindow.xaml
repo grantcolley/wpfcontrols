@@ -5,34 +5,34 @@
         Title="WpfControls Test App" Height="437" Width="525">
     <np:NavigationPanel x:Name="navigationPanel">
         <np:NavigationPanel.NavigationPanelItems>
-            <np:NavigationPanelItem NavigationPanelItemName="Manage Relationships" ImageLocation="pack://application:,,,/RelationshipManager;component/ManageRelationships.png">
+            <np:NavigationPanelItem NavigationPanelItemName="Manage Users" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_Manage.png">
                 <np:NavigationPanelItem.NavigationList>
-                    <np:NavigationList NavigationListName="Customers">
+                    <np:NavigationList NavigationListName="Users">
                         <np:NavigationList.NavigationListItems>
-                            <np:NavigationListItem ItemName="Customer List" ItemClicked="CustomerListClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/CustomerList.png"/>
-                            <np:NavigationListItem ItemName="Add New Customer" ItemClicked="AddNewCustomerClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/AddNewCustomer.png"/>
+                            <np:NavigationListItem ItemName="Users" ItemClicked="NavigationListItem_OnItemClicked"  ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_List.png"/>
+                            <np:NavigationListItem ItemName="Add New User" ItemClicked="NavigationListItem_OnItemClicked"  ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_Add.png"/>
                         </np:NavigationList.NavigationListItems>
                     </np:NavigationList>
-                    <np:NavigationList NavigationListName="Contacts">
+                    <np:NavigationList NavigationListName="Roles &amp; Activities">
                         <np:NavigationList.NavigationListItems>
-                            <np:NavigationListItem ItemName="Contact List" ItemClicked="ContactListClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/ContactList.png"/>
-                            <np:NavigationListItem ItemName="Add New Contact" ItemClicked="AddNewContactClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/AddNewContact.png"/>
+                            <np:NavigationListItem ItemName="Roles" ItemClicked="NavigationListItem_OnItemClicked"  ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Roles.png"/>
+                            <np:NavigationListItem ItemName="Activities" ItemClicked="NavigationListItem_OnItemClicked"  ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Activities.png"/>
                         </np:NavigationList.NavigationListItems>
                     </np:NavigationList>
                 </np:NavigationPanelItem.NavigationList>
             </np:NavigationPanelItem>
-            <np:NavigationPanelItem NavigationPanelItemName="User Admininstration" ImageLocation="pack://application:,,,/RelationshipManager;component/UserAdministration.png">
+            <np:NavigationPanelItem NavigationPanelItemName="Customers &amp; Orders" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/customers.png">
                 <np:NavigationPanelItem.NavigationList>
-                    <np:NavigationList NavigationListName="Users">
+                    <np:NavigationList NavigationListName="Customers">
                         <np:NavigationList.NavigationListItems>
-                            <np:NavigationListItem ItemName="User List" ItemClicked="UserListClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/CustomerList.png"/>
-                            <np:NavigationListItem ItemName="Add New User" ItemClicked="AddNewUserClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/AddNewCustomer.png"/>
+                            <np:NavigationListItem ItemName="Customers" ItemClicked="NavigationListItem_OnItemClicked" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/CustomerList.png"/>
+                            <np:NavigationListItem ItemName="Add New Customer" ItemClicked="NavigationListItem_OnItemClicked" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/AddNewCustomer.png"/>
                         </np:NavigationList.NavigationListItems>
                     </np:NavigationList>
-                    <np:NavigationList NavigationListName="Roles">
+                    <np:NavigationList NavigationListName="Orders">
                         <np:NavigationList.NavigationListItems>
-                            <np:NavigationListItem ItemName="Role List" ItemClicked="RoleListClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/RoleList.png"/>
-                            <np:NavigationListItem ItemName="Add New Role" ItemClicked="AddNewRoleClicked" ImageLocation="pack://application:,,,/RelationshipManager;component/AddNewRole.png"/>
+                            <np:NavigationListItem ItemName="Orders" ItemClicked="NavigationListItem_OnItemClicked" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Orders.png"/>
+                            <np:NavigationListItem ItemName="Place New Order" ItemClicked="NavigationListItem_OnItemClicked" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/neworder.png"/>
                         </np:NavigationList.NavigationListItems>
                     </np:NavigationList>
                 </np:NavigationPanelItem.NavigationList>

@@ -13,5 +13,10 @@ namespace DevelopmentInProgress.WPFControls.Test
 
             DataContext = new MainViewModel();
         }
+
+        private void NavigationListItem_OnItemClicked(object sender, RoutedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
