@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:np="clr-namespace:DevelopmentInProgress.WPFControls.NavigationPanel;assembly=DipWpfControls"
         Title="WpfControls Test App" Height="437" Width="525">
-    <np:NavigationPanel x:Name="navigationPanel">
+    <np:NavigationPanel x:Name="NavigationPanel"/>
+    <!--<np:NavigationPanel x:Name="navigationPanel">
         <np:NavigationPanel.NavigationPanelItems>
             <np:NavigationPanelItem NavigationPanelItemName="Manage Users" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_Manage.png">
                 <np:NavigationPanelItem.NavigationList>
@@ -38,5 +39,5 @@
                 </np:NavigationPanelItem.NavigationList>
             </np:NavigationPanelItem>
         </np:NavigationPanel.NavigationPanelItems>
-    </np:NavigationPanel>
+    </np:NavigationPanel>-->
 </Window>
