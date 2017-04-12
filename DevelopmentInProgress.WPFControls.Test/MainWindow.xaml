@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:np="clr-namespace:DevelopmentInProgress.WPFControls.NavigationPanel;assembly=DipWpfControls"
         xmlns:msg="clr-namespace:DevelopmentInProgress.WPFControls.Messaging;assembly=DipWpfControls"
-        Title="WpfControls Test App" Height="500" Width="700">
+        xmlns:filterTree="clr-namespace:DevelopmentInProgress.WPFControls.FilterTree;assembly=DipWpfControls"
+        Title="Development in Progress Ltd" Height="700" Width="750">
     <DockPanel LastChildFill="True">
         <!--<np:NavigationPanel x:Name="NavigationPanel" DockPanel.Dock="Left"/>-->
         <np:NavigationPanel x:Name="navigationPanel" DockPanel.Dock="Left">
@@ -50,6 +51,6 @@
                 </LinearGradientBrush>
             </msg:MessagePanel.HeaderBackground>
         </msg:MessagePanel>
-        <ContentControl/>
+        <filterTree:XamlFilterTree/>
     </DockPanel>
 </Window>
