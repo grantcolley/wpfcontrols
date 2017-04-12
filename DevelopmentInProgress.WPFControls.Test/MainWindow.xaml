@@ -2,42 +2,54 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:np="clr-namespace:DevelopmentInProgress.WPFControls.NavigationPanel;assembly=DipWpfControls"
-        Title="WpfControls Test App" Height="437" Width="525">
-    <np:NavigationPanel x:Name="NavigationPanel"/>
-    <!--<np:NavigationPanel x:Name="navigationPanel">
-        <np:NavigationPanel.NavigationPanelItems>
-            <np:NavigationPanelItem NavigationPanelItemName="Manage Users" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_Manage.png">
-                <np:NavigationPanelItem.NavigationList>
-                    <np:NavigationList NavigationListName="Users">
-                        <np:NavigationList.NavigationListItems>
-                            <np:NavigationListItem ItemName="Users" ItemClicked="NavigationListItem_OnItemClicked"  ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_List.png"/>
-                            <np:NavigationListItem ItemName="Add New User" ItemClicked="NavigationListItem_OnItemClicked"  ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_Add.png"/>
-                        </np:NavigationList.NavigationListItems>
-                    </np:NavigationList>
-                    <np:NavigationList NavigationListName="Roles &amp; Activities">
-                        <np:NavigationList.NavigationListItems>
-                            <np:NavigationListItem ItemName="Roles" ItemClicked="NavigationListItem_OnItemClicked"  ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Roles.png"/>
-                            <np:NavigationListItem ItemName="Activities" ItemClicked="NavigationListItem_OnItemClicked"  ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Activities.png"/>
-                        </np:NavigationList.NavigationListItems>
-                    </np:NavigationList>
-                </np:NavigationPanelItem.NavigationList>
-            </np:NavigationPanelItem>
-            <np:NavigationPanelItem NavigationPanelItemName="Customers &amp; Orders" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/customers.png">
-                <np:NavigationPanelItem.NavigationList>
-                    <np:NavigationList NavigationListName="Customers">
-                        <np:NavigationList.NavigationListItems>
-                            <np:NavigationListItem ItemName="Customers" ItemClicked="NavigationListItem_OnItemClicked" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/CustomerList.png"/>
-                            <np:NavigationListItem ItemName="Add New Customer" ItemClicked="NavigationListItem_OnItemClicked" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/AddNewCustomer.png"/>
-                        </np:NavigationList.NavigationListItems>
-                    </np:NavigationList>
-                    <np:NavigationList NavigationListName="Orders">
-                        <np:NavigationList.NavigationListItems>
-                            <np:NavigationListItem ItemName="Orders" ItemClicked="NavigationListItem_OnItemClicked" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Orders.png"/>
-                            <np:NavigationListItem ItemName="Place New Order" ItemClicked="NavigationListItem_OnItemClicked" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/neworder.png"/>
-                        </np:NavigationList.NavigationListItems>
-                    </np:NavigationList>
-                </np:NavigationPanelItem.NavigationList>
-            </np:NavigationPanelItem>
-        </np:NavigationPanel.NavigationPanelItems>
-    </np:NavigationPanel>-->
+        xmlns:msg="clr-namespace:DevelopmentInProgress.WPFControls.Messaging;assembly=DipWpfControls"
+        Title="WpfControls Test App" Height="500" Width="700">
+    <DockPanel LastChildFill="True">
+        <!--<np:NavigationPanel x:Name="NavigationPanel" DockPanel.Dock="Left"/>-->
+        <np:NavigationPanel x:Name="navigationPanel" DockPanel.Dock="Left">
+            <np:NavigationPanel.NavigationPanelItems>
+                <np:NavigationPanelItem NavigationPanelItemName="Manage Users" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_Manage.png">
+                    <np:NavigationPanelItem.NavigationList>
+                        <np:NavigationList NavigationListName="Users">
+                            <np:NavigationList.NavigationListItems>
+                                <np:NavigationListItem ItemName="Users" ItemClicked="NavigationListItem_OnItemClicked"  ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_List.png"/>
+                                <np:NavigationListItem ItemName="Add New User" ItemClicked="NavigationListItem_OnItemClicked"  ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_Add.png"/>
+                            </np:NavigationList.NavigationListItems>
+                        </np:NavigationList>
+                        <np:NavigationList NavigationListName="Roles &amp; Activities">
+                            <np:NavigationList.NavigationListItems>
+                                <np:NavigationListItem ItemName="Roles" ItemClicked="NavigationListItem_OnItemClicked"  ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Roles.png"/>
+                                <np:NavigationListItem ItemName="Activities" ItemClicked="NavigationListItem_OnItemClicked"  ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Activities.png"/>
+                            </np:NavigationList.NavigationListItems>
+                        </np:NavigationList>
+                    </np:NavigationPanelItem.NavigationList>
+                </np:NavigationPanelItem>
+                <np:NavigationPanelItem NavigationPanelItemName="Customers &amp; Orders" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/customers.png">
+                    <np:NavigationPanelItem.NavigationList>
+                        <np:NavigationList NavigationListName="Customers">
+                            <np:NavigationList.NavigationListItems>
+                                <np:NavigationListItem ItemName="Customers" ItemClicked="NavigationListItem_OnItemClicked" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/CustomerList.png"/>
+                                <np:NavigationListItem ItemName="Add New Customer" ItemClicked="NavigationListItem_OnItemClicked" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/AddNewCustomer.png"/>
+                            </np:NavigationList.NavigationListItems>
+                        </np:NavigationList>
+                        <np:NavigationList NavigationListName="Orders">
+                            <np:NavigationList.NavigationListItems>
+                                <np:NavigationListItem ItemName="Orders" ItemClicked="NavigationListItem_OnItemClicked" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Orders.png"/>
+                                <np:NavigationListItem ItemName="Place New Order" ItemClicked="NavigationListItem_OnItemClicked" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/neworder.png"/>
+                            </np:NavigationList.NavigationListItems>
+                        </np:NavigationList>
+                    </np:NavigationPanelItem.NavigationList>
+                </np:NavigationPanelItem>
+            </np:NavigationPanel.NavigationPanelItems>
+        </np:NavigationPanel>
+        <msg:MessagePanel DockPanel.Dock="Bottom" HeaderText="Information" Messages="{Binding Messages}" ClearMessages="{Binding ClearMessages}">
+            <msg:MessagePanel.HeaderBackground>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#ECF5FC" Offset="0" />
+                    <GradientStop Color="#98B4D2" Offset="1" />
+                </LinearGradientBrush>
+            </msg:MessagePanel.HeaderBackground>
+        </msg:MessagePanel>
+        <ContentControl/>
+    </DockPanel>
 </Window>
