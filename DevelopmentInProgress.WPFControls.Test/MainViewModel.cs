@@ -1,18 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using DevelopmentInProgress.WPFControls.Messaging;
+using DevelopmentInProgress.WPFControls.Test.Models;
 
 namespace DevelopmentInProgress.WPFControls.Test
 {
-    public class MainViewModel
+    public class MainViewModel : NotifyChange
     {
 
         public MainViewModel()
         {
             LoadMessages();
+            LoadUsers();
+            OnPropertyChanged("");
         }
 
         public ObservableCollection<Message> Messages { get; set; }
+
+        public ObservableCollection<User> Users { get; set; }
 
         private void LoadMessages()
         {
@@ -35,6 +40,40 @@ namespace DevelopmentInProgress.WPFControls.Test
             };
 
             Messages = new ObservableCollection<Message>(new List<Message> { messageError, messageWarn, messageInfo });
+        }
+
+        public void LoadUsers()
+        {
+            var read = new Activity {Text = "Read", Image = @"..\Images\Activities.png"};
+            var write = new Activity { Text = "Read", Image = @"..\Images\Activity_Write.png" };
+            var accept = new Activity { Text = "Read", Image = @"..\Images\Activity_Accept.png" };
+            var reject = new Activity { Text = "Read", Image = @"..\Images\Activity_Reject.png" };
+            var email = new Activity { Text = "Read", Image = @"..\Images\Activity_email.png" };
+
+            var writer = new Role {Text = "Writer", Image = @"..\Images\Role_Writer.png"};
+            var reviewer = new Role { Text = "Reviewer", Image = @"..\Images\Role_Reviewer.png" };
+            var administrator = new Role { Text = "Administrator", Image = @"..\Images\Role_Administrator.png" };
+
+            var joe = new User {Text = "Joe Bloggs", Image = @"..\Images\user.png"};
+            var jane = new User {Text = "Jane Masters", Image = @"..\Images\user.png"};
+            var john = new User {Text = "Jack Smith", Image = @"..\Images\user.png"};
+
+            writer.Activities.Add(read);
+            writer.Activities.Add(write);
+            reviewer.Activities.Add(read);
+            reviewer.Activities.Add(accept);
+            reviewer.Activities.Add(reject);
+            administrator.Activities.Add(read);
+            administrator.Activities.Add(write);
+            administrator.Activities.Add(accept);
+            administrator.Activities.Add(reject);
+            administrator.Activities.Add(email);
+
+            joe.Roles.Add(writer);
+            jane.Roles.Add(reviewer);
+            john.Roles.Add(administrator);
+
+            Users = new ObservableCollection<User>(new[] {joe, jane, john});
         }
     }
 }
