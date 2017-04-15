@@ -222,6 +222,46 @@ The example below shows a list of users, their assigned roles and the activities
 ## Messaging
 
 #### MessagePanel
+Show custom messages in a panel.
+
+![Alt text](/README-images/messagePanel.PNG?raw=true "Message Panel")
+
+##### Xaml
+```C#
+<messaging:MessagePanel DockPanel.Dock="Bottom" HeaderText="Information" 
+                        Messages="{Binding Messages}" 
+                        ClearMessages="{Binding ClearMessages}" Margin="2">
+    <messaging:MessagePanel.HeaderBackground>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#ECF5FC" Offset="0" />
+            <GradientStop Color="#98B4D2" Offset="1" />
+        </LinearGradientBrush>
+    </messaging:MessagePanel.HeaderBackground>
+</messaging:MessagePanel>
+```
+
+##### C# 
+```C#
+var messageError = new Message()
+{
+    MessageType = MessageType.Error,
+    Text = "The role name is mandatory when creating or saving a role."
+};
+
+var messageWarn = new Message()
+{
+    MessageType = MessageType.Warn,
+    Text = "Cannot create a new role with the name 'Writer' as one already exists."
+};
+
+var messageInfo = new Message()
+{
+    MessageType = MessageType.Info,
+    Text = "User 'Joe Bloggs' has been granted the role 'Writer'."
+};
+
+Messages = new ObservableCollection<Message>(new List<Message> { messageError, messageWarn, messageInfo });
+```
 
 #### Dialog
 ##### ShowMessage
