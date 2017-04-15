@@ -45,10 +45,10 @@ namespace DevelopmentInProgress.WPFControls.Test
         public void LoadUsers()
         {
             var read = new Activity {Text = "Read", Image = @"..\Images\Activities.png"};
-            var write = new Activity { Text = "Read", Image = @"..\Images\Activity_Write.png" };
-            var accept = new Activity { Text = "Read", Image = @"..\Images\Activity_Accept.png" };
-            var reject = new Activity { Text = "Read", Image = @"..\Images\Activity_Reject.png" };
-            var email = new Activity { Text = "Read", Image = @"..\Images\Activity_email.png" };
+            var write = new Activity { Text = "Write", Image = @"..\Images\Activity_Write.png" };
+            var accept = new Activity { Text = "Accept", Image = @"..\Images\Activity_Accept.png" };
+            var reject = new Activity { Text = "Reject", Image = @"..\Images\Activity_Reject.png" };
+            var email = new Activity { Text = "Email", Image = @"..\Images\Activity_email.png" };
 
             var writer = new Role {Text = "Writer", Image = @"..\Images\Role_Writer.png"};
             var reviewer = new Role { Text = "Reviewer", Image = @"..\Images\Role_Reviewer.png" };

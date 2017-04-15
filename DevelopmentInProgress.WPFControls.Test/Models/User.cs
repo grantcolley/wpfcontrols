@@ -7,10 +7,12 @@ namespace DevelopmentInProgress.WPFControls.Test.Models
         public User()
         {
             Roles = new ObservableCollection<Role>();
+            IsVisible = true;
         }
 
         private string text;
         private string image;
+        private bool isVisible;
 
         public string Text
         {
@@ -32,7 +34,15 @@ namespace DevelopmentInProgress.WPFControls.Test.Models
             }
         }
 
-        public bool IsVisible { get; set; }
+        public bool IsVisible
+        {
+            get { return isVisible; }
+            set
+            {
+                isVisible = value;
+                OnPropertyChanged("IsVisible");
+            }
+        }
 
         public ObservableCollection<Role> Roles { get; set; }
     }

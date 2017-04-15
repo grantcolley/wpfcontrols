@@ -2,8 +2,14 @@
 {
     public class Activity : NotifyChange
     {
+        public Activity()
+        {
+            IsVisible = true;
+        }
+
         private string text;
         private string image;
+        private bool isVisible;
 
         public string Text
         {
@@ -25,6 +31,14 @@
             }
         }
 
-        public bool IsVisible { get; set; }
+        public bool IsVisible
+        {
+            get { return isVisible; }
+            set
+            {
+                isVisible = value;
+                OnPropertyChanged("IsVisible");
+            }
+        }
     }
 }
