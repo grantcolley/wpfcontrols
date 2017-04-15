@@ -265,4 +265,50 @@ Messages = new ObservableCollection<Message>(new List<Message> { messageError, m
 
 #### Dialog
 ##### ShowMessage
+Shows messages as a dialog.
+
+![Alt text](/README-images/showMessage.PNG?raw=true "Example Messages")
+
+```C#
+var info = new MessageBoxSettings
+{
+    Title = "Grant User Role",
+    Text = "User 'Joe Bloggs' has been granted the role 'Writer'. Do you wish to continue?",
+    MessageType = MessageType.Info,
+    MessageBoxButtons = MessageBoxButtons.OkCancel
+};
+
+var infoResult = Dialog.ShowMessage(info);
+
+var warn = new MessageBoxSettings
+{
+    Title = "Create Role",
+    Text = "A role with the name 'Writer' already exists.\nDo you want to replace it?",
+    MessageType = MessageType.Warn,
+    MessageBoxButtons = MessageBoxButtons.YesNoCancel
+};
+
+var warnResult = Dialog.ShowMessage(warn);
+
+var question = new MessageBoxSettings
+{
+    Title = "Remove User From Role",
+    Text = "Do you want to remove user 'Jane Master' from the 'Reviewer' role?",
+    MessageType = MessageType.Question,
+    MessageBoxButtons = MessageBoxButtons.YesNo
+};
+
+var questionResult = Dialog.ShowMessage(question);
+
+var error = new MessageBoxSettings
+{
+    Title = "Create Role",
+    Text = "The role name is mandatory when creating or saving a role.",
+    MessageType = MessageType.Error,
+    MessageBoxButtons = MessageBoxButtons.Ok
+};
+
+Dialog.ShowMessage(error);
+```
+
 ##### ShowException
