@@ -11,7 +11,7 @@ A suite of custom WPF controls including:
    * [ShowMessage](#showmessage)
    * [ShowException](#showmessage)
   
-An example WPF window with a **NavigationPanel** docked to the left and **XamlFilterTree** filling the centre.
+An example WPF window with a **NavigationPanel** docked to the left, a **MessagePanel** docked to the bottom and a **XamlFilterTree** filling the centre.
 
 ![Alt text](/README-images/mainExample.PNG?raw=true "Example WPF window with a NavigationPanel and XamlFilterTree")
 
