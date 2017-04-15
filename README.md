@@ -312,3 +312,18 @@ Dialog.ShowMessage(error);
 ```
 
 ##### ShowException
+Shows exceptions in a dialog.
+
+![Alt text](/README-images/showException.PNG?raw=true "Example Exception")
+
+```C#
+try
+{
+    int zero = 0;
+    var result = 1/zero;
+}
+catch (Exception ex)
+{
+    Dialog.ShowException(ex);
+}
+```
