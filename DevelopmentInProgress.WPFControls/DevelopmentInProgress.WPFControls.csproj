@@ -96,7 +96,7 @@
     <Compile Include="Messaging\MessageBoxViewModel.cs" />
     <Compile Include="Messaging\MessagePanelResources.cs" />
     <Compile Include="Messaging\MessageType.cs" />
-    <Compile Include="Messaging\Messaging.cs" />
+    <Compile Include="Messaging\Dialog.cs" />
     <Compile Include="Messaging\MessagePanel.cs" />
     <Compile Include="NavigationPanel\NavigationList.cs" />
     <Compile Include="NavigationPanel\NavigationListItem.cs" />

@@ -12,7 +12,7 @@
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <!--<navigationPanel:NavigationPanel x:Name="NavigationPanel" DockPanel.Dock="Left"/>-->
-        <navigationPanel:NavigationPanel x:Name="NavigationPanel" DockPanel.Dock="Left">
+        <navigationPanel:NavigationPanel x:Name="NavigationPanel" DockPanel.Dock="Left" Margin="2">
             <navigationPanel:NavigationPanel.NavigationPanelItems>
                 <navigationPanel:NavigationPanelItem NavigationPanelItemName="Manage Users" ImageLocation="pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_Manage.png">
                     <navigationPanel:NavigationPanelItem.NavigationList>
@@ -48,7 +48,7 @@
                 </navigationPanel:NavigationPanelItem>
             </navigationPanel:NavigationPanel.NavigationPanelItems>
         </navigationPanel:NavigationPanel>
-        <messaging:MessagePanel DockPanel.Dock="Bottom" HeaderText="Information" Messages="{Binding Messages}" ClearMessages="{Binding ClearMessages}">
+        <messaging:MessagePanel DockPanel.Dock="Bottom" HeaderText="Information" Messages="{Binding Messages}" ClearMessages="{Binding ClearMessages}" Margin="2">
             <messaging:MessagePanel.HeaderBackground>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientStop Color="#ECF5FC" Offset="0" />
@@ -58,6 +58,7 @@
         </messaging:MessagePanel>
         <filterTree:XamlFilterTree 
             Header="Users" 
+            Margin="2"
             ItemsSource="{Binding Users}" 
             RemoveItemCommand="{Binding ItemDeletedCommand}"
             AddItemCommand="{Binding ItemAddCommand}"

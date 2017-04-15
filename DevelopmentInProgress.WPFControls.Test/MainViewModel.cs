@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using DevelopmentInProgress.WPFControls.Messaging;
 using DevelopmentInProgress.WPFControls.Test.Models;
@@ -12,7 +13,7 @@ namespace DevelopmentInProgress.WPFControls.Test
         {
             LoadMessages();
             LoadUsers();
-            OnPropertyChanged("");
+            ShowMessageBoxes();
         }
 
         public ObservableCollection<Message> Messages { get; set; }
@@ -60,9 +61,11 @@ namespace DevelopmentInProgress.WPFControls.Test
 
             writer.Activities.Add(read);
             writer.Activities.Add(write);
+            
             reviewer.Activities.Add(read);
             reviewer.Activities.Add(accept);
             reviewer.Activities.Add(reject);
+
             administrator.Activities.Add(read);
             administrator.Activities.Add(write);
             administrator.Activities.Add(accept);
@@ -74,6 +77,59 @@ namespace DevelopmentInProgress.WPFControls.Test
             john.Roles.Add(administrator);
 
             Users = new ObservableCollection<User>(new[] {joe, jane, john});
+        }
+
+        private void ShowMessageBoxes()
+        {
+            var info = new MessageBoxSettings
+            {
+                Title = "Grant User Role",
+                Text = "User 'Joe Bloggs' has been granted the role 'Writer'. Do you wish to continue?",
+                MessageType = MessageType.Info,
+                MessageBoxButtons = MessageBoxButtons.OkCancel
+            };
+
+            var infoResult = Dialog.ShowMessage(info);
+
+            var warn = new MessageBoxSettings
+            {
+                Title = "Create Role",
+                Text = "A role with the name 'Writer' already exists.\nDo you want to replace it?",
+                MessageType = MessageType.Warn,
+                MessageBoxButtons = MessageBoxButtons.YesNoCancel
+            };
+
+            var warnResult = Dialog.ShowMessage(warn);
+
+            var question = new MessageBoxSettings
+            {
+                Title = "Remove User From Role",
+                Text = "Do you want to remove user 'Jane Master' from the 'Reviewer' role?",
+                MessageType = MessageType.Question,
+                MessageBoxButtons = MessageBoxButtons.YesNo
+            };
+
+            var questionResult = Dialog.ShowMessage(question);
+
+            var error = new MessageBoxSettings
+            {
+                Title = "Create Role",
+                Text = "The role name is mandatory when creating or saving a role.",
+                MessageType = MessageType.Error,
+                MessageBoxButtons = MessageBoxButtons.Ok
+            };
+
+            Dialog.ShowMessage(error);
+
+            try
+            {
+                int zero = 0;
+                var result = 1/zero;
+            }
+            catch (Exception ex)
+            {
+                Dialog.ShowException(ex);
+            }
         }
     }
 }

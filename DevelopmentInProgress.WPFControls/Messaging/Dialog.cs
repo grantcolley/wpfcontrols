@@ -11,7 +11,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
     /// <summary>
     /// Shows a message and returns the users response.
     /// </summary>
-    public static class Messaging
+    public static class Dialog
     {
         /// <summary>
         /// Shows a message and returns the users response.

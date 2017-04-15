@@ -38,7 +38,7 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                 CopyToClipboardEnabled = true
             };
 
-            Messaging.ShowMessage(messageBoxSettings);
+            Dialog.ShowMessage(messageBoxSettings);
         }
     }
 }
