@@ -143,7 +143,8 @@ namespace DevelopmentInProgress.WPFControls.FilterTree
             if (item.IsSelected)
             {
                 var xamlFilterTree = item.Tag as XamlFilterTree;
-                if (xamlFilterTree == null)
+                if (xamlFilterTree == null
+                    || xamlFilterTree.SelectItemCommand == null)
                 {
                     return;
                 }
