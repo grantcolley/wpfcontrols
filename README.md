@@ -74,80 +74,86 @@ The following example shows a navigation panel with two main areas within an app
 
 ##### C# 
 ```C#
-var customerList = new NavigationListItem();
-customerList.ItemName = "Customer List";
-customerList.ImageLocation = @"pack://application:,,,/RelationshipManager;component/CustomerList.png";
-customerList.ItemClicked += CustomerListClicked;
+var manageUsersPanelItem = new NavigationPanelItem();
+manageUsersPanelItem.NavigationPanelItemName = "Manage Users";
+manageUsersPanelItem.ImageLocation = @"pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_Manage.png";
 
-var addNewCustomer = new NavigationListItem();
-addNewCustomer.ItemName = "Add New Customer";
-addNewCustomer.ImageLocation = @"pack://application:,,,/RelationshipManager;component/AddNewCustomer.png";
-addNewCustomer.ItemClicked += AddNewCustomerClicked;
+var userAdministrationList = new NavigationList();
+userAdministrationList.NavigationListName = "User Administration";
 
-var customers = new NavigationList();
-customers.NavigationListName = "Customers";
-customers.NavigationListItems.Add(customerList);
-customers.NavigationListItems.Add(addNewCustomer);
+var usersListItem = new NavigationListItem();
+usersListItem.ItemName = "Users";
+usersListItem.ImageLocation = @"pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_List.png";
+usersListItem.ItemClicked += NavigationListItem_OnItemClicked;
 
-var contactList = new NavigationListItem();
-contactList.ItemName = "Contact List";
-contactList.ImageLocation = @"pack://application:,,,/RelationshipManager;component/ContactList.png";
-contactList.ItemClicked += ContactListClicked;
+var addNewUserListItem = new NavigationListItem();
+addNewUserListItem.ItemName = "Add New User";
+addNewUserListItem.ImageLocation = @"pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/User_Add.png";
+addNewUserListItem.ItemClicked += NavigationListItem_OnItemClicked;
 
-var addNewContact = new NavigationListItem();
-addNewContact.ItemName = "Add New Contact";
-addNewContact.ImageLocation = @"pack://application:,,,/RelationshipManager;component/AddNewContact.png";
-addNewContact.ItemClicked += AddNewContactClicked;
+userAdministrationList.NavigationListItems.Add(usersListItem);
+userAdministrationList.NavigationListItems.Add(addNewUserListItem);
 
-var contacts = new NavigationList();
-contacts.NavigationListName = "Contacts";
-contacts.NavigationListItems.Add(contactList);
-contacts.NavigationListItems.Add(addNewContact);
+var rolesAndActivitiesList = new NavigationList();
+rolesAndActivitiesList.NavigationListName = "Roles & Activities";
 
-var manageRelationships = new NavigationPanelItem();
-manageRelationships.NavigationPanelItemName = "Manage Relationships";
-manageRelationships.ImageLocation = @"pack://application:,,,/RelationshipManager;component/ManageRelationships.png";
-manageRelationships.NavigationList.Add(customers);
-manageRelationships.NavigationList.Add(contacts);
+var rolesListItem = new NavigationListItem();
+rolesListItem.ItemName = "Roles";
+rolesListItem.ImageLocation = @"pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Roles.png";
+rolesListItem.ItemClicked += NavigationListItem_OnItemClicked;
 
-var userList = new NavigationListItem();
-userList.ItemName = "User List";
-userList.ImageLocation = @"pack://application:,,,/RelationshipManager;component/UserList.png";
-userList.ItemClicked += UserListClicked;
+var activitiesListItem = new NavigationListItem();
+activitiesListItem.ItemName = "Activities";
+activitiesListItem.ImageLocation = @"pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Activities.png";
+activitiesListItem.ItemClicked += NavigationListItem_OnItemClicked;
 
-var addNewUser = new NavigationListItem();
-addNewUser.ItemName = "Add New User";
-addNewUser.ImageLocation = @"pack://application:,,,/RelationshipManager;component/AddNewUser.png";
-addNewUser.ItemClicked += AddNewUserClicked;
+rolesAndActivitiesList.NavigationListItems.Add(rolesListItem);
+rolesAndActivitiesList.NavigationListItems.Add(activitiesListItem);
 
-var users = new NavigationList();
-users.NavigationListName = "Users";
-users.NavigationListItems.Add(userList);
-users.NavigationListItems.Add(addNewUser);
+manageUsersPanelItem.NavigationList.Add(userAdministrationList);
+manageUsersPanelItem.NavigationList.Add(rolesAndActivitiesList);
 
-var roleList = new NavigationListItem();
-roleList.ItemName = "Role List";
-roleList.ImageLocation = @"pack://application:,,,/RelationshipManager;component/RoleList.png";
-roleList.ItemClicked += RoleListClicked;
+var customersAndOrdersPanelItem = new NavigationPanelItem();
+customersAndOrdersPanelItem.NavigationPanelItemName = "Customers & Orders";
+customersAndOrdersPanelItem.ImageLocation = @"pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Customers.png";
 
-var addNewRole = new NavigationListItem();
-addNewRole.ItemName = "Add New Role";
-addNewRole.ImageLocation = @"pack://application:,,,/RelationshipManager;component/AddNewRole.png";
-addNewRole.ItemClicked += AddNewRoleClicked;
+var customerAdministrationList = new NavigationList();
+userAdministrationList.NavigationListName = "Customers Administration";
 
-var roles = new NavigationList();
-roles.NavigationListName = "Roles";
-roles.NavigationListItems.Add(roleList);
-roles.NavigationListItems.Add(addNewRole);
+var customersListItem = new NavigationListItem();
+customersListItem.ItemName = "Customers";
+customersListItem.ImageLocation = @"pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Customers_List.png";
+customersListItem.ItemClicked += NavigationListItem_OnItemClicked;
 
-var userAdministration = new NavigationPanelItem();
-userAdministration.NavigationPanelItemName = "User Administration";
-userAdministration.ImageLocation = @"pack://application:,,,/RelationshipManager;component/UserAdministration.png";
-userAdministration.NavigationList.Add(users);
-userAdministration.NavigationList.Add(roles);
+var addNewCustomerListItem = new NavigationListItem();
+addNewCustomerListItem.ItemName = "Add New Customer";
+addNewCustomerListItem.ImageLocation = @"pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Add_Customer.png";
+addNewCustomerListItem.ItemClicked += NavigationListItem_OnItemClicked;
 
-navigationPanel.NavigationPanelItems.Add(manageRelationships);
-navigationPanel.NavigationPanelItems.Add(userAdministration);
+customerAdministrationList.NavigationListItems.Add(customersListItem);
+customerAdministrationList.NavigationListItems.Add(addNewCustomerListItem);
+
+var manageOrdersList = new NavigationList();
+manageOrdersList.NavigationListName = "Manage Orders";
+
+var ordersListItem = new NavigationListItem();
+ordersListItem.ItemName = "Orders";
+ordersListItem.ImageLocation = @"pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/Orders.png";
+ordersListItem.ItemClicked += NavigationListItem_OnItemClicked;
+
+var newOrderListItem = new NavigationListItem();
+newOrderListItem.ItemName = "Place New Order";
+newOrderListItem.ImageLocation = @"pack://application:,,,/DevelopmentInProgress.WPFControls.Test;component/Images/neworder.png";
+newOrderListItem.ItemClicked += NavigationListItem_OnItemClicked;
+
+manageOrdersList.NavigationListItems.Add(ordersListItem);
+manageOrdersList.NavigationListItems.Add(newOrderListItem);
+
+customersAndOrdersPanelItem.NavigationList.Add(customerAdministrationList);
+customersAndOrdersPanelItem.NavigationList.Add(manageOrdersList);
+
+NavigationPanel.NavigationPanelItems.Add(manageUsersPanelItem);
+NavigationPanel.NavigationPanelItems.Add(customersAndOrdersPanelItem);
 ```
 
 ## XamlFilterTree
