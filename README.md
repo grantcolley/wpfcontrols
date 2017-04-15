@@ -161,6 +161,7 @@ NavigationPanel.NavigationPanelItems.Add(customersAndOrdersPanelItem);
 The **XamFilterTree** is a filterable treeview with support for adding and removing items and drag drop operations.
 
 #### Filtering
+
 In order for an object to qualify for filtering it must have two public settable properties:
 * Text (string)
 * IsVisible (bool)
@@ -222,6 +223,6 @@ The example below shows a list of users, their assigned roles and the activities
 
 #### MessagePanel
 
-#### ShowMessage
-
-#### ShowException
+#### Dialog
+##### ShowMessage
+##### ShowException
