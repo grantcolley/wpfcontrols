@@ -23,17 +23,17 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                 return;
             }
 
-            var mesage = contentControl.DataContext as Message;
-            if (mesage == null)
+            var message = contentControl.DataContext as Message;
+            if (message == null)
             {
                 return;
             }
 
             var messageBoxSettings = new MessageBoxSettings
             {
-                Text = mesage.Text,
-                Title = mesage.Title,
-                MessageType = mesage.MessageType,
+                Text = string.IsNullOrWhiteSpace(message.TextVerbose) ? message.Text: message.TextVerbose,
+                Title = message.Title,
+                MessageType = message.MessageType,
                 MessageBoxButtons = MessageBoxButtons.Ok,
                 CopyToClipboardEnabled = true
             };

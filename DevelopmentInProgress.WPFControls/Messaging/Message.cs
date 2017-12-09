@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using DevelopmentInProgress.WPFControls.Converters;
+using System;
 
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
@@ -24,9 +24,16 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         public string Text { get; set; }
 
         /// <summary>
+        /// Gets or sets the verbose text to display.
+        /// </summary>
+        public string TextVerbose { get; set; }
+
+        /// <summary>
         /// Gets or sets the title of the message to display.
         /// </summary>
         public string Title { get; set; }
+
+        public DateTimeOffset Timestamp { get;set;}
 
         /// <summary>
         /// Gets a text representation of the message to be 

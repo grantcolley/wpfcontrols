@@ -15,7 +15,7 @@
                     <Expander IsExpanded="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
                               DataContext="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
                               Background="{Binding Path=HeaderBackground, RelativeSource={RelativeSource TemplatedParent}}"
-                              MaxHeight="200">
+                              MaxHeight="{Binding Path=MaxHeight, RelativeSource={RelativeSource TemplatedParent}}">
                         <Expander.HeaderTemplate>
                             <DataTemplate>
                                 <DockPanel>
