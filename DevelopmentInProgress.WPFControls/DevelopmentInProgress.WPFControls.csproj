@@ -91,6 +91,7 @@
     <Compile Include="Messaging\MessageBoxButtons.cs" />
     <Compile Include="Messaging\MessageBoxResult.cs" />
     <Compile Include="Messaging\MessageBoxSettings.cs" />
+    <Compile Include="Messaging\MessageBoxText.cs" />
     <Compile Include="Messaging\MessageBoxView.xaml.cs">
       <DependentUpon>MessageBoxView.xaml</DependentUpon>
     </Compile>

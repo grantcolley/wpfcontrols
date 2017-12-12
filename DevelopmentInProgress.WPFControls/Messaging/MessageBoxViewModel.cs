@@ -6,6 +6,7 @@
 
 using System;
 using DevelopmentInProgress.WPFControls.Converters;
+using System.Windows;
 
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
@@ -30,6 +31,10 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         public MessageBoxViewModel(MessageBoxSettings messageBoxSettings)
         {
             this.messageBoxSettings = messageBoxSettings;
+
+            TextAlignment = messageBoxSettings.MessageBoxText.TextAlignment;
+
+            TextAreaMaxWidth = messageBoxSettings.MessageBoxText.MaxWidth;
 
             CopyToClipboardEnabled = messageBoxSettings.CopyToClipboardEnabled;
 
@@ -130,6 +135,16 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         /// Gets the value to indicate whether the right button is visible.
         /// </summary>
         public bool ButtonRightVisible { get; set; }
+
+        /// <summary>
+        /// Gets or sets the text alignment.
+        /// </summary>
+        public TextAlignment TextAlignment { get; set; }
+
+        /// <summary>
+        /// Gets or sets the text area max width.
+        /// </summary>
+        public int TextAreaMaxWidth { get; set; }
 
         /// <summary>
         /// Handles the button click.

@@ -29,13 +29,20 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                 return;
             }
 
+            var messagePanel = contentControl.Tag as MessagePanel;
+            if (messagePanel == null)
+            {
+                return;
+            }
+
             var messageBoxSettings = new MessageBoxSettings
             {
-                Text = string.IsNullOrWhiteSpace(message.TextVerbose) ? message.Text: message.TextVerbose,
+                Text = string.IsNullOrWhiteSpace(message.TextVerbose) ? message.Text : message.TextVerbose,
                 Title = message.Title,
                 MessageType = message.MessageType,
                 MessageBoxButtons = MessageBoxButtons.Ok,
-                CopyToClipboardEnabled = true
+                CopyToClipboardEnabled = true,
+                MessageBoxText = new MessageBoxText { TextAlignment = messagePanel.ShowMessageTextAlignment, MaxWidth = messagePanel.ShowMessageTextAreaMaxWidth }
             };
 
             Dialog.ShowMessage(messageBoxSettings);

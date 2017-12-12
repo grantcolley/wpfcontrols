@@ -22,6 +22,11 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         public MessageBoxResult MessageBoxResult { get; set; }
 
         /// <summary>
+        /// Gets or sets the settings for the text area of the message box.
+        /// </summary>
+        public MessageBoxText MessageBoxText { get; set; } = new MessageBoxText();
+
+        /// <summary>
         /// Gets or sets a value to indicate whether the message can be copied to the clipboard.
         /// </summary>
         public bool CopyToClipboardEnabled { get; set; }

@@ -20,6 +20,8 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         private static readonly DependencyProperty HeaderBackgroundProperty;
         private static readonly DependencyProperty PanelBackgroundProperty;
         private static readonly DependencyProperty ClearMessagesCommandProperty;
+        private static readonly DependencyProperty ShowMessageTextAlignmentProperty;
+        private static readonly DependencyProperty ShowMessageTextAreaMaxWidthProperty;
 
         /// <summary>
         /// Static constructor for <see cref="MessagePanel"/> registers dependency properties and events.
@@ -40,6 +42,10 @@ namespace DevelopmentInProgress.WPFControls.Messaging
             PanelBackgroundProperty = DependencyProperty.Register("PanelBackground", typeof(Brush), typeof(MessagePanel));
 
             HeaderBackgroundProperty = DependencyProperty.Register("HeaderBackground", typeof(Brush), typeof(MessagePanel));
+
+            ShowMessageTextAlignmentProperty = DependencyProperty.Register("ShowMessageTextAlignment", typeof(TextAlignment), typeof(MessagePanel), new FrameworkPropertyMetadata(TextAlignment.Center));
+
+            ShowMessageTextAreaMaxWidthProperty = DependencyProperty.Register("ShowMessageTextAreaMaxWidth", typeof(int), typeof(MessagePanel), new FrameworkPropertyMetadata(250));
 
             ClearMessagesCommandProperty = DependencyProperty.Register("ClearMessages", typeof (ICommand),
                 typeof (MessagePanel));
@@ -105,6 +111,24 @@ namespace DevelopmentInProgress.WPFControls.Messaging
         {
             get { return (Brush)GetValue(PanelBackgroundProperty); }
             set { SetValue(PanelBackgroundProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the text alignment when showing the message in the popup dialog box.
+        /// </summary>
+        public TextAlignment ShowMessageTextAlignment
+        {
+            get { return (TextAlignment)GetValue(ShowMessageTextAlignmentProperty); }
+            set { SetValue(ShowMessageTextAlignmentProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the max width of the text area when showing the message in the popup dialog box.
+        /// </summary>
+        public int ShowMessageTextAreaMaxWidth
+        {
+            get { return (int)GetValue(ShowMessageTextAreaMaxWidthProperty); }
+            set { SetValue(ShowMessageTextAreaMaxWidthProperty, value); }
         }
     }
 }

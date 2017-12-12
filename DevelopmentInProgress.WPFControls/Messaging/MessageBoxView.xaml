@@ -40,13 +40,11 @@
             <Image Source="{Binding Type, Converter={StaticResource imageConverter}, ConverterParameter='MSGBOX'}" 
                    Height="24" Width="24" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         </StackPanel>
-        <Grid Margin="5,5,5,5">
-            <TextBox Text="{Binding Message, Mode=OneWay}" IsReadOnly="True" BorderBrush="Transparent"
-                     Foreground="DimGray" FontSize="14"
+        <TextBox Text="{Binding Message, Mode=OneWay}" IsReadOnly="True" BorderBrush="Transparent"
+                     Foreground="DimGray" FontSize="14" Margin="5,5,5,5"  MaxWidth="{Binding TextAreaMaxWidth, Mode=OneWay}" MinWidth="200"
                      IsHitTestVisible="False" BorderThickness="0" Focusable="False" IsTabStop="False"
-                     HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" MaxWidth="275" MinWidth="200"
+                     HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                     TextWrapping="Wrap" TextAlignment="Center"/>
-        </Grid>
+                     TextWrapping="Wrap" TextAlignment="{Binding TextAlignment, Mode=OneWay}"/>
     </DockPanel>
 </Window>
