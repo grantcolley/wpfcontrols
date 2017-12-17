@@ -68,6 +68,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Progress\CircularProgress.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="themes\generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,6 +109,9 @@
     <Compile Include="NavigationPanel\NavigationPanel.cs" />
     <Compile Include="NavigationPanel\NavigationPanelItem.cs" />
     <Compile Include="NavigationPanel\NavigationPanelResources.cs" />
+    <Compile Include="Progress\CircularProgress.xaml.cs">
+      <DependentUpon>CircularProgress.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
