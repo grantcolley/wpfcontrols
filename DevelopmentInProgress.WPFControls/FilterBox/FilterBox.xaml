@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:filterBox="clr-namespace:DevelopmentInProgress.WPFControls.FilterBox"
+                    x:Class="DevelopmentInProgress.WPFControls.FilterBox.FilterBox">
+
+    <Style TargetType="{x:Type filterBox:XamlFilterBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel LastChildFill="True">
+                        <DockPanel DockPanel.Dock="Top" LastChildFill="True" Height="24" Margin="5">
+                            <Image DockPanel.Dock="Right" Source="../Images/Filter.png" Height="18" Width="18"/>
+                            <TextBox Text="{Binding Path=FilterText, RelativeSource={RelativeSource TemplatedParent}}"
+                                         Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
+                                         TextChanged="OnTextChanged"/>
+                        </DockPanel>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>            
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -52,6 +52,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="FilterBox\FilterBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Messaging\ExceptionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -87,6 +91,8 @@
     <Compile Include="FilterTree\XamlFilterTree.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FilterBox\FilterBox.cs" />
+    <Compile Include="FilterBox\XamlFilterBox.cs" />
     <Compile Include="Messaging\ExceptionView.xaml.cs">
       <DependentUpon>ExceptionView.xaml</DependentUpon>
     </Compile>
