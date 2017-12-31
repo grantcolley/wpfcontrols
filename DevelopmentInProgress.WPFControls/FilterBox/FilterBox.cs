@@ -31,8 +31,23 @@ namespace DevelopmentInProgress.WPFControls.FilterBox
             }
 
             var items = xamlFilterBox.ItemsSource;
+            if (items == null)
+            {
+                return;
+            }
+            
             var filterFieldName = xamlFilterBox.FilterFieldName;
+            if(string.IsNullOrWhiteSpace(filterFieldName))
+            {
+                return;
+            }
+
             var visibilityFieldName = xamlFilterBox.VisibilityFieldName;
+            if(string.IsNullOrWhiteSpace(visibilityFieldName))
+            {
+                return;
+            }
+
             Contains(items, textBox.Text, filterFieldName, visibilityFieldName);
         }
 

@@ -38,7 +38,7 @@ namespace DevelopmentInProgress.WPFControls.FilterBox
         /// </summary>
         public string FilterText
         {
-            get { return GetValue(FilterTextProperty).ToString(); }
+            get { return GetValue(FilterTextProperty)?.ToString(); }
             set { SetValue(FilterTextProperty, value); }
         }
 
@@ -47,7 +47,7 @@ namespace DevelopmentInProgress.WPFControls.FilterBox
         /// </summary>
         public string FilterFieldName
         {
-            get { return GetValue(FilterFieldNameProperty).ToString(); }
+            get { return GetValue(FilterFieldNameProperty)?.ToString(); }
             set { SetValue(FilterFieldNameProperty, value); }
         }
 
@@ -56,7 +56,7 @@ namespace DevelopmentInProgress.WPFControls.FilterBox
         /// </summary>
         public string VisibilityFieldName
         {
-            get { return GetValue(VisibilityFieldNameProperty).ToString(); }
+            get { return GetValue(VisibilityFieldNameProperty)?.ToString(); }
             set { SetValue(VisibilityFieldNameProperty, value); }
         }
 
