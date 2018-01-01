@@ -5,14 +5,30 @@
 //-----------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
 
 namespace DevelopmentInProgress.WPFControls.Messaging
 {
     /// <summary>
     /// Details of the message to be displayed.
     /// </summary>
-    public class Message
+    public class Message : INotifyPropertyChanged
     {
+        private bool isVisible;
+
+        /// <summary>
+        /// Initializes a new instance of the Message.
+        /// </summary>
+        public Message()
+        {
+            IsVisible = true;
+        }
+
+        /// <summary>
+        /// Notification event raised when a property has changed.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets or sets the type of message to display.
         /// </summary>
@@ -46,6 +62,31 @@ namespace DevelopmentInProgress.WPFControls.Messaging
                 return MessageType == MessageType.Error ? "Error"
                     : MessageType == MessageType.Warn ? "Warn"
                     : MessageType == MessageType.Question ? "Question" : "Info";
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the <see cref="Message"/> is visible or not.
+        /// </summary>
+        public bool IsVisible
+        {
+            get { return isVisible; }
+            set
+            {
+                if (isVisible != value)
+                {
+                    isVisible = value;
+                    OnPropertyChanged("IsVisible");
+                }
+            }
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            var propertyChangedHandler = PropertyChanged;
+            if (propertyChangedHandler != null)
+            {
+                propertyChangedHandler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }
