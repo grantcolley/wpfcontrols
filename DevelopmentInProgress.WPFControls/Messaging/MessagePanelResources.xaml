@@ -44,11 +44,15 @@
                                  Tag="{Binding ., RelativeSource={RelativeSource TemplatedParent}}"
                                  BorderBrush="Transparent" BorderThickness="0"
                                  HorizontalContentAlignment="Stretch">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListBoxItem}">
+                                        <Setter Property="Visibility" Value="{Binding Path=IsVisible, Converter={StaticResource boolToVisibilityConverter}}"/>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
                                 <ListBox.ItemTemplate>
                                     <DataTemplate DataType="messaging:Message">
                                         <ContentControl MouseDoubleClick="MessageMouseDoubleClick"
-                                                        Tag="{Binding Path=Tag, ElementName=MessageListBox}"
-                                                        Visibility="{Binding Path=IsVisible, Converter={StaticResource boolToVisibilityConverter}}">
+                                                        Tag="{Binding Path=Tag, ElementName=MessageListBox}">
                                             <DockPanel>
                                                 <Image Margin="2" Height="10" Width="10" HorizontalAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Left"
                                                        Source="{Binding Path=Type, Converter={StaticResource imageConverter}}"/>
