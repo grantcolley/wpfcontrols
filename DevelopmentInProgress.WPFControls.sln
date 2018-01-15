@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopmentInProgress.WPFControls", "DevelopmentInProgress.WPFControls\DevelopmentInProgress.WPFControls.csproj", "{5ACDC574-0F6F-48BC-AD2A-2F29BD7009FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopmentInProgress.WPFControls.Test", "DevelopmentInProgress.WPFControls.Test\DevelopmentInProgress.WPFControls.Test.csproj", "{C7D052FC-749D-4C49-B566-1423F30DFE9E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopmentInProgress.WPFControls.TestHarness", "DevelopmentInProgress.WPFControls.TestHarness\DevelopmentInProgress.WPFControls.TestHarness.csproj", "{C7D052FC-749D-4C49-B566-1423F30DFE9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7640A76B-ED17-415E-9C0E-91C5D697064A}
 	EndGlobalSection
 EndGlobal
