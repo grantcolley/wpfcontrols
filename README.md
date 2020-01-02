@@ -157,6 +157,7 @@ NavigationPanel.NavigationPanelItems.Add(manageUsersPanelItem);
 NavigationPanel.NavigationPanelItems.Add(customersAndOrdersPanelItem);
 ```
 
+<!--
 ## XamlFilterTree
 The **XamFilterTree** is a filterable treeview with support for adding and removing items and drag drop operations.
 
@@ -218,7 +219,7 @@ The example below shows a list of users, their assigned roles and the activities
     </filterTree:XamlFilterTree.Resources>
 </filterTree:XamlFilterTree>
 ```
-
+-->
 ## Messaging
 
 #### MessagePanel
